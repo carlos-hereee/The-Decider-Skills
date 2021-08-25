@@ -1,14 +1,14 @@
 import shortid from "shortid";
 
-const Skills = () => {
-  const menuOptions = ["Mindfullness", "Emotion", "Distress", "Interpersonal"];
-
+const Skills = ({ data }) => {
   return (
-    <div>
-      {menuOptions.map((item) => (
-        <a key={shortid.generate()} href={`/skill/${item}`}>
-          {item}
-        </a>
+    <div className="container skills">
+      {data.map((item) => (
+        <button
+          key={shortid.generate()}
+          className="btn btn-secondary m-3 skill">
+          {item.title}
+        </button>
       ))}
     </div>
   );

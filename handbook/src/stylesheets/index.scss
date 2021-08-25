@@ -1,0 +1,9 @@
+.skills {
+  display: grid;
+  .skill {
+    height: 12rem;
+    &:nth-child(odd) {
+      grid-row: 1;
+    }
+  }
+}
