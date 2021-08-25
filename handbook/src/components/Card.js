@@ -1,8 +1,20 @@
-const Card = () => {
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+const Card = ({ data }) => {
   return (
     <div className="card">
-      <h3 className="card-title">Hello World</h3>
-      <div className="card-body"></div>
+      <div className="card-body">
+        <div className="heading">
+          {data.src ? (
+            <img src={data.src} alt={data.action} />
+          ) : (
+            <FontAwesomeIcon icon={faUser} size="3x" />
+          )}
+          <h3 className="card-title">{data.action}</h3>
+        </div>
+        <p className="card-text">{data.definition}</p>
+      </div>
     </div>
   );
 };
