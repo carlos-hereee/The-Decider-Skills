@@ -9,7 +9,7 @@ const Skills = ({ data }) => {
 
   const handleClick = (item) => {
     makeActive(item);
-    history.push(`/skill/${item.title.toLowerCase()}`);
+    history.push(`/${item.title.toLowerCase()}`);
   };
   return (
     <div className="container skills">
