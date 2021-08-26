@@ -12,11 +12,11 @@ const Skills = ({ data }) => {
     history.push(`/${item.title.toLowerCase()}`);
   };
   return (
-    <div className="container skills">
+    <div className="container mt-3 skills">
       {data.map((item) => (
         <button
           key={shortid.generate()}
-          className="btn btn-secondary m-3 skill"
+          className={`btn m-3 skill bg-${item.color}`}
           onClick={() => handleClick(item)}>
           {item.title}
         </button>

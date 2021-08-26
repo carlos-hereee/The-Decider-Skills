@@ -2,6 +2,8 @@
   display: grid;
   .skill {
     height: 12rem;
+    font-size: large;
+    font-weight: 700;
     &:nth-child(odd) {
       grid-row: 1;
     }

@@ -3,12 +3,12 @@ import handbook from "./data.json";
 import Homepage from "./pages/Homepage";
 import Skills from "./pages/Skills";
 import Definition from "./components/Definition";
+import Header from "./pages/Header";
 
 function App() {
   return (
     <div className="container">
-      <a href="/">HOME</a>
-
+      <Header />
       <Switch>
         <Route path="/" exact>
           <Homepage />
