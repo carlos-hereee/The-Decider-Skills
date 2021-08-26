@@ -28,15 +28,13 @@ const Definition = () => {
           </div>
           <div className="list-skills">
             {skill?.map((item) => (
-              <div className="list-element">
+              <button
+                className="btn btn-secondary list-element"
+                key={shortid.generate()}
+                onClick={() => handleClick(item)}>
                 <img src={item.imageUrl} alt={item.action} />
-                <button
-                  className="btn btn-secondary button"
-                  key={shortid.generate()}
-                  onClick={() => handleClick(item)}>
-                  {item.action}
-                </button>
-              </div>
+                {item.action}
+              </button>
             ))}
           </div>
         </div>
