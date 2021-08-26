@@ -16,6 +16,11 @@
   justify-content: space-around;
   gap: 1rem;
 }
+.list-element {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
 .button {
   &:focus {
     filter: brightness(0.6);

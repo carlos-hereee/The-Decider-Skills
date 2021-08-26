@@ -6,8 +6,8 @@ const Card = ({ data }) => {
     <div className="card">
       <div className="card-body">
         <div className="heading">
-          {data.src ? (
-            <img src={data.src} alt={data.action} />
+          {data.imageUrl ? (
+            <img src={data.imageUrl} alt={data.action} />
           ) : (
             <FontAwesomeIcon icon={faUser} size="3x" />
           )}
