@@ -6,7 +6,7 @@ import Definition from "./components/Definition";
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <a href="/">HOME</a>
 
       <Switch>

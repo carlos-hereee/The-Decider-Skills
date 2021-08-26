@@ -31,7 +31,7 @@ const Definition = () => {
           </div>
         </div>
       ) : (
-        <Redirect to="skill" />
+        <Redirect to="/skill" />
       )}
     </div>
   );
