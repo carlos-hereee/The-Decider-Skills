@@ -17,14 +17,15 @@
   gap: 1rem;
 }
 .list-element {
-  width: 100px;
   display: flex;
   gap: 1rem;
+  width: 100px;
   flex-direction: column;
-  overflow-wrap: break-word;
+  justify-content: space-between;
+  align-items: center;
+  white-space: normal;
   img {
     width: 75px;
-    margin: auto;
   }
   &:focus {
     filter: brightness(0.6);
