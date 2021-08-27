@@ -4,6 +4,7 @@ import Homepage from "./pages/Homepage";
 import Skills from "./pages/Skills";
 import Definition from "./components/Definition";
 import Header from "./pages/Header";
+import Footer from "./pages/Footer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Definition />
         </Route>
       </Switch>
+      <Footer />
     </div>
   );
 }
