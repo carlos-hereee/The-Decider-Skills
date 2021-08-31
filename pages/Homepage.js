@@ -1,14 +1,23 @@
+import React from "react";
+import { ImageBackground, Text, View } from "react-native";
+import homepageBackground from "../assets/post-it.svg";
+
 const Homepage = () => {
   return (
-    <div className="container homepage">
-      <div className="homepage-header">
-        <h1>the decider</h1>
-        <h3>LIFE SKILLS </h3>
-        <a href="/skill" className="btn btn-warning">
-          Go
-        </a>
-      </div>
-    </div>
+    <ImageBackground
+      source={homepageBackground}
+      resizeMode="cover"
+      style={{ width: "100%", height: "100%" }}>
+      <View className="container homepage">
+        <View className="homepage-header">
+          <Text>the decider</Text>
+          <Text>LIFE SKILLS </Text>
+          <Text href="/skill" className="btn btn-warning">
+            Go
+          </Text>
+        </View>
+      </View>
+    </ImageBackground>
   );
 };
 export default Homepage;
