@@ -65,9 +65,11 @@ const styles = StyleSheet.create({
   homepageCard: {
     padding: "1rem",
     border: "3px solid gray",
-    borderRadius: "10px",
-    backgroundColor: "#2185d6",
+    backgroundColor: "#9F29D3",
+    borderRadius: 5,
+    width: 300,
     color: "white",
+    textAlign: "center",
   },
 });
 

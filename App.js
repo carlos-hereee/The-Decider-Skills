@@ -7,14 +7,22 @@
 import React from "react";
 import { StyleSheet, Text, View, ImageBackground } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Homepage from "./pages/Homepage";
 import { styles } from "./stylesheets";
 // import styles from "./stylesheets/app.scss";
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
   return (
     <View style={styles.app}>
-      <Homepage />
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={Homepage} />
+          <Stack.Screen name="Handbook" component={HandBook} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </View>
   );
 }
