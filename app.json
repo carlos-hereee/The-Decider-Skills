@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "life-handbook",
+    "slug": "life-handbook",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/post-it-icon.png",
+    "splash": {
+      "image": "./assets/post-it-splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/post-it-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/post-it-icon.png"
+    }
+  }
+}
