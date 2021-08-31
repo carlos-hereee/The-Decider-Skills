@@ -9,6 +9,7 @@ import { StyleSheet, Text, View, ImageBackground } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import Homepage from "./pages/Homepage";
 import { styles } from "./stylesheets";
+// import styles from "./stylesheets/app.scss";
 
 export default function App() {
   return (

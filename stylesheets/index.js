@@ -55,22 +55,20 @@ const styles = StyleSheet.create({
     backgroundColor: "whitesmoke",
     justifyContent: "center",
   },
+  homepageText: { color: "white", fontSize: "2rem", fontWeight: "bold" },
+  backgroundImage: {
+    width: "100%",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  homepageCard: {
+    padding: "1rem",
+    border: "3px solid gray",
+    borderRadius: "10px",
+    backgroundColor: "#2185d6",
+    color: "white",
+  },
 });
-// .homepage {
-//   background-image: url("../assets/post-it.svg");
-//   background-size: cover;
-//   height: 100vh;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   .homepage-header {
-//     border: 3px solid gray;
-//     background-color: #2185d6;
-//     color: white;
-//     width: 300px;
-//     text-align: center;
-//     border-radius: 10px;
-//   }
 
 module.exports = { styles };
