@@ -1,4 +1,21 @@
 const { StyleSheet } = require("react-native");
+
+const styles = StyleSheet.create({
+  app: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  homepageCard: {
+    width: 300,
+    margin: "auto",
+    padding: 10,
+    backgroundColor: "#1e76a0",
+    color: "white",
+    textAlign: "center",
+    borderRadius: 4,
+  },
+});
 // .skills {
 //   display: grid;
 //   .skill {
@@ -47,30 +64,5 @@ const { StyleSheet } = require("react-native");
 //   margin-top: 3rem;
 //   text-align: center;
 // }
-
-const styles = StyleSheet.create({
-  app: {
-    flex: 1,
-    alignItems: "center",
-    backgroundColor: "whitesmoke",
-    justifyContent: "center",
-  },
-  homepageText: { color: "white", fontSize: "2rem", fontWeight: "bold" },
-  backgroundImage: {
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  homepageCard: {
-    padding: "1rem",
-    border: "3px solid gray",
-    backgroundColor: "#9F29D3",
-    borderRadius: 5,
-    width: 300,
-    color: "white",
-    textAlign: "center",
-  },
-});
 
 module.exports = { styles };

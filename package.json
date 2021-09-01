@@ -9,9 +9,6 @@
     "@fortawesome/react-fontawesome": "^0.1.15",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
     "expo": "^42.0.3",
     "expo-status-bar": "^1.0.4",
     "node-sass": "^6.0.1",
@@ -21,10 +18,8 @@
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
     "react-native-web": "^0.17.1",
-    "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
-    "shortid": "^2.2.16",
-    "web-vitals": "^1.1.2"
+    "shortid": "^2.2.16"
   },
   "scripts": {
     "start": "expo start",
@@ -52,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "babel-plugin-react-native-classname-to-style": "^1.2.2",
     "react-native-sass-transformer": "^1.4.0"
   }
 }
