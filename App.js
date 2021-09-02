@@ -5,26 +5,26 @@
 // import Header from "./pages/Header";
 // import Footer from "./pages/Footer";
 import React from "react";
-import { View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Homepage from "./pages/Homepage";
-import { styles } from "./stylesheets";
 import Handbook from "./pages/Handbook";
 
 const Stack = createNativeStackNavigator();
+
 export default function App() {
   return (
-    <View style={styles.app}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={Homepage} />
-          <Stack.Screen name="Handbook" component={Handbook} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home" component={Homepage} />
+        <Stack.Screen name="Handbook" component={Handbook} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
+
 // <div className="container">
 // <div className="container">
 /* <Header />

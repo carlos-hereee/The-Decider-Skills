@@ -1,29 +1,5 @@
 {
-  "name": "life-handbook",
   "main": "node_modules/expo/AppEntry.js",
-  "version": "1.0.0",
-  "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.15",
-    "@react-navigation/native": "^6.0.2",
-    "@react-navigation/native-stack": "^6.1.0",
-    "expo": "^42.0.3",
-    "expo-status-bar": "^1.0.4",
-    "node-sass": "^6.0.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-native": "^0.63.0",
-    "react-native-safe-area-context": "3.2.0",
-    "react-native-screens": "~3.4.0",
-    "react-native-web": "~0.13.12",
-    "react-scripts": "^4.0.3",
-    "shortid": "^2.2.16"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.9.0"
-  },
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -31,22 +7,20 @@
     "web": "expo start --web",
     "eject": "expo eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "@react-navigation/native": "^6.0.2",
+    "@react-navigation/native-stack": "^6.1.0",
+    "expo": "~42.0.1",
+    "expo-status-bar": "~1.0.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native-web": "~0.13.12",
+    "react-native-screens": "~3.4.0",
+    "react-native-safe-area-context": "3.2.0"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "devDependencies": {
+    "@babel/core": "^7.9.0"
+  },
+  "private": true
 }
