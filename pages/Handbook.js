@@ -1,25 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
+import { HandbookContext } from "../utlis/Context";
 import lifeSkills from "../utlis/data.json";
+import HandbookSkill from "./HandbookSkill";
 
 const Handbook = () => {
+  const { makeActive, active, skills } = useContext(HandbookContext);
   const handlePress = (item) => {
-    console.log("item", item);
+    makeActive(item);
   };
   return (
     <View style={styles.handbookMenu}>
-      <FlatList
-        data={lifeSkills}
-        numColumns={2}
-        contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
-        renderItem={({ item }) => (
-          <Pressable
-            onPress={() => handlePress(item)}
-            style={[styles.handbookSkill, { backgroundColor: item.color }]}>
-            <Text style={{ fontSize: 24 }}>{item.title}</Text>
-          </Pressable>
-        )}
-      />
+      <HandbookSkill skills={lifeSkills[0].skills} />
+      {/* {active ? (
+        <HandbookSkill skills={skills} />
+      ) : (
+        <FlatList
+          data={lifeSkills}
+          numColumns={2}
+          contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+          renderItem={({ item }) => (
+            <Pressable
+              onPress={() => handlePress(item)}
+              style={[styles.handbookSkill, { backgroundColor: item.color }]}>
+              <Text style={{ fontSize: 24 }}>{item.title}</Text>
+            </Pressable>
+          )}
+        />
+      )} */}
     </View>
   );
 };

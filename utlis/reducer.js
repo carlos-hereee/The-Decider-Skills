@@ -7,7 +7,7 @@ const isLoading = (state, action) => {
 const makeActive = (state, action) => {
   return {
     ...state,
-    skill: action.payload.skills,
+    skills: action.payload.skills,
     active: action.payload.title,
   };
 };

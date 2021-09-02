@@ -4,7 +4,7 @@ import { reducer } from "./reducer";
 export const HandbookContext = createContext();
 
 export const HandbookState = ({ children }) => {
-  const initialState = { isLoading: false, skill: [], active: "" };
+  const initialState = { isLoading: false, skills: [], active: "" };
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const makeActive = async (data) => {
@@ -17,7 +17,7 @@ export const HandbookState = ({ children }) => {
   return (
     <HandbookContext.Provider
       value={{
-        skill: state.skill,
+        skills: state.skills,
         isLoading: state.isLoading,
         active: state.active,
         makeActive,

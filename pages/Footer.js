@@ -1,6 +1,9 @@
+import React from "react";
+import { Text } from "react-native";
+
 const Footer = () => (
-  <footer>
+  <Text style={{ textAlign: "center" }}>
     © Copyright 2016-2020 The Decider® Limited • Guernsey Registry 64654
-  </footer>
+  </Text>
 );
 export default Footer;
