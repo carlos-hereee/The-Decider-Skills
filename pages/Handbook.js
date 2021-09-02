@@ -11,7 +11,6 @@ const Handbook = ({ navigation }) => {
   };
   return (
     <View style={styles.handbookMenu}>
-      {/* <HandbookSkill skills={lifeSkills[0].skills} navigation={navigation} /> */}
       {active ? (
         <HandbookSkill skills={skills} navigation={navigation} />
       ) : (
