@@ -1,5 +1,6 @@
 {
   "expo": {
+    "sdkVersion": "42.0.0",
     "name": "life-handbook",
     "slug": "life-handbook",
     "version": "1.0.0",
