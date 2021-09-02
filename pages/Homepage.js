@@ -10,11 +10,7 @@ const Homepage = ({ navigation }) => (
     <View style={styles.card}>
       <Text style={styles.cardHeading}>the decider</Text>
       <Text style={styles.cardHeading}>LIFE HANDBOOK</Text>
-      <Button
-        title="GO"
-        style={styles.cardButton}
-        onPress={() => navigation.navigate("Handbook")}
-      />
+      <Button title="GO" onPress={() => navigation.navigate("Handbook")} />
     </View>
   </ImageBackground>
 );
@@ -32,16 +28,12 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     padding: 10,
     borderColor: "#135d98",
-    backgroundColor: "#2185d6",
+    backgroundColor: "#a9d1f6",
     borderRadius: 4,
   },
   cardHeading: {
     color: "white",
     fontSize: 24,
     textAlign: "center",
-  },
-  cardButton: {
-    backgroundColor: "white",
-    color: "black",
   },
 });

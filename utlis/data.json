@@ -1,7 +1,7 @@
 [
   {
     "title": "Distress",
-    "key": 1,
+    "key": "1",
     "color": "red",
     "skills": [
       {
@@ -48,7 +48,7 @@
   },
   {
     "title": "Mindfulness",
-    "key": 2,
+    "key": "2",
     "color": "info",
     "skills": [
       {
@@ -95,7 +95,7 @@
   },
   {
     "title": "Emotion",
-    "key": 3,
+    "key": "3",
     "color": "yellow",
     "skills": [
       {
@@ -142,7 +142,7 @@
   },
   {
     "title": "Interpersonal",
-    "key": 4,
+    "key": "4",
     "color": "green",
     "skills": [
       {
