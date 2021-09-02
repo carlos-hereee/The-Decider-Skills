@@ -1,13 +1,28 @@
 import React from "react";
-import { Image, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 const Card = ({ data }) => {
   return (
-    <View>
-      <Text>{data.name}</Text>
-      <Image source={{ uri: data.imageUrl, width: 200, height: 200 }} />
-      <Text>{data.definition}</Text>
+    <View style={styles.card}>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+        }}>
+        <Image source={{ uri: data.imageUrl, width: 150, height: 150 }} />
+        <Text style={{ fontSize: 24, marginLeft: 10 }}>{data.name}</Text>
+      </View>
+      <Text style={{ marginTop: 10 }}>{data.definition}</Text>
     </View>
   );
 };
 export default Card;
+
+const styles = StyleSheet.create({
+  card: {
+    marginTop: 10,
+    borderWidth: 2,
+    padding: 10,
+    borderRadius: 4,
+  },
+});

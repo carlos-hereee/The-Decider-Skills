@@ -11,12 +11,20 @@ const makeActive = (state, action) => {
     active: action.payload.title,
   };
 };
+const resetActive = (state, action) => {
+  return {
+    ...state,
+    active: "",
+  };
+};
 export const reducer = (state, action) => {
   switch (action.type) {
     case "IS_LOADING":
       return isLoading(state, action);
     case "MAKE_ACTIVE":
       return makeActive(state, action);
+    case "RESET_ACTIVE":
+      return resetActive(state, action);
     default:
       return state;
   }

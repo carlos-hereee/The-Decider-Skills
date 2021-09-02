@@ -14,6 +14,13 @@ export const HandbookState = ({ children }) => {
       dispatch({ type: "SET_ERROR", payload: "error could not add data" });
     }
   };
+  const resetActive = async () => {
+    try {
+      dispatch({ type: "RESET_ACTIVE", payload: "" });
+    } catch (e) {
+      dispatch({ type: "SET_ERROR", payload: "error could not add data" });
+    }
+  };
   return (
     <HandbookContext.Provider
       value={{
@@ -21,6 +28,7 @@ export const HandbookState = ({ children }) => {
         isLoading: state.isLoading,
         active: state.active,
         makeActive,
+        resetActive,
       }}>
       {children}
     </HandbookContext.Provider>

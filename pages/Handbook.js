@@ -4,16 +4,16 @@ import { HandbookContext } from "../utlis/Context";
 import lifeSkills from "../utlis/data.json";
 import HandbookSkill from "./HandbookSkill";
 
-const Handbook = () => {
+const Handbook = ({ navigation }) => {
   const { makeActive, active, skills } = useContext(HandbookContext);
   const handlePress = (item) => {
     makeActive(item);
   };
   return (
     <View style={styles.handbookMenu}>
-      <HandbookSkill skills={lifeSkills[0].skills} />
-      {/* {active ? (
-        <HandbookSkill skills={skills} />
+      {/* <HandbookSkill skills={lifeSkills[0].skills} navigation={navigation} /> */}
+      {active ? (
+        <HandbookSkill skills={skills} navigation={navigation} />
       ) : (
         <FlatList
           data={lifeSkills}
@@ -27,7 +27,7 @@ const Handbook = () => {
             </Pressable>
           )}
         />
-      )} */}
+      )}
     </View>
   );
 };
