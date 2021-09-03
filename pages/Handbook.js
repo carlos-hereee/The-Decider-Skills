@@ -22,7 +22,7 @@ const Handbook = ({ navigation }) => {
             <Pressable
               onPress={() => handlePress(item)}
               style={[styles.handbookSkill, { backgroundColor: item.color }]}>
-              <Text style={{ fontSize: 24 }}>{item.title}</Text>
+              <Text style={{ fontSize: 20 }}>{item.title}</Text>
             </Pressable>
           )}
         />
@@ -35,16 +35,13 @@ export default Handbook;
 const styles = StyleSheet.create({
   handbookMenu: {
     flex: 1,
-    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    margin: "auto",
   },
   handbookSkill: {
-    width: 200,
+    width: 140,
     margin: 10,
     padding: 10,
     borderWidth: 1,
-    width: 175,
   },
 });

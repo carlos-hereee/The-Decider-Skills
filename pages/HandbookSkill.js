@@ -36,7 +36,7 @@ const HandbookSkill = ({ skills }) => {
                   source={{ uri: item.imageUrl, width: 100, height: 100 }}
                 />
               ) : (
-                <FontAwesomeIcon icon={faSearch} style={{ margin: "auto" }} />
+                <FontAwesomeIcon icon={faSearch} size={2} />
               )}
               <Text>{item.name}</Text>
             </Pressable>

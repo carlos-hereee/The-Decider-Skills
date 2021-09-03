@@ -14,7 +14,7 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
-      "**/*"
+      "assets/*"
     ],
     "ios": {
       "supportsTablet": true
@@ -24,6 +24,10 @@
         "foregroundImage": "./assets/post-it-icon.png",
         "backgroundColor": "#FFFFFF"
       }
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#C2185B",
+      "translucent": false
     },
     "web": {
       "favicon": "./assets/post-it-icon.png"
