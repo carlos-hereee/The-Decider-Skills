@@ -1,8 +1,5 @@
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import React, { useContext, useState } from "react";
 import {
-  Button,
   FlatList,
   Image,
   Pressable,
@@ -10,6 +7,9 @@ import {
   Text,
   View,
 } from "react-native";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { HandbookContext } from "../utlis/Context";
 import Card from "./Card";
 
@@ -31,7 +31,13 @@ const HandbookSkill = ({ skills }) => {
             <Pressable
               onPress={() => setActiveSkill(item)}
               style={styles.listItem}>
-              <Image source={{ uri: item.imageUrl, width: 100, height: 100 }} />
+              {item.imageUrl ? (
+                <Image
+                  source={{ uri: item.imageUrl, width: 100, height: 100 }}
+                />
+              ) : (
+                <FontAwesomeIcon icon={faSearch} style={{ margin: "auto" }} />
+              )}
               <Text>{item.name}</Text>
             </Pressable>
           )}

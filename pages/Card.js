@@ -1,5 +1,7 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 const Card = ({ data }) => {
   return (
@@ -9,7 +11,11 @@ const Card = ({ data }) => {
           flexDirection: "row",
           alignItems: "center",
         }}>
-        <Image source={{ uri: data.imageUrl, width: 150, height: 150 }} />
+        {data.imageUrl ? (
+          <Image source={{ uri: data.imageUrl, width: 150, height: 150 }} />
+        ) : (
+          <FontAwesomeIcon icon={faSearch} />
+        )}
         <Text style={{ fontSize: 24, marginLeft: 10 }}>{data.name}</Text>
       </View>
       <Text style={{ marginTop: 10 }}>{data.definition}</Text>
