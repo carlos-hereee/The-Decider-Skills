@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/post-it-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.silent2code.handbook"
     },
     "androidStatusBar": {
       "backgroundColor": "#C2185B",

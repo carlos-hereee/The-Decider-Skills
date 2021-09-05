@@ -1,19 +1,28 @@
 import React from "react";
 import { Button, ImageBackground, StyleSheet, Text, View } from "react-native";
 import homepageBackground from "../assets/post-it.png";
+import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
+import AppLoading from "expo-app-loading";
 
-const Homepage = ({ navigation }) => (
-  <ImageBackground
-    source={homepageBackground}
-    resizeMode="cover"
-    style={styles.backgroungImage}>
-    <View style={styles.card}>
-      <Text style={styles.cardHeading}>the decider</Text>
-      <Text style={styles.cardHeading}>LIFE HANDBOOK</Text>
-      <Button title="GO" onPress={() => navigation.navigate("Handbook")} />
-    </View>
-  </ImageBackground>
-);
+const Homepage = ({ navigation }) => {
+  let [fontsLoaded] = useFonts({
+    Amaranth_700Bold,
+  });
+  return fontsLoaded ? (
+    <ImageBackground
+      source={homepageBackground}
+      resizeMode="cover"
+      style={styles.backgroungImage}>
+      <View style={styles.card}>
+        <Text style={styles.cardHeading}>The Decider</Text>
+        <Text style={styles.cardHeading}>Skills</Text>
+        <Button title="GO" onPress={() => navigation.navigate("Handbook")} />
+      </View>
+    </ImageBackground>
+  ) : (
+    <AppLoading />
+  );
+};
 export default Homepage;
 
 const styles = StyleSheet.create({
@@ -34,6 +43,8 @@ const styles = StyleSheet.create({
   cardHeading: {
     color: "white",
     fontSize: 24,
+    fontWeight: 700,
     textAlign: "center",
+    fontFamily: " Amaranth_700Bold",
   },
 });
