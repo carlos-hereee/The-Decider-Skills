@@ -4,6 +4,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 const Card = ({ data }) => {
+  const { imageUrl } = data;
   return (
     <View style={styles.card}>
       <View
@@ -11,8 +12,8 @@ const Card = ({ data }) => {
           flexDirection: "row",
           alignItems: "center",
         }}>
-        {data.imageUrl ? (
-          <Image source={{ uri: data.imageUrl, width: 150, height: 150 }} />
+        {imageUrl ? (
+          <Image source={{ uri: imageUrl, width: 150, height: 150 }} />
         ) : (
           <FontAwesomeIcon icon={faSearch} />
         )}
@@ -27,7 +28,6 @@ export default Card;
 const styles = StyleSheet.create({
   card: {
     marginTop: 10,
-    borderWidth: 1,
     padding: 10,
     borderRadius: 4,
   },

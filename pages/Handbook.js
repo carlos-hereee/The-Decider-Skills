@@ -22,7 +22,9 @@ const Handbook = ({ navigation }) => {
             <Pressable
               onPress={() => handlePress(item)}
               style={[styles.handbookSkill, { backgroundColor: item.color }]}>
-              <Text style={{ fontSize: 20 }}>{item.title}</Text>
+              <Text style={{ fontSize: 18, fontWeight: 700 }}>
+                {item.title}
+              </Text>
             </Pressable>
           )}
         />
@@ -43,5 +45,6 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     borderWidth: 1,
+    textAlign: "center",
   },
 });

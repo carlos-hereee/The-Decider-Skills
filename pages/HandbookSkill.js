@@ -19,8 +19,7 @@ const HandbookSkill = ({ skills }) => {
   return (
     <View style={styles.container}>
       <Pressable onPress={() => resetActive()} style={styles.goBack}>
-        <FontAwesomeIcon icon={faArrowLeft} color="white" />
-        <Text style={{ color: "white", marginLeft: 5 }}>Go Back</Text>
+        <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" />
       </Pressable>
       <Card data={activeSkill} />
       <View style={{ margin: "auto" }}>
@@ -34,6 +33,7 @@ const HandbookSkill = ({ skills }) => {
               {item.imageUrl ? (
                 <Image
                   source={{ uri: item.imageUrl, width: 100, height: 100 }}
+                  resizeMode="contain"
                 />
               ) : (
                 <FontAwesomeIcon icon={faSearch} size={2} />
@@ -51,15 +51,10 @@ export default HandbookSkill;
 const styles = StyleSheet.create({
   listItem: { margin: 10, width: "25%", textAlign: "center" },
   goBack: {
-    margin: 10,
     width: "25%",
     textAlign: "center",
-    backgroundColor: "gray",
-    alignItems: "center",
     flexDirection: "row",
     justifyContent: "center",
-    padding: 10,
-    borderRadius: 4,
   },
   container: {
     flex: 1,
