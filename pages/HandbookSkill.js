@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { HandbookContext } from "../utlis/Context";
 import Card from "./Card";
 
@@ -18,9 +17,9 @@ const HandbookSkill = ({ skills }) => {
   const [activeSkill, setActiveSkill] = useState(skills[0]);
   return (
     <View style={{ flex: 1 }}>
-      <View style={{ padding: 0 }}>
+      <View style={{ marginTop: 20 }}>
         <Pressable onPress={() => resetActive()} style={styles.goBack}>
-          <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" />
+          <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" size={45} />
         </Pressable>
         <Card data={activeSkill} />
       </View>
@@ -32,15 +31,11 @@ const HandbookSkill = ({ skills }) => {
             <Pressable
               onPress={() => setActiveSkill(item)}
               style={styles.listItem}>
-              {item.imageUrl ? (
-                <Image
-                  source={{ uri: item.imageUrl, width: 100, height: 100 }}
-                  resizeMode="contain"
-                />
-              ) : (
-                <FontAwesomeIcon icon={faSearch} size={2} />
-              )}
-              <Text style={{ fontWeight: 700 }}>{item.name}</Text>
+              <Image
+                source={{ uri: item.imageUrl, width: 100, height: 100 }}
+                resizeMode="contain"
+              />
+              <Text style={{ fontWeight: "700" }}>{item.name}</Text>
             </Pressable>
           )}
         />

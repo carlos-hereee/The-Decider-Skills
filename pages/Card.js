@@ -14,7 +14,7 @@ const Card = ({ data }) => {
           source={{ uri: imageUrl, width: 150, height: 150 }}
           resizeMode="contain"
         />
-        <Text style={{ fontSize: 24, marginLeft: 10, fontWeight: 700 }}>
+        <Text style={{ fontSize: 24, marginLeft: 10, fontWeight: "700" }}>
           {data.name}
         </Text>
       </View>

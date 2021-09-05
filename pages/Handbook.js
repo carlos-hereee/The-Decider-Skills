@@ -22,7 +22,7 @@ const Handbook = ({ navigation }) => {
             <Pressable
               onPress={() => handlePress(item)}
               style={[styles.handbookSkill, { backgroundColor: item.color }]}>
-              <Text style={{ fontSize: 18, fontWeight: 700 }}>
+              <Text style={{ fontSize: 18, fontWeight: "700" }}>
                 {item.title}
               </Text>
             </Pressable>

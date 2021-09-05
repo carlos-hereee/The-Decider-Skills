@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Button,
   ImageBackground,
   Pressable,
   StyleSheet,
@@ -26,7 +25,9 @@ const Homepage = ({ navigation }) => {
         <Pressable
           onPress={() => navigation.navigate("Handbook")}
           style={styles.btnGO}>
-          Start
+          <Text style={[styles.cardHeading, { fontSize: 20, color: "black" }]}>
+            Start
+          </Text>
         </Pressable>
       </View>
     </ImageBackground>
@@ -53,15 +54,14 @@ const styles = StyleSheet.create({
   },
   cardHeading: {
     color: "white",
-    fontWeight: 700,
     textAlign: "center",
-    fontFamily: " Amaranth_700Bold",
+    fontFamily: "Amaranth_700Bold",
   },
   btnGO: {
     textAlign: "center",
     fontSize: 20,
     color: "black",
-    fontFamily: " Amaranth_700Bold",
+    fontFamily: "Amaranth_700Bold",
     marginTop: 10,
     borderWidth: 1,
     padding: 10,
