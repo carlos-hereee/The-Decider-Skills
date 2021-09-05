@@ -1,5 +1,12 @@
 import React from "react";
-import { Button, ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  ImageBackground,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import homepageBackground from "../assets/post-it.png";
 import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
 import AppLoading from "expo-app-loading";
@@ -14,9 +21,13 @@ const Homepage = ({ navigation }) => {
       resizeMode="cover"
       style={styles.backgroungImage}>
       <View style={styles.card}>
-        <Text style={styles.cardHeading}>The Decider</Text>
-        <Text style={styles.cardHeading}>Skills</Text>
-        <Button title="GO" onPress={() => navigation.navigate("Handbook")} />
+        <Text style={[styles.cardHeading, { fontSize: 33 }]}>the decider</Text>
+        <Text style={[styles.cardHeading, { fontSize: 20 }]}>SKILLS</Text>
+        <Pressable
+          onPress={() => navigation.navigate("Handbook")}
+          style={styles.btnGO}>
+          Start
+        </Pressable>
       </View>
     </ImageBackground>
   ) : (
@@ -34,17 +45,28 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   card: {
+    width: "40%",
     borderWidth: 2,
     padding: 10,
     borderColor: "#135d98",
-    backgroundColor: "#a9d1f6",
+    backgroundColor: "#2185d6",
     borderRadius: 4,
   },
   cardHeading: {
     color: "white",
-    fontSize: 24,
     fontWeight: 700,
     textAlign: "center",
     fontFamily: " Amaranth_700Bold",
+  },
+  btnGO: {
+    textAlign: "center",
+    fontSize: 20,
+    color: "black",
+    fontFamily: " Amaranth_700Bold",
+    marginTop: 10,
+    borderWidth: 1,
+    padding: 10,
+    backgroundColor: "#ecf005",
+    borderRadius: 4,
   },
 });
