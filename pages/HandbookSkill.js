@@ -17,12 +17,14 @@ const HandbookSkill = ({ skills }) => {
   const { resetActive } = useContext(HandbookContext);
   const [activeSkill, setActiveSkill] = useState(skills[0]);
   return (
-    <View style={styles.container}>
-      <Pressable onPress={() => resetActive()} style={styles.goBack}>
-        <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" />
-      </Pressable>
-      <Card data={activeSkill} />
-      <View style={{ margin: "auto" }}>
+    <View style={{ flex: 1 }}>
+      <View style={{ padding: 0 }}>
+        <Pressable onPress={() => resetActive()} style={styles.goBack}>
+          <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" />
+        </Pressable>
+        <Card data={activeSkill} />
+      </View>
+      <View style={{ margin: "auto", overflowY: "scroll", maxHeight: 300 }}>
         <FlatList
           data={skills}
           numColumns={3}
@@ -38,7 +40,7 @@ const HandbookSkill = ({ skills }) => {
               ) : (
                 <FontAwesomeIcon icon={faSearch} size={2} />
               )}
-              <Text>{item.name}</Text>
+              <Text style={{ fontWeight: 700 }}>{item.name}</Text>
             </Pressable>
           )}
         />
@@ -49,16 +51,15 @@ const HandbookSkill = ({ skills }) => {
 export default HandbookSkill;
 
 const styles = StyleSheet.create({
-  listItem: { margin: 10, width: "25%", textAlign: "center" },
+  listItem: {
+    margin: 10,
+    width: "25%",
+    textAlign: "center",
+  },
   goBack: {
     width: "25%",
     textAlign: "center",
     flexDirection: "row",
     justifyContent: "center",
-  },
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    padding: 10,
   },
 });

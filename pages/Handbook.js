@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "lightblue",
   },
   handbookSkill: {
     width: 140,

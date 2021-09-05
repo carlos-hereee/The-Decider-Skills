@@ -25,7 +25,7 @@ export default function App() {
     <NavigationContainer>
       <HandbookState>
         <Stack.Navigator
-          initialRouteName="Handbook"
+          initialRouteName="Home"
           screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home" component={Homepage} />
           <Stack.Screen name="Handbook" component={Handbook} />
