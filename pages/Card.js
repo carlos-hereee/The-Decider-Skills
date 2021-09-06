@@ -13,9 +13,11 @@ const Card = ({ data }) => {
           source={{ uri: data?.imageUrl, width: 150, height: 150 }}
           resizeMode="contain"
         />
-        <Text style={{ fontSize: 24, marginLeft: 10, fontWeight: "700" }}>
-          {data.name}
-        </Text>
+        <View style={{ width: "55%" }}>
+          <Text style={{ fontSize: 24, marginLeft: 10, fontWeight: "700" }}>
+            {data.name}
+          </Text>
+        </View>
       </View>
       <Text style={{ marginTop: 10 }}>{data.definition}</Text>
     </View>
@@ -30,5 +32,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: "white",
     padding: 10,
+    overflow: "scroll",
   },
 });
