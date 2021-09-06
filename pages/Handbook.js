@@ -9,26 +9,25 @@ const Handbook = ({ navigation }) => {
   const handlePress = (item) => {
     makeActive(item);
   };
-  return (
+  return active ? (
+    <HandbookSkill skills={skills} navigation={navigation} />
+  ) : (
     <View style={styles.handbookMenu}>
-      {active ? (
-        <HandbookSkill skills={skills} navigation={navigation} />
-      ) : (
-        <FlatList
-          data={lifeSkills}
-          numColumns={2}
-          contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
-          renderItem={({ item }) => (
-            <Pressable
-              onPress={() => handlePress(item)}
-              style={[styles.handbookSkill, { backgroundColor: item.color }]}>
-              <Text style={{ fontSize: 18, fontWeight: "700" }}>
-                {item.title}
-              </Text>
-            </Pressable>
-          )}
-        />
-      )}
+      <FlatList
+        data={lifeSkills}
+        numColumns={2}
+        contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+        renderItem={({ item }) => (
+          <Pressable
+            onPress={() => handlePress(item)}
+            style={[styles.handbookSkill, { backgroundColor: item.color }]}>
+            <Text
+              style={{ fontSize: 18, fontWeight: "700", textAlign: "center" }}>
+              {item.title}
+            </Text>
+          </Pressable>
+        )}
+      />
     </View>
   );
 };
@@ -39,13 +38,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "lightblue",
+    backgroundColor: "#d4e2e6",
   },
   handbookSkill: {
-    width: 140,
+    width: "45%",
     margin: 10,
-    padding: 10,
-    borderWidth: 1,
+    paddingTop: 20,
+    paddingBottom: 20,
     textAlign: "center",
+    borderRadius: 4,
   },
 });

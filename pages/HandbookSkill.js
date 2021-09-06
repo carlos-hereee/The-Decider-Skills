@@ -21,24 +21,28 @@ const HandbookSkill = ({ skills }) => {
         <Pressable onPress={() => resetActive()} style={styles.goBack}>
           <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" size={45} />
         </Pressable>
-        <Card data={activeSkill} />
       </View>
-      <View style={{ margin: "auto", overflowY: "scroll", maxHeight: 300 }}>
-        <FlatList
-          data={skills}
-          numColumns={3}
-          renderItem={({ item }) => (
-            <Pressable
-              onPress={() => setActiveSkill(item)}
-              style={styles.listItem}>
-              <Image
-                source={{ uri: item.imageUrl, width: 100, height: 100 }}
-                resizeMode="contain"
-              />
-              <Text style={{ fontWeight: "700" }}>{item.name}</Text>
-            </Pressable>
-          )}
-        />
+      <View style={styles.cardContainer}>
+        <Card data={activeSkill} />
+        <View style={{ overflowY: "scroll", maxHeight: 400 }}>
+          <FlatList
+            data={skills}
+            numColumns={3}
+            renderItem={({ item }) => (
+              <Pressable
+                onPress={() => setActiveSkill(item)}
+                style={styles.listItem}>
+                <Image
+                  source={{ uri: item.imageUrl, width: 100, height: 100 }}
+                  resizeMode="contain"
+                />
+                <Text style={{ fontWeight: "700", textAlign: "center" }}>
+                  {item.name}
+                </Text>
+              </Pressable>
+            )}
+          />
+        </View>
       </View>
     </View>
   );
@@ -46,15 +50,13 @@ const HandbookSkill = ({ skills }) => {
 export default HandbookSkill;
 
 const styles = StyleSheet.create({
+  cardContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
   listItem: {
     margin: 10,
     width: "25%",
     textAlign: "center",
-  },
-  goBack: {
-    width: "25%",
-    textAlign: "center",
-    flexDirection: "row",
-    justifyContent: "center",
   },
 });

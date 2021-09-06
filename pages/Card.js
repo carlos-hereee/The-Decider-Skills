@@ -2,7 +2,7 @@ import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
 const Card = ({ data }) => {
-  const { imageUrl } = data;
+  console.log("data,", data);
   return (
     <View style={styles.card}>
       <View
@@ -11,7 +11,7 @@ const Card = ({ data }) => {
           alignItems: "center",
         }}>
         <Image
-          source={{ uri: imageUrl, width: 150, height: 150 }}
+          source={{ uri: data?.imageUrl, width: 150, height: 150 }}
           resizeMode="contain"
         />
         <Text style={{ fontSize: 24, marginLeft: 10, fontWeight: "700" }}>
@@ -27,7 +27,6 @@ export default Card;
 const styles = StyleSheet.create({
   card: {
     width: "80%",
-    margin: "auto",
     borderWidth: 1,
     borderRadius: 4,
     backgroundColor: "white",
