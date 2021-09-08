@@ -1,9 +1,10 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View, ScrollView } from "react-native";
+import VideoPlayer from "./components/VideoPlayer";
 
 const Card = ({ data }) => {
   return (
-    <View style={styles.card}>
+    <ScrollView style={styles.card}>
       <View
         style={{
           flexDirection: "row",
@@ -20,18 +21,19 @@ const Card = ({ data }) => {
         </View>
       </View>
       <Text style={{ marginTop: 10 }}>{data.definition}</Text>
-    </View>
+      <VideoPlayer />
+    </ScrollView>
   );
 };
 export default Card;
 
 const styles = StyleSheet.create({
   card: {
-    width: "80%",
     borderWidth: 1,
     borderRadius: 4,
     backgroundColor: "white",
     padding: 10,
-    overflow: "scroll",
+    margin: 20,
+    height: "45%",
   },
 });

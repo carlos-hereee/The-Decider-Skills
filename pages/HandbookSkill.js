@@ -17,14 +17,14 @@ const HandbookSkill = ({ skills }) => {
   const [activeSkill, setActiveSkill] = useState(skills[0]);
   return (
     <View style={{ flex: 1 }}>
-      <View style={{ marginTop: 20 }}>
+      <View style={{ paddingTop: 60 }}>
         <Pressable onPress={() => resetActive()} style={styles.goBack}>
           <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" size={45} />
         </Pressable>
       </View>
       <View style={styles.cardContainer}>
         <Card data={activeSkill} />
-        <View style={{ overflowY: "scroll", maxHeight: 400 }}>
+        <View style={{ overflowY: "scroll", height: "35%" }}>
           <FlatList
             data={skills}
             numColumns={3}

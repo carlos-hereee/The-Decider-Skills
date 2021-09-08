@@ -1,4 +1,3 @@
-import "react-native-gesture-handler";
 import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -25,7 +24,7 @@ export default function App() {
     <NavigationContainer>
       <HandbookState>
         <Stack.Navigator
-          initialRouteName="Home"
+          initialRouteName="Handbook"
           screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home" component={Homepage} />
           <Stack.Screen name="Handbook" component={Handbook} />
