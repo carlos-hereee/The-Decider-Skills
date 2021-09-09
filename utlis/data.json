@@ -5,52 +5,60 @@
     "color": "#dc3545",
     "skills": [
       {
-        "key": "s-1",
+        "key": "distress-1",
         "name": "Stopp",
         "imageUrl": "https://www.thedecider.org.uk/media/mh4fj5uk/icon-stoppdecider.png",
-        "definition": "Stop! - Take a breath - Observe - Pull back - Practice and/or Proceed"
+        "definition": "Stop! - Take a breath - Observe - Pull back - Practice and/or Proceed",
+        "videoName": "STOPP"
       },
       {
-        "key": "s-2",
+        "key": "distress-2",
         "name": "It will pass",
         "imageUrl": "https://www.thedecider.org.uk/media/dtcnre0a/icon-it-will-passdecider.png",
-        "definition": "Thoughts and feelings come and go. Situations change. Sometimes all we can do is keep going. It will pass."
+        "definition": "Thoughts and feelings come and go. Situations change. Sometimes all we can do is keep going. It will pass.",
+        "videoName": "ITWILLPASS"
       },
       {
-        "key": "s-3",
+        "key": "distress-3",
         "name": "Distract",
         "imageUrl": "https://www.thedecider.org.uk/media/wp4bn534/icon-distractdecider.png",
-        "definition": "What can I do right now to help me focus on something else, instead of my distress?"
+        "definition": "What can I do right now to help me focus on something else, instead of my distress?",
+        "videoName": "Distract"
       },
       {
-        "key": "s-4",
+        "key": "distress-4",
         "name": "Do One Thing",
         "imageUrl": "https://www.thedecider.org.uk/media/wnynyoxk/icon-do-one-thingdecider.png",
-        "definition": "Do One Thing Choose something to do. Do it mindfully. How long for? 20 minutes !"
+        "definition": "Do One Thing Choose something to do. Do it mindfully. How long for? 20 minutes !",
+        "videoName": "DoOneThing"
       },
       {
-        "key": "s-5",
+        "key": "distress-5",
         "name": "Turn The Mind",
         "imageUrl": "https://www.thedecider.org.uk/media/v1dj3cuj/icon-turn-the-minddecider.png",
-        "definition": "Choose to take the new resourceful and helpful way. Use a skill ! If you always do what you always did, you'll always get what you always got."
+        "definition": "Choose to take the new resourceful and helpful way. Use a skill ! If you always do what you always did, you'll always get what you always got.",
+        "videoName": "TurnTheMind"
       },
       {
-        "key": "s-6",
+        "key": "distress-6",
         "name": "Right Now",
         "imageUrl": "https://www.thedecider.org.uk/media/b2rp4r3q/icon-right-nowdecider.png",
-        "definition": "Right Now: 5 things I can see - 4 things I can hear - 3 things I can touch - 2 things I can smell - 1 slow deep breath"
+        "definition": "Right Now: 5 things I can see - 4 things I can hear - 3 things I can touch - 2 things I can smell - 1 slow deep breath",
+        "videoName": "RightNow"
       },
       {
-        "key": "s-7",
+        "key": "distress-7",
         "name": "Soothe",
         "definition": "what can I use to soothe myself? Soothe my senses. What is in my sooth bag/box/app that will help me to feel better?",
-        "imageUrl": "https://www.thedecider.org.uk/media/5m1ltv30/icon-soothedecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/5m1ltv30/icon-soothedecider.png",
+        "videoName": "Soothe"
       },
       {
-        "key": "s-8",
+        "key": "distress-8",
         "name": "Values",
         "definition": "What are my values? What is really important to me? What can I do that will help me take a step towards my chosen life direction?",
-        "imageUrl": "https://www.thedecider.org.uk/media/adxlw43h/icon-valuesdecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/adxlw43h/icon-valuesdecider.png",
+        "videoName": "VALUES"
       }
     ]
   },
@@ -60,52 +68,60 @@
     "color": "#ffc107",
     "skills": [
       {
-        "key": "s-1",
+        "key": "emotion-1",
         "name": "Self Care",
         "definition": "Sleep - Eating & Exercise - Look at other factors - Find fun, achievement and enjoyment - every day. Be kind to yourself !",
-        "imageUrl": "https://www.thedecider.org.uk/media/mk4lmw5z/icon-self-caredecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/mk4lmw5z/icon-self-caredecider.png",
+        "videoName": "SELFCare"
       },
       {
-        "key": "s-2",
+        "key": "emotion-2",
         "name": "Thinking",
         "definition": "Don't believe everything you think ! Thoughts are just thoughts.",
-        "imageUrl": "https://www.thedecider.org.uk/media/zgnihyux/icon-thinkingdecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/zgnihyux/icon-thinkingdecider.png",
+        "videoName": "Thinking"
       },
       {
-        "key": "s-3",
+        "key": "emotion-3",
         "name": "Name The Emotion",
         "definition": "What emotion am I feeling right now? I can notice the urge to react, and choose a more helpful response.",
-        "imageUrl": "https://pbs.twimg.com/media/EFiMYyOX0AA792O?format=png&name=small"
+        "imageUrl": "https://pbs.twimg.com/media/EFiMYyOX0AA792O?format=png&name=small",
+        "videoName": "NAMETheEMOTION"
       },
       {
-        "key": "s-4",
+        "key": "emotion-4",
         "name": "Opposite Action",
         "definition": "Notice the emotional action urge - and do the opposite. If anxious, instead of escape/avoid - approach. If angry, instead of attack - kind approach or gently withdraw. If depressed, instead of withdraw/isolate - do something, be with others.",
-        "imageUrl": "https://www.thedecider.org.uk/media/y01dxkln/icon-opposite-actiondecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/y01dxkln/icon-opposite-actiondecider.png",
+        "videoName": "OppositeAction"
       },
       {
-        "key": "s-5",
+        "key": "emotion-5",
         "name": "Sieve or Sponge",
         "definition": "What thoughts am I sponging? What am I sieving? What can I start to notice instead?",
-        "imageUrl": "https://www.thedecider.org.uk/media/wkepffdi/icon-sieve-or-spongedecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/wkepffdi/icon-sieve-or-spongedecider.png",
+        "videoName": "SieveorSponge"
       },
       {
-        "key": "s-6",
+        "key": "emotion-6",
         "name": "Build Positive Experiences",
         "definition": "What can I do to add more colour into my life? More nourishing and less depleting activities.",
-        "imageUrl": "https://www.thedecider.org.uk/media/jzvnze0o/icon-build-positive-experiencesdecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/jzvnze0o/icon-build-positive-experiencesdecider.png",
+        "videoName": "BuildPositiveExperiences"
       },
       {
-        "key": "s-7",
+        "key": "emotion-7",
         "name": "Balance",
         "definition": "Where am I on my personal scale? What can I do to help balance myself?",
-        "imageUrl": "https://www.thedecider.org.uk/media/bnnd3akk/icon-balancedecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/bnnd3akk/icon-balancedecider.png",
+        "videoName": "Balance"
       },
       {
-        "key": "s-8",
+        "key": "emotion-8",
         "name": "Pace & Plan",
         "definition": "Play - Achieve - Care - Energise - Prepare - List - Action - Notice",
-        "imageUrl": "https://www.thedecider.org.uk/media/btwddu1k/icon-pace-and-plandecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/btwddu1k/icon-pace-and-plandecider.png",
+        "videoName": "PACE&PLAN"
       }
     ]
   },
@@ -115,52 +131,60 @@
     "color": "#117a8b",
     "skills": [
       {
-        "key": "s-1",
+        "key": "mindfullness-1",
         "name": "Breathe",
         "definition": "Focus attention on the breath. Imagine a balloon inflating on the in-breath, and deflating on the out-breath.",
-        "imageUrl": "https://www.thedecider.org.uk/media/sbih12x5/icon-breathedecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/sbih12x5/icon-breathedecider.png",
+        "videoName": "Breathe"
       },
       {
-        "key": "s-2",
+        "key": "mindfullness-2",
         "name": "Observe",
         "definition": "Take the helicopter view! Pull back. What's the bigger picture?",
-        "imageUrl": "https://www.thedecider.org.uk/media/ojudav2t/icon-observedecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/ojudav2t/icon-observedecider.png",
+        "videoName": "Observe"
       },
       {
-        "key": "s-3",
+        "key": "mindfullness-3",
         "name": "This Moment",
         "definition": "Focus on the here and now, in this moment. Say to yourself: 'I am sitting' or 'I am walking'. 'I am looking' or 'I am listening'. 'I am breathing'. Notice the sensations of that activity in this moment.",
-        "imageUrl": "https://www.thedecider.org.uk/media/w2mp554w/icon-this-momentdecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/w2mp554w/icon-this-momentdecider.png",
+        "videoName": "ThisMoment"
       },
       {
-        "key": "s-4",
+        "key": "mindfullness-4",
         "name": "Focus",
         "definition": "Where is my focus of attention? What am I thinking about? Where do I want to focus?",
-        "imageUrl": "https://www.thedecider.org.uk/media/oo1g2srg/icon-focusdecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/oo1g2srg/icon-focusdecider.png",
+        "videoName": "Focus"
       },
       {
-        "key": "s-5",
+        "key": "mindfullness-5",
         "name": "Drift",
         "definition": "Am I drifting? Is my attention wandering? Bring attention back to my chosen focus.",
-        "imageUrl": "https://www.thedecider.org.uk/media/mzmjunfc/icon-driftdecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/mzmjunfc/icon-driftdecider.png",
+        "videoName": "DRIFT"
       },
       {
-        "key": "s-6",
+        "key": "mindfullness-6",
         "name": "Fact or Option",
         "definition": "Ask yourself: Is this thought fact or opinion? Come back to the FACTS !",
-        "imageUrl": "https://www.thedecider.org.uk/media/ctamqmvo/icon-fact-or-opiniondecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/ctamqmvo/icon-fact-or-opiniondecider.png",
+        "videoName": "FACTOPINION"
       },
       {
-        "key": "s-7",
+        "key": "mindfullness-7",
         "name": "Wise Mind",
         "definition": "Taking reasonable mind and emotion mind into consideration.... What would Wise Mind make of this?",
-        "imageUrl": "https://www.thedecider.org.uk/media/gpoalrj5/icon-wise-minddecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/gpoalrj5/icon-wise-minddecider.png",
+        "videoName": "WiseMind"
       },
       {
-        "key": "s-8",
+        "key": "mindfullness-8",
         "name": "Keep Calm And Carry On",
         "definition": "Focus on your chosen slogan or positive self talk statement to help you cope during distressing times.",
-        "imageUrl": "https://www.thedecider.org.uk/media/uekjuuc4/icon-keep-calmdecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/uekjuuc4/icon-keep-calmdecider.png",
+        "videoName": "KeepCalm&CarryOn"
       }
     ]
   },
@@ -170,52 +194,60 @@
     "color": "#3DCE22",
     "skills": [
       {
-        "key": "s-1",
+        "key": "interpersonal-1",
         "name": "Listen",
         "definition": "I have 2 years and only one mouth! How can I show that I'm really listening?",
-        "imageUrl": "https://www.thedecider.org.uk/media/2a1ghuij/icon-listendecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/2a1ghuij/icon-listendecider.png",
+        "videoName": "Listen"
       },
       {
-        "key": "s-2",
+        "key": "interpersonal-2",
         "name": "Respect",
         "definition": "The more I give - the more I get. Respect myself & others - Treat others as I want to be treated",
-        "imageUrl": "https://www.thedecider.org.uk/media/ak5hu0gv/icon-respectdecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/ak5hu0gv/icon-respectdecider.png",
+        "videoName": "RESPECT"
       },
       {
-        "key": "s-3",
+        "key": "interpersonal-3",
         "name": "Reflect",
         "definition": "What can I learn about what happened? What went well? What didn't go so well? What can I do differently next time?",
-        "imageUrl": "https://www.thedecider.org.uk/media/r1lph5i0/icon-reflectdecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/r1lph5i0/icon-reflectdecider.png",
+        "videoName": "Reflect"
       },
       {
-        "key": "s-4",
+        "key": "interpersonal-4",
         "name": "Crystal Clear",
         "definition": "Concise - Lucid & Logical - Emotion-free expression - Assertive - Realistic.",
-        "imageUrl": "https://www.thedecider.org.uk/media/v1ab0kxp/icon-crystal-cleardecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/v1ab0kxp/icon-crystal-cleardecider.png",
+        "videoName": "CrystalCLEAR"
       },
       {
-        "key": "s-5",
+        "key": "interpersonal-5",
         "name": "Ask or Say No",
         "definition": "How can I ask someone what I really want to ask for? It's OK to say no - I can say it in a way that is OK for me as well as the other person.",
-        "imageUrl": "https://www.thedecider.org.uk/media/01uicvb0/icon-ask-or-say-nodecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/01uicvb0/icon-ask-or-say-nodecider.png",
+        "videoName": "AskorSayNo"
       },
       {
-        "key": "s-6",
+        "key": "interpersonal-6",
         "name": "Maintain Relationship",
         "definition": "Say in touch with friends, family and important others. When you're feeling low, let someone know.",
-        "imageUrl": "https://www.thedecider.org.uk/media/jxgnv0em/icon-maintain-relationshipdecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/jxgnv0em/icon-maintain-relationshipdecider.png",
+        "videoName": "MaintainRelationship"
       },
       {
-        "key": "s-7",
+        "key": "interpersonal-7",
         "name": "Talk the Talk",
         "definition": "Communicate assertively. Smile - warm & friendly - relaxed - comfortable eye contact.",
-        "imageUrl": "https://www.thedecider.org.uk/media/yoek0koa/icon-talk-the-talkdecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/yoek0koa/icon-talk-the-talkdecider.png",
+        "videoName": "TalktheTalk"
       },
       {
-        "key": "s-8",
+        "key": "interpersonal-8",
         "name": "End Or Mend",
         "definition": "Is this relationship healthy for me? How can I end or mend this relationship? Can I keep a door open?",
-        "imageUrl": "https://www.thedecider.org.uk/media/iy0fefdn/icon-end-or-menddecider.png"
+        "imageUrl": "https://www.thedecider.org.uk/media/iy0fefdn/icon-end-or-menddecider.png",
+        "videoName": "EndorMend"
       }
     ]
   }

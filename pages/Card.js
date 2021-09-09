@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, StyleSheet, Text, View, ScrollView } from "react-native";
-import VideoPlayer from "./components/VideoPlayer";
+import VideoPlayer from "./VideoPlayer";
 
 const Card = ({ data }) => {
   return (
