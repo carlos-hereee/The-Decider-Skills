@@ -72,7 +72,7 @@
         "name": "Self Care",
         "definition": "Sleep - Eating & Exercise - Look at other factors - Find fun, achievement and enjoyment - every day. Be kind to yourself !",
         "imageUrl": "https://www.thedecider.org.uk/media/mk4lmw5z/icon-self-caredecider.png",
-        "videoName": "SELFCare"
+        "videoName": "SELFcare"
       },
       {
         "key": "emotion-2",
@@ -86,7 +86,7 @@
         "name": "Name The Emotion",
         "definition": "What emotion am I feeling right now? I can notice the urge to react, and choose a more helpful response.",
         "imageUrl": "https://pbs.twimg.com/media/EFiMYyOX0AA792O?format=png&name=small",
-        "videoName": "NAMETheEMOTION"
+        "videoName": "NAMEtheEMOTION"
       },
       {
         "key": "emotion-4",
@@ -121,7 +121,7 @@
         "name": "Pace & Plan",
         "definition": "Play - Achieve - Care - Energise - Prepare - List - Action - Notice",
         "imageUrl": "https://www.thedecider.org.uk/media/btwddu1k/icon-pace-and-plandecider.png",
-        "videoName": "PACE&PLAN"
+        "videoName": "PACEandPLAN"
       }
     ]
   },
@@ -184,7 +184,7 @@
         "name": "Keep Calm And Carry On",
         "definition": "Focus on your chosen slogan or positive self talk statement to help you cope during distressing times.",
         "imageUrl": "https://www.thedecider.org.uk/media/uekjuuc4/icon-keep-calmdecider.png",
-        "videoName": "KeepCalm&CarryOn"
+        "videoName": "KeepCalmandCarryOn"
       }
     ]
   },

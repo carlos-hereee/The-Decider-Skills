@@ -2,10 +2,13 @@ import React, { useState, useRef } from "react";
 import { StyleSheet, View, Button } from "react-native";
 import { Video } from "expo-av";
 import * as ScreenOrientation from "expo-screen-orientation";
+import videoURI from "./videoURI";
 
-const VideoPlayer = ({}) => {
+const VideoPlayer = ({ src }) => {
   const videoRef = useRef(null);
   const [status, setStatus] = useState({});
+  const [quality, setQuality] = useState("original");
+
   const handlePause = () => {
     videoRef.current.pauseAsync();
   };
@@ -35,7 +38,7 @@ const VideoPlayer = ({}) => {
       <Video
         ref={videoRef}
         style={styles.video}
-        source={require(`assets/skills/theFizz/TheFIZZ-original.mp4`)}
+        source={videoURI[src][quality]}
         rate={1.0}
         volume={1.0}
         isMuted={false}
