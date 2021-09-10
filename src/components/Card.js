@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, StyleSheet, Text, View, ScrollView } from "react-native";
-import VideoPlayer from "./VideoPlayer";
+import VideoPlayer from "../components/VideoPlayer";
 
 const Card = ({ data }) => {
   return (
@@ -29,7 +29,6 @@ export default Card;
 
 const styles = StyleSheet.create({
   card: {
-    borderWidth: 1,
     borderRadius: 4,
     backgroundColor: "white",
     padding: 10,

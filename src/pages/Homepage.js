@@ -6,7 +6,7 @@ import {
   Text,
   View,
 } from "react-native";
-import homepageBackground from "../assets/post-it.png";
+import homepageBackground from "../../assets/post-it.png";
 import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
 import AppLoading from "expo-app-loading";
 
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#d4e2e6",
   },
   card: {
     borderWidth: 2,

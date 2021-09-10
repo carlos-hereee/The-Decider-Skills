@@ -9,14 +9,14 @@ import {
 } from "react-native";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { HandbookContext } from "../utlis/Context";
+import { HandbookContext } from "../utils/Context";
 import Card from "./Card";
 
 const HandbookSkill = ({ skills }) => {
   const { resetActive } = useContext(HandbookContext);
   const [activeSkill, setActiveSkill] = useState(skills[0]);
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: "#d4e2e6" }}>
       <View style={{ paddingTop: 60 }}>
         <Pressable onPress={() => resetActive()} style={styles.goBack}>
           <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" size={45} />

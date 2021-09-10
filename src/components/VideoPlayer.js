@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { StyleSheet, View, Button } from "react-native";
+import { StyleSheet, View, Pressable, Image } from "react-native";
 import { Video } from "expo-av";
 import * as ScreenOrientation from "expo-screen-orientation";
 import videoURI from "./videoURI";
@@ -48,10 +48,18 @@ const VideoPlayer = ({ src }) => {
         onFullscreenUpdate={handleFullscreen}
       />
       <View style={styles.btn}>
-        <Button
-          title={status.isPlaying ? "Pause" : "Play"}
-          onPress={() => (status.isPlaying ? handlePause() : handlePlay())}
-        />
+        <Pressable
+          onPress={() => (status.isPlaying ? handlePause() : handlePlay())}>
+          <Image
+            source={
+              status.isPlaying
+                ? require("../../assets/media-control-pause.png")
+                : require("../../assets/media-control-play.png")
+            }
+            resizeMode="cover"
+            style={{ width: 40, height: 40 }}
+          />
+        </Pressable>
       </View>
     </View>
   );

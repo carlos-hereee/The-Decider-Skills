@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
-import { HandbookContext } from "../utlis/Context";
-import lifeSkills from "../utlis/data.json";
-import HandbookSkill from "./HandbookSkill";
+import { HandbookContext } from "../utils/Context";
+import lifeSkills from "../utils/data.json";
+import HandbookSkill from "../components/HandbookSkill";
 
 const Handbook = ({ navigation }) => {
   const { makeActive, active, skills } = useContext(HandbookContext);
