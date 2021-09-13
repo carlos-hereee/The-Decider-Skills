@@ -7,11 +7,16 @@ import {
   View,
   Image,
 } from "react-native";
+import HandbookSkill from "../components/HandbookSkill";
 import { HandbookContext } from "../utils/Context";
 import data from "../utils/theFizz.json";
 
 const TheFizz = () => {
   const { active, skills, makeActive } = useContext(HandbookContext);
+  const handlePress = (item) => {
+    makeActive({ title: item.name, skills: data.theFizz });
+  };
+
   return active ? (
     <HandbookSkill skills={skills} />
   ) : (
@@ -21,7 +26,7 @@ const TheFizz = () => {
         numColumns={3}
         contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
         renderItem={({ item }) => (
-          <Pressable onPress={() => makeActive(item)} style={styles.listItem}>
+          <Pressable onPress={() => handlePress(item)} style={styles.listItem}>
             <Image
               source={{ uri: item.imageUrl, width: 100, height: 100 }}
               resizeMode="contain"

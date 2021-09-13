@@ -21,6 +21,7 @@ export const HandbookState = ({ children }) => {
       dispatch({ type: "SET_ERROR", payload: "error could not add data" });
     }
   };
+
   return (
     <HandbookContext.Provider
       value={{
