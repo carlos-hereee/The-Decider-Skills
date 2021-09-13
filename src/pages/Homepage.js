@@ -20,13 +20,23 @@ const Homepage = ({ navigation }) => {
       resizeMode="cover"
       style={styles.backgroungImage}>
       <View style={styles.card}>
-        <Text style={[styles.cardHeading, { fontSize: 33 }]}>the decider</Text>
-        <Text style={[styles.cardHeading, { fontSize: 20 }]}>SKILLS</Text>
+        <Text style={[styles.cardHeading, { fontSize: 33 }]}>The Decider</Text>
+        <Text style={[styles.cardHeading, { fontSize: 20 }]}>LIFE SKILLS</Text>
+        <Text>What brings you here today?</Text>
         <Pressable
           onPress={() => navigation.navigate("Handbook")}
           style={styles.btnGO}>
-          <Text style={[styles.cardHeading, { fontSize: 20, color: "black" }]}>
-            Start
+          <Text
+            style={[styles.cardHeading, { fontSize: 20, color: "#ffffff" }]}>
+            Practice
+          </Text>
+        </Pressable>
+        <Pressable
+          onPress={() => navigation.navigate("TheFizz")}
+          style={styles.btnGO}>
+          <Text
+            style={[styles.cardHeading, { fontSize: 20, color: "#ffffff" }]}>
+            Feeling the FIZZ
           </Text>
         </Pressable>
       </View>
@@ -44,29 +54,27 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#d4e2e6",
+    backgroundColor: "#ffffff",
   },
   card: {
-    borderWidth: 2,
-    padding: 10,
-    borderColor: "#135d98",
-    backgroundColor: "#2185d6",
+    padding: 30,
+    backgroundColor: "#EFF5FA",
     borderRadius: 4,
+    elevation: 5,
   },
   cardHeading: {
-    color: "white",
+    color: "#00122C",
     textAlign: "center",
     fontFamily: "Amaranth_700Bold",
   },
   btnGO: {
     textAlign: "center",
     fontSize: 20,
-    color: "black",
     fontFamily: "Amaranth_700Bold",
     marginTop: 10,
-    borderWidth: 1,
     padding: 10,
-    backgroundColor: "#ecf005",
+    backgroundColor: "#00A89E",
     borderRadius: 4,
+    elevation: 5,
   },
 });
