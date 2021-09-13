@@ -3,6 +3,7 @@ import {
   FlatList,
   Image,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -22,27 +23,29 @@ const HandbookSkill = ({ skills }) => {
           <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" size={45} />
         </Pressable>
       </View>
-      <View style={styles.cardContainer}>
+      <View>
         <Card data={activeSkill} />
-        <View style={{ overflowY: "scroll", height: "35%" }}>
-          <FlatList
-            data={skills}
-            numColumns={3}
-            renderItem={({ item }) => (
-              <Pressable
-                onPress={() => setActiveSkill(item)}
-                style={styles.listItem}>
-                <Image
-                  source={{ uri: item.imageUrl, width: 100, height: 100 }}
-                  resizeMode="contain"
-                />
-                <Text style={{ fontWeight: "700", textAlign: "center" }}>
-                  {item.name}
-                </Text>
-              </Pressable>
-            )}
-          />
-        </View>
+        <FlatList
+          data={skills}
+          horizontal
+          renderItem={({ item }) => (
+            <Pressable
+              onPress={() => setActiveSkill(item)}
+              style={
+                activeSkill === item
+                  ? [styles.listItem, { backgroundColor: "#CBE9ED" }]
+                  : styles.listItem
+              }>
+              <Image
+                source={{ uri: item.imageUrl, width: 100, height: 100 }}
+                resizeMode="contain"
+              />
+              <Text style={{ fontWeight: "700", textAlign: "center" }}>
+                {item.name.toUpperCase()}
+              </Text>
+            </Pressable>
+          )}
+        />
       </View>
     </View>
   );
@@ -50,15 +53,16 @@ const HandbookSkill = ({ skills }) => {
 export default HandbookSkill;
 
 const styles = StyleSheet.create({
-  cardContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
   listItem: {
-    backgroundColor: "#CBE9ED",
-    margin: 10,
-    width: "25%",
-    textAlign: "center",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#EFF5FA",
+    marginHorizontal: 10,
+    padding: 5,
+    width: 100,
+    height: 130,
+    borderRadius: 4,
     elevation: 5,
   },
 });

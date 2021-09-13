@@ -11,7 +11,7 @@ const Card = ({ data }) => {
           alignItems: "center",
         }}>
         <Image
-          source={{ uri: data?.imageUrl, width: 150, height: 150 }}
+          source={{ uri: data?.imageUrl, width: 75, height: 75 }}
           resizeMode="contain"
         />
         <View style={{ width: "55%" }}>
@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#EFF5FA",
     padding: 10,
     margin: 20,
-    height: "45%",
+    height: "65%",
     elevation: 5,
+    overflow: "scroll",
   },
 });
