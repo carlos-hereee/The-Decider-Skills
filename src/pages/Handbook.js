@@ -4,13 +4,10 @@ import { HandbookContext } from "../utils/Context";
 import lifeSkills from "../utils/data.json";
 import HandbookSkill from "../components/HandbookSkill";
 
-const Handbook = ({ navigation }) => {
+const Handbook = () => {
   const { makeActive, active, skills } = useContext(HandbookContext);
-  const handlePress = (item) => {
-    makeActive(item);
-  };
   return active ? (
-    <HandbookSkill skills={skills} navigation={navigation} />
+    <HandbookSkill skills={skills} />
   ) : (
     <View style={styles.handbookMenu}>
       <FlatList
@@ -19,7 +16,7 @@ const Handbook = ({ navigation }) => {
         contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
         renderItem={({ item }) => (
           <Pressable
-            onPress={() => handlePress(item)}
+            onPress={() => makeActive(item)}
             style={[styles.handbookSkill, { backgroundColor: item.color }]}>
             <Text
               style={{ fontSize: 18, fontWeight: "700", textAlign: "center" }}>
