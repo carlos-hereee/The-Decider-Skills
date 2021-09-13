@@ -30,9 +30,10 @@ export default Card;
 const styles = StyleSheet.create({
   card: {
     borderRadius: 4,
-    backgroundColor: "white",
+    backgroundColor: "#EFF5FA",
     padding: 10,
     margin: 20,
     height: "45%",
+    elevation: 5,
   },
 });

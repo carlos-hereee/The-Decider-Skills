@@ -16,7 +16,7 @@ const HandbookSkill = ({ skills }) => {
   const { resetActive } = useContext(HandbookContext);
   const [activeSkill, setActiveSkill] = useState(skills[0]);
   return (
-    <View style={{ flex: 1, backgroundColor: "#d4e2e6" }}>
+    <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
       <View style={{ paddingTop: 60 }}>
         <Pressable onPress={() => resetActive()} style={styles.goBack}>
           <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" size={45} />
@@ -55,8 +55,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   listItem: {
+    backgroundColor: "#CBE9ED",
     margin: 10,
     width: "25%",
     textAlign: "center",
+    elevation: 5,
   },
 });

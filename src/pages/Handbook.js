@@ -47,5 +47,6 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     textAlign: "center",
     borderRadius: 4,
+    elevation: 5,
   },
 });
