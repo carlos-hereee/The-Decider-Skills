@@ -21,7 +21,7 @@ const Card = ({ data }) => {
         </View>
       </View>
       <Text style={{ marginTop: 10 }}>{data.definition}</Text>
-      <VideoPlayer src={data.videoName} />
+      <VideoPlayer vid={data} />
     </ScrollView>
   );
 };

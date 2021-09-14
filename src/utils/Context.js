@@ -21,7 +21,14 @@ export const HandbookState = ({ children }) => {
       dispatch({ type: "SET_ERROR", payload: "error could not add data" });
     }
   };
-
+  const claimBadge = async (vid) => {
+    console.log("vid", vid);
+    try {
+      dispatch({ type: "CLAIM_BADGE", payload: vid });
+    } catch (e) {
+      dispatch({ type: "SET_ERROR", payload: "error could not add data" });
+    }
+  };
   return (
     <HandbookContext.Provider
       value={{
@@ -30,6 +37,7 @@ export const HandbookState = ({ children }) => {
         active: state.active,
         makeActive,
         resetActive,
+        claimBadge,
       }}>
       {children}
     </HandbookContext.Provider>
