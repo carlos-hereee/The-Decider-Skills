@@ -1,15 +1,16 @@
 import React from "react";
 import { Image, ImageBackground, View } from "react-native";
 
-const Badge = ({ src }) => {
+const Badge = ({ data }) => {
   return (
     <ImageBackground
       source={require("../../assets/Star.png")}
-      style={{ width: 300, height: 300 }}
+      style={{ width: data.backgroundSize, height: data.backgroundSize }}
       resizeMode="contain">
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Image
-          source={{ uri: src, width: 200, height: 200 }}
+          source={{ uri: data.src }}
+          style={{ width: data.iconSize, height: data.iconSize }}
           resizeMode="contain"
         />
       </View>

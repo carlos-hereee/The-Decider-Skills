@@ -8,7 +8,20 @@ export const HandbookState = ({ children }) => {
     isLoading: false,
     skills: [],
     active: "",
-    earnedBadges: [],
+    earnedBadges: [
+      // "distress-1",
+      // "distress-2",
+      // "distress-6",
+      // "emotion-3",
+      // "emotion-4",
+      // "mindfullness-6",
+      // "emotion-1",
+      // "distress-8",
+      // "interpersonal-1",
+      // "interpersonal-2",
+      // "interpersonal-4",
+      // "interpersonal-3",
+    ],
     queuedSkillForBadge: {},
   };
   const [state, dispatch] = useReducer(reducer, initialState);

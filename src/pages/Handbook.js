@@ -1,11 +1,20 @@
 import React, { useContext } from "react";
-import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { HandbookContext } from "../utils/Context";
 import lifeSkills from "../utils/data.json";
 import HandbookSkill from "../components/HandbookSkill";
+import Badge from "../components/Badge";
 
 const Handbook = () => {
-  const { makeActive, active, skills } = useContext(HandbookContext);
+  const { makeActive, active, skills, earnedBadges } =
+    useContext(HandbookContext);
   return active ? (
     <HandbookSkill skills={skills} />
   ) : (
@@ -22,6 +31,26 @@ const Handbook = () => {
               style={{ fontSize: 18, fontWeight: "700", textAlign: "center" }}>
               {item.title}
             </Text>
+            <FlatList
+              horizontal
+              data={item.skills}
+              renderItem={({ item }) => {
+                return earnedBadges.includes(item.key) ? (
+                  <Badge
+                    data={{
+                      src: item.imageUrl,
+                      iconSize: 10,
+                      backgroundSize: 17,
+                    }}
+                  />
+                ) : (
+                  <Image
+                    source={require("../../assets/badge.png")}
+                    style={{ width: 17, height: 17 }}
+                  />
+                );
+              }}
+            />
           </Pressable>
         )}
       />

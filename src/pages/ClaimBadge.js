@@ -14,7 +14,13 @@ const ClaimBadge = () => {
     <View style={styles.container}>
       <Text style={{ fontSize: 25 }}>Congratulations!</Text>
       <Text style={{ fontSize: 25 }}>You earned a new Badge</Text>
-      <Badge src={queuedSkillForBadge.imageUrl} />
+      <Badge
+        data={{
+          src: queuedSkillForBadge.imageUrl,
+          iconSize: 200,
+          backgroundSize: 300,
+        }}
+      />
       <Pressable style={styles.button} onPress={() => handlePress()}>
         <Text style={{ color: "#ffffff", paddingHorizontal: 20 }}>CLAIM</Text>
       </Pressable>
