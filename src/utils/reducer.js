@@ -17,11 +17,17 @@ const resetActive = (state, action) => {
     active: "",
   };
 };
+const badgeToClaim = (state, action) => {
+  return {
+    ...state,
+    queuedSkillForBadge: action.payload,
+  };
+};
 const claimBadge = (state, action) => {
   return {
     ...state,
     earnedBadges: [...state.earnedBadges, action.payload.key],
-    badgeToClaim: action.payload,
+    queuedSkillForBadge: {},
   };
 };
 export const reducer = (state, action) => {
@@ -32,6 +38,8 @@ export const reducer = (state, action) => {
       return makeActive(state, action);
     case "RESET_ACTIVE":
       return resetActive(state, action);
+    case "BADGE_TO_CLAIM":
+      return badgeToClaim(state, action);
     case "CLAIM_BADGE":
       return claimBadge(state, action);
     default:

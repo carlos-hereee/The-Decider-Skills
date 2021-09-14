@@ -9,7 +9,7 @@ export const HandbookState = ({ children }) => {
     skills: [],
     active: "",
     earnedBadges: [],
-    badgeToClaim: {},
+    queuedSkillForBadge: {},
   };
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -27,9 +27,16 @@ export const HandbookState = ({ children }) => {
       dispatch({ type: "SET_ERROR", payload: "error could not add data" });
     }
   };
-  const claimBadge = async (skill) => {
+  const badgeToClaim = async (skill) => {
     try {
-      dispatch({ type: "CLAIM_BADGE", payload: skill });
+      dispatch({ type: "BADGE_TO_CLAIM", payload: skill });
+    } catch (e) {
+      dispatch({ type: "SET_ERROR", payload: "error could not add data" });
+    }
+  };
+  const claimBadge = async (key) => {
+    try {
+      dispatch({ type: "CLAIM_BADGE", payload: key });
     } catch (e) {
       dispatch({ type: "SET_ERROR", payload: "error could not add data" });
     }
@@ -41,8 +48,10 @@ export const HandbookState = ({ children }) => {
         isLoading: state.isLoading,
         active: state.active,
         earnedBadges: state.earnedBadges,
+        queuedSkillForBadge: state.queuedSkillForBadge,
         makeActive,
         resetActive,
+        badgeToClaim,
         claimBadge,
       }}>
       {children}

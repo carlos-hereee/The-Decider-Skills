@@ -27,7 +27,7 @@ export default function App() {
     <NavigationContainer ref={navigationRef}>
       <HandbookState>
         <Stack.Navigator
-          initialRouteName="ClaimBadge"
+          initialRouteName="Home"
           screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home" component={Homepage} />
           <Stack.Screen name="Handbook" component={Handbook} />

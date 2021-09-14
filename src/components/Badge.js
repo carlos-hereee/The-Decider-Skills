@@ -8,7 +8,10 @@ const Badge = ({ src }) => {
       style={{ width: 300, height: 300 }}
       resizeMode="contain">
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Image source={{ uri: src, width: 200, height: 200 }} />
+        <Image
+          source={{ uri: src, width: 200, height: 200 }}
+          resizeMode="contain"
+        />
       </View>
     </ImageBackground>
   );

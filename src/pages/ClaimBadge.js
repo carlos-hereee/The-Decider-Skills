@@ -1,32 +1,23 @@
-import React from "react";
-import {
-  Button,
-  Image,
-  ImageBackground,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import React, { useContext } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import Badge from "../components/Badge";
+import { HandbookContext } from "../utils/Context";
+import { navigationRef } from "../utils/RootNavigation";
 
 const ClaimBadge = () => {
-  const skills = {
-    key: "distress-2",
-    step: 2,
-    name: "It will pass",
-    imageUrl:
-      "https://www.thedecider.org.uk/media/dtcnre0a/icon-it-will-passdecider.png",
-    definition:
-      "Thoughts and feelings come and go. Situations change. Sometimes all we can do is keep going. It will pass.",
-    videoName: "ITWILLPASS",
+  const { claimBadge, queuedSkillForBadge } = useContext(HandbookContext);
+  const handlePress = () => {
+    claimBadge(queuedSkillForBadge);
+    navigationRef.goBack();
   };
   return (
     <View style={styles.container}>
       <Text style={{ fontSize: 25 }}>Congratulations!</Text>
       <Text style={{ fontSize: 25 }}>You earned a new Badge</Text>
-      <Badge src={skills.imageUrl} />
-      <Button title="Claim" />
+      <Badge src={queuedSkillForBadge.imageUrl} />
+      <Pressable style={styles.button} onPress={() => handlePress()}>
+        <Text style={{ color: "#ffffff", paddingHorizontal: 20 }}>CLAIM</Text>
+      </Pressable>
     </View>
   );
 };
@@ -38,5 +29,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#EFF5FA",
+  },
+  button: {
+    backgroundColor: "#00A89E",
+    padding: 10,
+    borderRadius: 4,
+    elevation: 5,
   },
 });

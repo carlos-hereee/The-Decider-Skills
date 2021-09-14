@@ -8,10 +8,10 @@ import { navigate } from "../utils/RootNavigation";
 
 const VideoPlayer = ({ vid }) => {
   const videoRef = useRef(null);
-  const { claimBadge, earnedBadges } = useContext(HandbookContext);
+  const { badgeToClaim, earnedBadges } = useContext(HandbookContext);
   const [status, setStatus] = useState({});
   const [quality, setQuality] = useState("original");
-
+  console.log("earnedBadges", earnedBadges);
   const handleFullscreen = async ({ fullscreenUpdate }) => {
     if (fullscreenUpdate === 0) {
       // enter full screen
@@ -32,9 +32,9 @@ const VideoPlayer = ({ vid }) => {
     setStatus(e);
     if (e.playableDurationMillis <= e.positionMillis) {
       // video ends and badge has not been earned
-      if (!earnedBadges.includes(vid)) {
-        claimBadge(vid);
-        navigate("ClaimBadge");
+      if (!earnedBadges.includes(vid.key)) {
+        badgeToClaim(vid);
+        navigate("ClaimBadge", { vid });
       }
     }
   };
