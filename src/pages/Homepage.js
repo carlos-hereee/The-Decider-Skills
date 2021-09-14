@@ -6,7 +6,6 @@ import {
   Text,
   View,
 } from "react-native";
-import homepageBackground from "../../assets/post-it.png";
 import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
 import AppLoading from "expo-app-loading";
 
@@ -16,7 +15,7 @@ const Homepage = ({ navigation }) => {
   });
   return fontsLoaded ? (
     <ImageBackground
-      source={homepageBackground}
+      source={require("../../assets/post-it.png")}
       resizeMode="cover"
       style={styles.backgroungImage}>
       <View style={styles.card}>

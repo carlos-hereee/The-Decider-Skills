@@ -20,7 +20,8 @@ const resetActive = (state, action) => {
 const claimBadge = (state, action) => {
   return {
     ...state,
-    active: "",
+    earnedBadges: [...state.earnedBadges, action.payload.key],
+    badgeToClaim: action.payload,
   };
 };
 export const reducer = (state, action) => {

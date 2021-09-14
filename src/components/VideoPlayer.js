@@ -4,10 +4,11 @@ import { Video } from "expo-av";
 import * as ScreenOrientation from "expo-screen-orientation";
 import videoURI from "./videoURI";
 import { HandbookContext } from "../utils/Context";
+import { navigate } from "../utils/RootNavigation";
 
 const VideoPlayer = ({ vid }) => {
   const videoRef = useRef(null);
-  const { claimBadge } = useContext(HandbookContext);
+  const { claimBadge, earnedBadges } = useContext(HandbookContext);
   const [status, setStatus] = useState({});
   const [quality, setQuality] = useState("original");
 
@@ -27,10 +28,14 @@ const VideoPlayer = ({ vid }) => {
       );
     }
   };
-
   const handlePlayback = async (e) => {
+    setStatus(e);
     if (e.playableDurationMillis <= e.positionMillis) {
-      claimBadge(vid);
+      // video ends and badge has not been earned
+      if (!earnedBadges.includes(vid)) {
+        claimBadge(vid);
+        navigate("ClaimBadge");
+      }
     }
   };
 
@@ -61,7 +66,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingBottom: 20,
   },
-  video: { width: 320, height: 200, marginTop: 40 },
+  video: { width: 320, height: 200, marginTop: 20 },
   btn: {
     flexDirection: "row",
     justifyContent: "center",
