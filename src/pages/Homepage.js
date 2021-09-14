@@ -38,14 +38,6 @@ const Homepage = ({ navigation }) => {
             Feeling the FIZZ
           </Text>
         </Pressable>
-        <Pressable
-          onPress={() => navigation.navigate("ClaimBadge")}
-          style={styles.btnGO}>
-          <Text
-            style={[styles.cardHeading, { fontSize: 20, color: "#ffffff" }]}>
-            Badge
-          </Text>
-        </Pressable>
       </View>
     </ImageBackground>
   ) : (

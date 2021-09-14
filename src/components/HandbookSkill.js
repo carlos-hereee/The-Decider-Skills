@@ -12,9 +12,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { HandbookContext } from "../utils/Context";
 import Card from "./Card";
 
-const HandbookSkill = ({ skills }) => {
-  const { resetActive } = useContext(HandbookContext);
-  const [activeSkill, setActiveSkill] = useState(skills[0]);
+const HandbookSkill = ({ skills, withFizz }) => {
+  const { resetActive, active } = useContext(HandbookContext);
+  const [activeSkill, setActiveSkill] = useState(
+    withFizz?.key ? withFizz : skills[0]
+  );
   return (
     <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
       <View style={{ paddingTop: 60 }}>

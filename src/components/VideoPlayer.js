@@ -11,7 +11,6 @@ const VideoPlayer = ({ vid }) => {
   const { badgeToClaim, earnedBadges } = useContext(HandbookContext);
   const [status, setStatus] = useState({});
   const [quality, setQuality] = useState("original");
-  console.log("earnedBadges", earnedBadges);
   const handleFullscreen = async ({ fullscreenUpdate }) => {
     if (fullscreenUpdate === 0) {
       // enter full screen
@@ -34,7 +33,7 @@ const VideoPlayer = ({ vid }) => {
       // video ends and badge has not been earned
       if (!earnedBadges.includes(vid.key)) {
         badgeToClaim(vid);
-        navigate("ClaimBadge", { vid });
+        navigate("ClaimBadge");
       }
     }
   };

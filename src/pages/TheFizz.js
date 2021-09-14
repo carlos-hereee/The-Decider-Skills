@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   FlatList,
   Pressable,
@@ -13,12 +13,15 @@ import data from "../utils/theFizz.json";
 
 const TheFizz = () => {
   const { active, skills, makeActive } = useContext(HandbookContext);
+  const [withFizz, setWithFizz] = useState({});
+
   const handlePress = (item) => {
+    setWithFizz(item);
     makeActive({ title: item.name, skills: data.theFizz });
   };
 
   return active ? (
-    <HandbookSkill skills={skills} />
+    <HandbookSkill skills={skills} withFizz={withFizz} />
   ) : (
     <View style={styles.menu}>
       <FlatList
