@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#EFF5FA",
     padding: 10,
     margin: 20,
-    height: "65%",
+    height: "60%",
     elevation: 5,
     overflow: "scroll",
   },
