@@ -1,6 +1,6 @@
 [
   {
-    "title": "Distress",
+    "title": "Distress Tolerance",
     "key": "1",
     "color": "#dc3545",
     "skills": [
@@ -63,7 +63,7 @@
     ]
   },
   {
-    "title": "Emotion",
+    "title": "Emotion Regulation",
     "key": "3",
     "color": "#ffc107",
     "skills": [
@@ -189,14 +189,14 @@
     ]
   },
   {
-    "title": "Interpersonal",
+    "title": "Interpersonal Effectiveness",
     "key": "4",
     "color": "#3DCE22",
     "skills": [
       {
         "key": "interpersonal-1",
         "name": "Listen",
-        "definition": "I have 2 ears and only one mouth! How can I show that I'm really listening?",
+        "definition": "I have 2 years and only one mouth! How can I show that I'm really listening?",
         "imageUrl": "https://www.thedecider.org.uk/media/2a1ghuij/icon-listendecider.png",
         "videoName": "Listen"
       },

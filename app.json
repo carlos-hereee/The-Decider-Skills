@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "handbook",
-    "slug": "handbook",
-    "version": "1.2.0",
+    "name": "The-Decider-Skills",
+    "slug": "The-Decider-Skills",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/post-it-icon.png",
     "splash": {
@@ -21,6 +21,7 @@
       "requireFullScreen": true
     },
     "android": {
+      "versionCode": 2,
       "adaptiveIcon": {
         "foregroundImage": "./assets/post-it-icon.png",
         "backgroundColor": "#FFFFFF"

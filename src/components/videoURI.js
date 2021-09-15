@@ -197,4 +197,22 @@ module.exports = {
     540: require("../../assets/skills/WiseMind/WiseMind-540.mp4"),
     720: require("../../assets/skills/WiseMind/WiseMind-720.mp4"),
   },
+  TheDeciderIntroduction: {
+    original: require("../../assets/skills/TheDeciderIntroduction/TheDeciderIntroduction-Original.mp4"),
+    360: require("../../assets/skills/TheDeciderIntroduction/TheDeciderIntroduction-360.mp4"),
+    540: require("../../assets/skills/TheDeciderIntroduction/TheDeciderIntroduction-540.mp4"),
+    720: require("../../assets/skills/TheDeciderIntroduction/TheDeciderIntroduction-720.mp4"),
+  },
+  CBT: {
+    original: require("../../assets/skills/CBT/CBT-Original.mp4"),
+    360: require("../../assets/skills/CBT/CBT-360.mp4"),
+    540: require("../../assets/skills/CBT/CBT-540.mp4"),
+    720: require("../../assets/skills/CBT/CBT-720.mp4"),
+  },
+  CognitiveBehaviourTherapy: {
+    original: require("../../assets/skills/CognitiveBehaviourTherapy/CognitiveBehaviourTherapy-Original.mp4"),
+    360: require("../../assets/skills/CognitiveBehaviourTherapy/CognitiveBehaviourTherapy-360.mp4"),
+    540: require("../../assets/skills/CognitiveBehaviourTherapy/CognitiveBehaviourTherapy-540.mp4"),
+    720: require("../../assets/skills/CognitiveBehaviourTherapy/CognitiveBehaviourTherapy-720.mp4"),
+  },
 };

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import {
   ImageBackground,
   Pressable,
@@ -7,42 +7,36 @@ import {
   View,
 } from "react-native";
 import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
-import { Video } from "expo-av";
-import * as ScreenOrientation from "expo-screen-orientation";
 import AppLoading from "expo-app-loading";
 import { navigate } from "../utils/RootNavigation";
+import { FlatList } from "react-native-gesture-handler";
+import VideoPlayer from "../components/VideoPlayer";
 
 const Homepage = () => {
-  let [fontsLoaded] = useFonts({
-    Amaranth_700Bold,
-  });
-  const videoRef = useRef(null);
-  const handlePressFizz = async () => {
-    videoRef.current.presentFullscreenPlayer();
-    videoRef.current.playAsync();
-  };
-  const handlePlayback = async (e) => {
-    if (e.didJustFinish) {
-      videoRef.current.dismissFullscreenPlayer();
-      navigate("TheFizz");
-    }
-  };
-  const handleFullscreen = async ({ fullscreenUpdate }) => {
-    if (fullscreenUpdate === 0) {
-      // enter full screen
-      videoRef.current.playAsync();
-      await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.LANDSCAPE_LEFT
-      );
-    }
-    if (fullscreenUpdate === 2) {
-      // exit full screen
-      videoRef.current.pauseAsync();
-      await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.PORTRAIT
-      );
-    }
-  };
+  let [fontsLoaded] = useFonts({ Amaranth_700Bold });
+  const introVideos = [
+    {
+      key: "intro",
+      name: "Introduction",
+      videoName: "TheDeciderIntroduction",
+    },
+    {
+      key: "theFizz",
+      name: "The Fizz",
+      videoName: "TheFIZZ",
+    },
+    {
+      key: "CBT",
+      name: "CBT",
+      videoName: "CBT",
+    },
+    {
+      key: "CognitiveBehaviourTherapy",
+      name: "Cognitive Behaviour Therapy",
+      videoName: "CognitiveBehaviourTherapy",
+    },
+  ];
+
   return fontsLoaded ? (
     <ImageBackground
       source={require("../../assets/post-it.png")}
@@ -50,28 +44,26 @@ const Homepage = () => {
       style={styles.backgroungImage}>
       <View style={styles.card}>
         <Text style={[styles.cardHeading, { fontSize: 33 }]}>The Decider</Text>
-        <Text style={[styles.cardHeading, { fontSize: 20 }]}>LIFE SKILLS</Text>
-        <Text>What brings you here today?</Text>
-        <Pressable onPress={() => navigate("Handbook")} style={styles.btnGO}>
-          <Text
-            style={[styles.cardHeading, { fontSize: 20, color: "#ffffff" }]}>
-            Practice
-          </Text>
-        </Pressable>
-        <Pressable onPress={() => handlePressFizz()} style={styles.btnGO}>
-          <Text
-            style={[styles.cardHeading, { fontSize: 20, color: "#ffffff" }]}>
-            Feeling the FIZZ
-          </Text>
-        </Pressable>
-        <Video
-          ref={videoRef}
-          source={require("../../assets/skills/TheFIZZ/TheFIZZ-Original.mp4")}
-          resizeMode="contain"
-          useNativeControls
-          onFullscreenUpdate={handleFullscreen}
-          onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
+        <Text style={[styles.cardHeading, { fontSize: 33 }]}>Skills</Text>
+        <FlatList
+          horizontal
+          data={introVideos}
+          renderItem={({ item }) => <VideoPlayer vid={item} />}
         />
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <Pressable onPress={() => handlePressFizz()} style={styles.btnGO}>
+            <Text
+              style={[styles.cardHeading, { fontSize: 20, color: "#ffffff" }]}>
+              12 Skills
+            </Text>
+          </Pressable>
+          <Pressable onPress={() => navigate("Handbook")} style={styles.btnGO}>
+            <Text
+              style={[styles.cardHeading, { fontSize: 20, color: "#ffffff" }]}>
+              32 Skills
+            </Text>
+          </Pressable>
+        </View>
       </View>
     </ImageBackground>
   ) : (
@@ -90,6 +82,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
   },
   card: {
+    height: "50%",
+    width: "80%",
     padding: 30,
     backgroundColor: "#EFF5FA",
     borderRadius: 4,
@@ -102,9 +96,12 @@ const styles = StyleSheet.create({
   },
   btnGO: {
     textAlign: "center",
+    flex: 1,
+    height: 50,
+    marginHorizontal: 5,
     fontSize: 20,
     fontFamily: "Amaranth_700Bold",
-    marginTop: 10,
+    marginTop: "auto",
     padding: 10,
     backgroundColor: "#00A89E",
     borderRadius: 4,

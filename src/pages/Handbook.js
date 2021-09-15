@@ -33,10 +33,10 @@ const Handbook = () => {
             <FlatList
               horizontal
               data={item.skills}
-              contentContainerStyle={styles.badgeShadow}
+              contentContainerStyle={styles.badgeBackground}
               renderItem={({ item }) => {
                 return earnedBadges.includes(item.key) ? (
-                  <View style={{ paddingHorizontal: 2, paddingVertical: 10 }}>
+                  <View style={styles.badge}>
                     <Badge
                       data={{
                         src: item.imageUrl,
@@ -46,7 +46,7 @@ const Handbook = () => {
                     />
                   </View>
                 ) : (
-                  <View style={{ paddingHorizontal: 2, paddingVertical: 10 }}>
+                  <View style={styles.badge}>
                     <Image
                       source={require("../../assets/badge.png")}
                       style={{ width: 18, height: 18 }}
@@ -79,10 +79,14 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     elevation: 5,
   },
-  badgeShadow: {
+  badgeBackground: {
     backgroundColor: "rgba(0,0,0,0.2)",
-    marginLeft: 5,
-    marginTop: 10,
+    marginLeft: 7,
+    marginTop: "auto",
     borderRadius: 10,
+  },
+  badge: {
+    paddingHorizontal: 2,
+    paddingVertical: 10,
   },
 });
