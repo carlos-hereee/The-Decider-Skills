@@ -42,7 +42,6 @@ export default function App() {
     <AppLoading
       startAsync={_cacheResourcesAsync}
       onFinish={() => setReady(true)}
-      onError={(e) => console.log(e)}
     />
   );
 }
