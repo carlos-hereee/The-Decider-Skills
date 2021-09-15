@@ -27,8 +27,7 @@ const Handbook = () => {
           <Pressable
             onPress={() => makeActive(item)}
             style={[styles.handbookSkill, { backgroundColor: item.color }]}>
-            <Text
-              style={{ fontSize: 18, fontWeight: "700", textAlign: "center" }}>
+            <Text style={{ fontSize: 18, fontWeight: "700", padding: 10 }}>
               {item.title}
             </Text>
             <FlatList
@@ -36,18 +35,22 @@ const Handbook = () => {
               data={item.skills}
               renderItem={({ item }) => {
                 return earnedBadges.includes(item.key) ? (
-                  <Badge
-                    data={{
-                      src: item.imageUrl,
-                      iconSize: 10,
-                      backgroundSize: 17,
-                    }}
-                  />
+                  <View style={{ paddingHorizontal: 2, paddingVertical: 10 }}>
+                    <Badge
+                      data={{
+                        src: item.imageUrl,
+                        iconSize: 15,
+                        backgroundSize: 18,
+                      }}
+                    />
+                  </View>
                 ) : (
-                  <Image
-                    source={require("../../assets/badge.png")}
-                    style={{ width: 17, height: 17 }}
-                  />
+                  <View style={{ paddingHorizontal: 2, paddingVertical: 10 }}>
+                    <Image
+                      source={require("../../assets/badge.png")}
+                      style={{ width: 18, height: 18 }}
+                    />
+                  </View>
                 );
               }}
             />
@@ -67,10 +70,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#d4e2e6",
   },
   handbookSkill: {
-    width: "45%",
-    margin: 10,
-    paddingTop: 20,
-    paddingBottom: 20,
+    width: "47%",
+    marginVertical: 10,
+    marginHorizontal: 5,
+    paddingVertical: 20,
     textAlign: "center",
     borderRadius: 4,
     elevation: 5,

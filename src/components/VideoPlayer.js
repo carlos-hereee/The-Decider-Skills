@@ -9,7 +9,6 @@ import { navigate } from "../utils/RootNavigation";
 const VideoPlayer = ({ vid }) => {
   const videoRef = useRef(null);
   const { badgeToClaim, earnedBadges } = useContext(HandbookContext);
-  const [status, setStatus] = useState({});
   const [quality, setQuality] = useState("original");
   const handleFullscreen = async ({ fullscreenUpdate }) => {
     if (fullscreenUpdate === 0) {
@@ -28,7 +27,6 @@ const VideoPlayer = ({ vid }) => {
     }
   };
   const handlePlayback = async (e) => {
-    setStatus(e);
     if (e.playableDurationMillis <= e.positionMillis) {
       // video ends and badge has not been earned
       if (!earnedBadges.includes(vid.key)) {
@@ -44,10 +42,7 @@ const VideoPlayer = ({ vid }) => {
         ref={videoRef}
         style={styles.video}
         source={videoURI[vid.videoName][quality]}
-        rate={1.0}
-        volume={1.0}
-        isMuted={false}
-        resizeMode="cover"
+        resizeMode="contain"
         useNativeControls
         onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
         onFullscreenUpdate={handleFullscreen}
@@ -61,11 +56,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    maxWidth: 600,
     marginTop: 20,
     paddingBottom: 20,
   },
-  video: { width: 320, height: 200, marginTop: 20 },
+  video: { width: "80%", height: "40%", marginTop: 20 },
   btn: {
     flexDirection: "row",
     justifyContent: "center",

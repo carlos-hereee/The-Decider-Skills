@@ -19,7 +19,6 @@ const TheFizz = () => {
     setWithFizz(item);
     makeActive({ title: item.name, skills: data.theFizz });
   };
-
   return active ? (
     <HandbookSkill skills={skills} withFizz={withFizz} />
   ) : (
