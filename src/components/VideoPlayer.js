@@ -42,7 +42,7 @@ const VideoPlayer = ({ vid }) => {
         ref={videoRef}
         style={styles.video}
         source={videoURI[vid.videoName][quality]}
-        resizeMode="contain"
+        resizeMode="cover"
         useNativeControls
         onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
         onFullscreenUpdate={handleFullscreen}
@@ -54,18 +54,11 @@ const VideoPlayer = ({ vid }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 20,
-    paddingBottom: 20,
   },
-  video: { width: "80%", height: "40%", marginTop: 20 },
-  btn: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 20,
-    paddingBottom: 40,
+  video: {
+    aspectRatio: 1,
+    width: "100%",
+    marginVertical: 20,
   },
 });
 

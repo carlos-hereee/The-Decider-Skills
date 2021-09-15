@@ -33,6 +33,7 @@ const Handbook = () => {
             <FlatList
               horizontal
               data={item.skills}
+              contentContainerStyle={styles.badgeShadow}
               renderItem={({ item }) => {
                 return earnedBadges.includes(item.key) ? (
                   <View style={{ paddingHorizontal: 2, paddingVertical: 10 }}>
@@ -77,5 +78,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     borderRadius: 4,
     elevation: 5,
+  },
+  badgeShadow: {
+    backgroundColor: "rgba(0,0,0,0.2)",
+    marginLeft: 5,
+    marginTop: 10,
+    borderRadius: 10,
   },
 });

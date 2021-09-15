@@ -16,6 +16,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [isReady, setReady] = useState(false);
+  const [error, setError] = useState();
   const _cacheResourcesAsync = async () => {
     const images = [require("./assets/post-it-splash.png")];
     const cacheImages = images.map((img) => {
@@ -42,6 +43,7 @@ export default function App() {
     <AppLoading
       startAsync={_cacheResourcesAsync}
       onFinish={() => setReady(true)}
+      onError={(e) => setError(e)}
     />
   );
 }
