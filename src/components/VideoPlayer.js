@@ -1,14 +1,16 @@
 import React, { useState, useRef, useContext } from "react";
-import { StyleSheet, View } from "react-native";
 import { Video } from "expo-av";
 import * as ScreenOrientation from "expo-screen-orientation";
 import videoURI from "./videoURI";
+import { Dimensions } from "react-native";
 import { HandbookContext } from "../utils/Context";
 import { navigate } from "../utils/RootNavigation";
 
 const VideoPlayer = ({ vid }) => {
   const videoRef = useRef(null);
   const { badgeToClaim, earnedBadges } = useContext(HandbookContext);
+  const { width } = Dimensions.get("window");
+
   const [quality, setQuality] = useState("original");
   const handleFullscreen = async ({ fullscreenUpdate }) => {
     if (fullscreenUpdate === 0) {
@@ -37,29 +39,20 @@ const VideoPlayer = ({ vid }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Video
-        ref={videoRef}
-        style={styles.video}
-        source={videoURI[vid.videoName][quality]}
-        resizeMode="cover"
-        useNativeControls
-        onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
-        onFullscreenUpdate={handleFullscreen}
-      />
-    </View>
+    <Video
+      ref={videoRef}
+      style={{
+        flex: 1,
+        width: width * 0.6,
+        borderWidth: 4,
+      }}
+      source={videoURI[vid.videoName][quality]}
+      resizeMode="contain"
+      useNativeControls
+      onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
+      onFullscreenUpdate={handleFullscreen}
+    />
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  video: {
-    aspectRatio: 1,
-    width: "100%",
-    marginVertical: 20,
-  },
-});
 
 export default VideoPlayer;

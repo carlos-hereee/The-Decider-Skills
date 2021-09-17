@@ -5,11 +5,11 @@ import {
   StyleSheet,
   Text,
   View,
+  FlatList,
 } from "react-native";
 import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
 import AppLoading from "expo-app-loading";
 import { navigate } from "../utils/RootNavigation";
-import { FlatList } from "react-native-gesture-handler";
 import VideoPlayer from "../components/VideoPlayer";
 
 const Homepage = () => {
@@ -30,11 +30,6 @@ const Homepage = () => {
       name: "CBT",
       videoName: "CBT",
     },
-    {
-      key: "CognitiveBehaviourTherapy",
-      name: "Cognitive Behaviour Therapy",
-      videoName: "CognitiveBehaviourTherapy",
-    },
   ];
 
   return fontsLoaded ? (
@@ -42,16 +37,26 @@ const Homepage = () => {
       source={require("../../assets/post-it.png")}
       resizeMode="cover"
       style={styles.backgroungImage}>
-      <View style={styles.card}>
-        <Text style={[styles.cardHeading, { fontSize: 33 }]}>The Decider</Text>
-        <Text style={[styles.cardHeading, { fontSize: 33 }]}>Skills</Text>
+      <View style={styles.container}>
+        <View>
+          <Text style={styles.cardHeading}>The Decider</Text>
+          <Text style={styles.cardHeading}>Skills</Text>
+        </View>
         <FlatList
           horizontal
           data={introVideos}
-          renderItem={({ item }) => <VideoPlayer vid={item} />}
+          renderItem={({ item }) => (
+            <View
+              style={{
+                width: "100%",
+                marginVertical: 10,
+              }}>
+              <VideoPlayer vid={item} />
+            </View>
+          )}
         />
         <View style={{ flex: 1, flexDirection: "row" }}>
-          <Pressable onPress={() => handlePressFizz()} style={styles.btnGO}>
+          <Pressable onPress={() => navigate("TheFizz")} style={styles.btnGO}>
             <Text
               style={[styles.cardHeading, { fontSize: 20, color: "#ffffff" }]}>
               12 Skills
@@ -74,17 +79,15 @@ export default Homepage;
 
 const styles = StyleSheet.create({
   backgroungImage: {
-    width: "100%",
-    height: "100%",
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#ffffff",
   },
-  card: {
-    height: "50%",
+  container: {
+    height: "60%",
     width: "80%",
-    padding: 30,
+    padding: "5%",
     backgroundColor: "#EFF5FA",
     borderRadius: 4,
     elevation: 5,
@@ -93,13 +96,13 @@ const styles = StyleSheet.create({
     color: "#00122C",
     textAlign: "center",
     fontFamily: "Amaranth_700Bold",
+    fontSize: 28,
   },
   btnGO: {
     textAlign: "center",
     flex: 1,
     height: 50,
     marginHorizontal: 5,
-    fontSize: 20,
     fontFamily: "Amaranth_700Bold",
     marginTop: "auto",
     padding: 10,

@@ -209,10 +209,4 @@ module.exports = {
     540: require("../../assets/skills/CBT/CBT-540.mp4"),
     720: require("../../assets/skills/CBT/CBT-720.mp4"),
   },
-  CognitiveBehaviourTherapy: {
-    original: require("../../assets/skills/CognitiveBehaviourTherapy/CognitiveBehaviourTherapy-Original.mp4"),
-    360: require("../../assets/skills/CognitiveBehaviourTherapy/CognitiveBehaviourTherapy-360.mp4"),
-    540: require("../../assets/skills/CognitiveBehaviourTherapy/CognitiveBehaviourTherapy-540.mp4"),
-    720: require("../../assets/skills/CognitiveBehaviourTherapy/CognitiveBehaviourTherapy-720.mp4"),
-  },
 };

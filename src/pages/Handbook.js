@@ -31,8 +31,8 @@ const Handbook = () => {
               {item.title}
             </Text>
             <FlatList
-              horizontal
               data={item.skills}
+              numColumns={4}
               contentContainerStyle={styles.badgeBackground}
               renderItem={({ item }) => {
                 return earnedBadges.includes(item.key) ? (
