@@ -2,7 +2,7 @@ import React, { useState, useRef, useContext } from "react";
 import { Video } from "expo-av";
 import * as ScreenOrientation from "expo-screen-orientation";
 import videoURI from "./videoURI";
-import { Dimensions } from "react-native";
+import { Dimensions, Pressable } from "react-native";
 import { HandbookContext } from "../utils/Context";
 import { navigate } from "../utils/RootNavigation";
 
@@ -10,6 +10,7 @@ const VideoPlayer = ({ vid }) => {
   const videoRef = useRef(null);
   const { badgeToClaim, earnedBadges } = useContext(HandbookContext);
   const { width } = Dimensions.get("window");
+  const [status, setStatus] = useState();
 
   const [quality, setQuality] = useState("original");
   const handleFullscreen = async ({ fullscreenUpdate }) => {
@@ -29,6 +30,7 @@ const VideoPlayer = ({ vid }) => {
     }
   };
   const handlePlayback = async (e) => {
+    setStatus(e);
     if (e.playableDurationMillis <= e.positionMillis) {
       // video ends and badge has not been earned
       if (!earnedBadges.includes(vid.key)) {
@@ -39,15 +41,22 @@ const VideoPlayer = ({ vid }) => {
   };
 
   return (
-    <Video
-      ref={videoRef}
-      style={{ flex: 1, width: width * 0.6 }}
-      source={videoURI[vid.videoName][quality]}
-      resizeMode="contain"
-      useNativeControls
-      onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
-      onFullscreenUpdate={handleFullscreen}
-    />
+    <Pressable
+      onPress={() =>
+        status.isPlaying
+          ? videoRef.current.pauseAsync()
+          : videoRef.current.playAsync()
+      }>
+      <Video
+        ref={videoRef}
+        style={{ flex: 1, width: width * 0.6 }}
+        source={videoURI[vid.videoName][quality]}
+        resizeMode="contain"
+        useNativeControls
+        onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
+        onFullscreenUpdate={handleFullscreen}
+      />
+    </Pressable>
   );
 };
 

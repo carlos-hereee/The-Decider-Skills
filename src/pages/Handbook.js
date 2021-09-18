@@ -24,6 +24,7 @@ const Handbook = () => {
     <View style={styles.handbookMenu}>
       {lifeSkills.map((item) => (
         <Pressable
+          key={item.key}
           onPress={() => makeActive(item)}
           style={[
             styles.handbookSkill,
