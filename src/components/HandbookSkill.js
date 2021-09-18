@@ -5,6 +5,7 @@ import {
   Pressable,
   StyleSheet,
   Text,
+  Dimensions,
   View,
 } from "react-native";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -18,54 +19,56 @@ const HandbookSkill = ({ skills, withFizz }) => {
   const [activeSkill, setActiveSkill] = useState(
     withFizz?.key ? withFizz : skills[0]
   );
+  const { width, height } = Dimensions.get("window");
+
   return (
     <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
-      <View style={{ paddingTop: 50 }}>
-        <Pressable onPress={() => resetActive()} style={styles.goBack}>
-          <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" size={45} />
-        </Pressable>
-      </View>
-      <View>
-        <Card data={activeSkill} />
-        <FlatList
-          data={skills}
-          horizontal
-          contentContainerStyle={{ paddingVertical: 15 }}
-          renderItem={({ item }) => (
-            <Pressable
-              onPress={() => setActiveSkill(item)}
-              style={
-                activeSkill === item
-                  ? [styles.listItem, { backgroundColor: "#CBE9ED" }]
-                  : styles.listItem
-              }>
-              {earnedBadges.includes(item.key) && (
-                <View
-                  style={{
-                    position: "absolute",
-                    top: "-10%",
-                    right: "-25%",
-                  }}>
-                  <Badge
-                    data={{
-                      src: item.imageUrl,
-                      iconSize: 40,
-                      backgroundSize: 60,
-                    }}
-                  />
-                </View>
-              )}
-              <Image
-                source={{ uri: item.imageUrl, width: 100, height: 100 }}
-                resizeMode="contain"
-              />
-              <Text style={{ fontWeight: "700", textAlign: "center" }}>
-                {item.name.toUpperCase()}
-              </Text>
-            </Pressable>
-          )}
-        />
-      </View>
+      <Pressable
+        onPress={() => resetActive()}
+        style={{ paddingTop: height / 40 }}>
+        <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" size={45} />
+      </Pressable>
+      <Card data={activeSkill} />
+      <FlatList
+        data={skills}
+        horizontal
+        contentContainerStyle={{ paddingVertical: 15 }}
+        renderItem={({ item }) => (
+          <Pressable
+            onPress={() => setActiveSkill(item)}
+            style={
+              activeSkill === item
+                ? [styles.listItem, { backgroundColor: "#CBE9ED" }]
+                : styles.listItem
+            }>
+            {earnedBadges.includes(item.key) && (
+              <View
+                style={{
+                  position: "absolute",
+                  top: "-10%",
+                  right: "-25%",
+                  zIndex: 1,
+                }}>
+                <Badge
+                  data={{
+                    src: item.imageUrl,
+                    iconSize: 40,
+                    backgroundSize: 60,
+                  }}
+                />
+              </View>
+            )}
+            <Image
+              source={{ uri: item.imageUrl }}
+              style={{ width: width / 4, height: width / 4 }}
+              resizeMode="contain"
+            />
+            <Text style={{ fontWeight: "700", textAlign: "center" }}>
+              {item.name.toUpperCase()}
+            </Text>
+          </Pressable>
+        )}
+      />
     </View>
   );
 };

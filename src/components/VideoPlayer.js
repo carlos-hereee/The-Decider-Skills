@@ -41,11 +41,7 @@ const VideoPlayer = ({ vid }) => {
   return (
     <Video
       ref={videoRef}
-      style={{
-        flex: 1,
-        width: width * 0.6,
-        borderWidth: 4,
-      }}
+      style={{ flex: 1, width: width * 0.6 }}
       source={videoURI[vid.videoName][quality]}
       resizeMode="contain"
       useNativeControls

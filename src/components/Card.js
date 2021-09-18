@@ -1,28 +1,34 @@
 import React from "react";
-import { Image, StyleSheet, Text, View, ScrollView } from "react-native";
+import { Image, StyleSheet, Text, View, Dimensions } from "react-native";
 import VideoPlayer from "../components/VideoPlayer";
 
 const Card = ({ data }) => {
+  const { width, height } = Dimensions.get("window");
+
   return (
-    <ScrollView style={styles.card}>
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-        }}>
+    <View
+      style={[
+        styles.card,
+        {
+          marginHorizontal: width / 20,
+          padding: width / 25,
+        },
+      ]}>
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Image
-          source={{ uri: data?.imageUrl, width: 75, height: 75 }}
+          source={{ uri: data?.imageUrl }}
+          style={{ width: width / 4, height: width / 4 }}
           resizeMode="contain"
         />
         <View style={{ width: "55%" }}>
-          <Text style={{ fontSize: 24, marginLeft: 10, fontWeight: "700" }}>
-            {data.name}
-          </Text>
+          <Text style={{ fontSize: 20, fontWeight: "700" }}>{data.name}</Text>
         </View>
       </View>
-      <Text style={{ marginTop: 10 }}>{data.definition}</Text>
-      <VideoPlayer vid={data} />
-    </ScrollView>
+      <Text style={{ marginBottom: "auto" }}>{data.definition}</Text>
+      <View style={{ alignItems: "center", height: height / 4 }}>
+        <VideoPlayer vid={data} />
+      </View>
+    </View>
   );
 };
 export default Card;
@@ -31,8 +37,6 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: 4,
     backgroundColor: "#EFF5FA",
-    padding: 10,
-    margin: 20,
     height: "60%",
     elevation: 5,
     overflow: "scroll",

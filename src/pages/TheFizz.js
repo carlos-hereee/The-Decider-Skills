@@ -1,4 +1,3 @@
-import { CurrentRenderContext } from "@react-navigation/core";
 import React, { useContext, useState } from "react";
 import {
   FlatList,
