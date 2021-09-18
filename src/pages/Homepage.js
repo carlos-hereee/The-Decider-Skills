@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   ImageBackground,
   Pressable,
@@ -11,34 +11,80 @@ import {
 import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
 import AppLoading from "expo-app-loading";
 import { navigate } from "../utils/RootNavigation";
-import VideoPlayer from "../components/VideoPlayer";
+import { Video } from "expo-av";
+import * as ScreenOrientation from "expo-screen-orientation";
+import videoURI from "../components/videoURI";
 
+const introVideos = [
+  {
+    key: "intro",
+    name: "Introduction",
+    videoName: "TheDeciderIntroduction",
+  },
+  {
+    key: "theFizz",
+    name: "The Fizz",
+    videoName: "TheFIZZ",
+  },
+  {
+    key: "CBT",
+    name: "CBT",
+    videoName: "CBT",
+  },
+];
 const Homepage = () => {
   let [fontsLoaded] = useFonts({ Amaranth_700Bold });
-  const introVideos = [
-    {
-      key: "intro",
-      name: "Introduction",
-      videoName: "TheDeciderIntroduction",
-    },
-    {
-      key: "theFizz",
-      name: "The Fizz",
-      videoName: "TheFIZZ",
-    },
-    {
-      key: "CBT",
-      name: "CBT",
-      videoName: "CBT",
-    },
-  ];
-  const { width, fontScale } = Dimensions.get("window");
+  const videoRef = useRef(null);
+  const [video, setVideo] = useState({});
+  const { fontScale } = Dimensions.get("window");
+  const [quality, setQuality] = useState("original");
+
+  const handleFullscreen = async ({ fullscreenUpdate }) => {
+    if (fullscreenUpdate === 0) {
+      // enter full screen
+      videoRef.current.playAsync();
+      await ScreenOrientation.lockAsync(
+        ScreenOrientation.OrientationLock.LANDSCAPE_LEFT
+      );
+    }
+    if (fullscreenUpdate === 2) {
+      // exit full screen
+      videoRef.current.pauseAsync();
+      await ScreenOrientation.lockAsync(
+        ScreenOrientation.OrientationLock.PORTRAIT
+      );
+      setVideo({});
+    }
+  };
+  const handlePlayback = async (e) => {
+    if (e.playableDurationMillis <= e.positionMillis) {
+      videoRef.current.dismissFullscreenPlayer();
+    }
+  };
+  useEffect(() => {
+    if (video.key) {
+      const loadedVideo = async () => {
+        await videoRef.current.presentFullscreenPlayer();
+      };
+      loadedVideo();
+    }
+  }, [video.key]);
+
   return fontsLoaded ? (
     <ImageBackground
       source={require("../../assets/post-it.png")}
       resizeMode="cover"
       style={styles.backgroungImage}>
       <View style={styles.container}>
+        {video.videoName && (
+          <Video
+            ref={videoRef}
+            resizeMode="contain"
+            source={videoURI[video.videoName][quality]}
+            onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
+            onFullscreenUpdate={handleFullscreen}
+          />
+        )}
         <Text style={[styles.cardHeading, { fontSize: 30 / fontScale }]}>
           The Decider
         </Text>
@@ -56,7 +102,9 @@ const Homepage = () => {
           data={introVideos}
           contentContainerStyle={{ flexGrow: 1 }}
           renderItem={({ item }) => (
-            <Pressable style={[styles.button, { paddingVertical: "3%" }]}>
+            <Pressable
+              style={[styles.button, { paddingVertical: "3%" }]}
+              onPress={() => setVideo(item)}>
               <Text style={styles.buttonTxt}>{item.name}</Text>
             </Pressable>
           )}
