@@ -1,5 +1,7 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
 import { reducer } from "./reducer";
+import { db, auth, usersRef } from "../utils/firebase.config";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export const HandbookContext = createContext();
 
@@ -10,9 +12,66 @@ export const HandbookState = ({ children }) => {
     active: "",
     earnedBadges: [],
     queuedSkillForBadge: {},
+    client: {},
   };
+  const [user] = useAuthState(auth);
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const liveUser = async (userId) => {
+    try {
+      // create live instance of player
+      usersRef.doc(userId).onSnapshot((snap) => {
+        if (snap.exists) {
+          dispatch({ type: "INITIALIZE_USER", payload: snap.data() });
+        }
+      });
+    } catch (e) {
+      dispatch({ type: "SET_ERROR", payload: "Couldnt make player instance" });
+    }
+  };
+  const getData = async (userId) => {
+    try {
+      const badgesRef = usersRef.doc(userId).collection("ownedBadges");
+      const badges = [];
+      badgesRef.onSnapshot((snap) => {
+        snap.forEach((doc) => {
+          badges.push(doc.data());
+        });
+      });
+      dispatch({ type: "GET_BADGES_DATA", payload: badges });
+    } catch (e) {
+      dispatch({ type: "SET_ERROR", payload: "Couldnt make player instance" });
+    }
+  };
+  useEffect(() => {
+    if (user?.uid) {
+      liveUser(user.uid);
+      getData(user.uid);
+    }
+  }, [user]);
+  const signIn = async ({ email, password }) => {
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+    } catch (e) {
+      dispatch({ type: "SET_ERROR", dispatch: "Sign error try again later" });
+    }
+  };
+  const register = async ({ email, password }) => {
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      usersRef.doc(user.uid).set(
+        {
+          uid: user.uid,
+        },
+        { merge: true }
+      );
+    } catch (e) {
+      dispatch({ type: "SET_ERROR", dispatch: "Sign error try again later" });
+    }
+  };
   const makeActive = async (data) => {
     try {
       dispatch({ type: "MAKE_ACTIVE", payload: data });
@@ -48,7 +107,10 @@ export const HandbookState = ({ children }) => {
         isLoading: state.isLoading,
         active: state.active,
         earnedBadges: state.earnedBadges,
+        client: state.client,
         queuedSkillForBadge: state.queuedSkillForBadge,
+        signIn,
+        register,
         makeActive,
         resetActive,
         badgeToClaim,

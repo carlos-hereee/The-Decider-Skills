@@ -30,6 +30,18 @@ const claimBadge = (state, action) => {
     queuedSkillForBadge: {},
   };
 };
+const initUser = (state, action) => {
+  return {
+    ...state,
+    client: action.payload,
+  };
+};
+const getBadgesData = (state, action) => {
+  return {
+    ...state,
+    earnedBadges: action.payload,
+  };
+};
 export const reducer = (state, action) => {
   switch (action.type) {
     case "IS_LOADING":
@@ -42,6 +54,10 @@ export const reducer = (state, action) => {
       return badgeToClaim(state, action);
     case "CLAIM_BADGE":
       return claimBadge(state, action);
+    case "INITIALIZE_USER":
+      return initUser(state, action);
+    case "GET_BADGES_DATA":
+      return getBadgesData(state, action);
     default:
       return state;
   }
