@@ -93,9 +93,19 @@ export const HandbookState = ({ children }) => {
       dispatch({ type: "SET_ERROR", payload: "error could not add data" });
     }
   };
-  const claimBadge = async (key) => {
+  const claimBadge = async (video) => {
+    console.log("video", video);
     try {
-      dispatch({ type: "CLAIM_BADGE", payload: key });
+      const badgesRef = usersRef.doc(user.uid).collection("ownedBadges");
+      badgesRef.doc(video.key).set(
+        {
+          owned: true,
+          name: video.name,
+          key: video.key,
+        },
+        { merge: true }
+      );
+      dispatch({ type: "CLAIM_BADGE", payload: video });
     } catch (e) {
       dispatch({ type: "SET_ERROR", payload: "error could not add data" });
     }

@@ -26,7 +26,6 @@ const badgeToClaim = (state, action) => {
 const claimBadge = (state, action) => {
   return {
     ...state,
-    earnedBadges: [...state.earnedBadges, action.payload.key],
     queuedSkillForBadge: {},
   };
 };

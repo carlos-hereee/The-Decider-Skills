@@ -41,7 +41,7 @@ const HandbookSkill = ({ skills, withFizz }) => {
                 ? [styles.listItem, { backgroundColor: "#CBE9ED" }]
                 : styles.listItem
             }>
-            {earnedBadges.includes(item.key) && (
+            {earnedBadges.filter((data) => data.key === item.key).length ? (
               <View
                 style={{
                   position: "absolute",
@@ -57,7 +57,7 @@ const HandbookSkill = ({ skills, withFizz }) => {
                   }}
                 />
               </View>
-            )}
+            ) : null}
             <Image
               source={{ uri: item.imageUrl }}
               style={{ width: width / 4, height: width / 4 }}

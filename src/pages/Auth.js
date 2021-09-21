@@ -12,7 +12,8 @@ const Auth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { fontScale } = Dimensions.get("window");
   let [fontsLoaded] = useFonts({ Amaranth_700Bold });
-  console.log("client", client, earnedBadges);
+  console.log("client", client);
+  console.log("earnedBadges", earnedBadges);
   return client.uid ? (
     <Homepage />
   ) : (

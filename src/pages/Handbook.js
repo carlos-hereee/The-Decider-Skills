@@ -42,7 +42,8 @@ const Handbook = () => {
             numColumns={4}
             contentContainerStyle={styles.badgeBackground}
             renderItem={({ item }) => {
-              return earnedBadges.includes(item.key) ? (
+              return earnedBadges.filter((data) => data.key === item.key)
+                .length ? (
                 <View style={styles.badge}>
                   <Badge
                     data={{
