@@ -8,12 +8,10 @@ import { HandbookContext } from "../utils/Context";
 import Homepage from "./Homepage";
 
 const Auth = () => {
-  const { client, earnedBadges } = useContext(HandbookContext);
+  const { client } = useContext(HandbookContext);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { fontScale } = Dimensions.get("window");
   let [fontsLoaded] = useFonts({ Amaranth_700Bold });
-  console.log("client", client);
-  console.log("earnedBadges", earnedBadges);
   return client.uid ? (
     <Homepage />
   ) : (
@@ -37,6 +35,7 @@ const Auth = () => {
                 textAlign: "center",
                 color: "blue",
                 textDecorationLine: "underline",
+                marginTop: 20
               }}>
               {isLoggedIn
                 ? "Don't have an account? "

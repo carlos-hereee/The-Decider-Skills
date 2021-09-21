@@ -33,7 +33,7 @@ const introVideos = [
     videoName: "CBT",
   },
 ];
-const Homepage = ({ children }) => {
+const Homepage = () => {
   let [fontsLoaded] = useFonts({ Amaranth_700Bold });
   const videoRef = useRef(null);
   const [video, setVideo] = useState({});

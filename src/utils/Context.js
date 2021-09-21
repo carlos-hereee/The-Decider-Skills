@@ -13,6 +13,7 @@ export const HandbookState = ({ children }) => {
     earnedBadges: [],
     queuedSkillForBadge: {},
     client: {},
+    authError: "",
   };
   const [user] = useAuthState(auth);
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -53,7 +54,7 @@ export const HandbookState = ({ children }) => {
     try {
       await auth.signInWithEmailAndPassword(email, password);
     } catch (e) {
-      dispatch({ type: "SET_ERROR", dispatch: "Sign error try again later" });
+      dispatch({ type: "AUTH_ERROR", dispatch: "Invalid Email or Password" });
     }
   };
   const register = async ({ email, password }) => {
@@ -69,7 +70,10 @@ export const HandbookState = ({ children }) => {
         { merge: true }
       );
     } catch (e) {
-      dispatch({ type: "SET_ERROR", dispatch: "Sign error try again later" });
+      dispatch({
+        type: "AUTH_ERROR",
+        dispatch: "Could not create account, try again",
+      });
     }
   };
   const makeActive = async (data) => {
@@ -94,7 +98,6 @@ export const HandbookState = ({ children }) => {
     }
   };
   const claimBadge = async (video) => {
-    console.log("video", video);
     try {
       const badgesRef = usersRef.doc(user.uid).collection("ownedBadges");
       badgesRef.doc(video.key).set(

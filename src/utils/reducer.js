@@ -41,6 +41,12 @@ const getBadgesData = (state, action) => {
     earnedBadges: action.payload,
   };
 };
+const authError = (state, action) => {
+  return {
+    ...state,
+    authError: action.payload,
+  };
+};
 export const reducer = (state, action) => {
   switch (action.type) {
     case "IS_LOADING":
@@ -57,6 +63,8 @@ export const reducer = (state, action) => {
       return initUser(state, action);
     case "GET_BADGES_DATA":
       return getBadgesData(state, action);
+    case "AUTH_ERROR":
+      return authError(state, action);
     default:
       return state;
   }
