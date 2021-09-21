@@ -1,19 +1,20 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import {
-  ImageBackground,
   Pressable,
   StyleSheet,
-  Text,
   View,
   FlatList,
   Dimensions,
 } from "react-native";
+import { Text } from "react-native-elements";
 import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
 import AppLoading from "expo-app-loading";
 import { navigate } from "../utils/RootNavigation";
 import { Video } from "expo-av";
 import * as ScreenOrientation from "expo-screen-orientation";
 import videoURI from "../components/videoURI";
+import { HandbookContext } from "../utils/Context";
+import HomeBG from "../components/HomeBG";
 
 const introVideos = [
   {
@@ -32,10 +33,11 @@ const introVideos = [
     videoName: "CBT",
   },
 ];
-const Homepage = () => {
+const Homepage = ({ children }) => {
   let [fontsLoaded] = useFonts({ Amaranth_700Bold });
   const videoRef = useRef(null);
   const [video, setVideo] = useState({});
+  const { client } = useContext(HandbookContext);
   const { fontScale } = Dimensions.get("window");
   const [quality, setQuality] = useState("original");
 
@@ -71,10 +73,7 @@ const Homepage = () => {
   }, [video.key]);
 
   return fontsLoaded ? (
-    <ImageBackground
-      source={require("../../assets/post-it.png")}
-      resizeMode="cover"
-      style={styles.backgroungImage}>
+    <HomeBG>
       <View style={styles.container}>
         {video.videoName && (
           <Video
@@ -85,10 +84,10 @@ const Homepage = () => {
             onFullscreenUpdate={handleFullscreen}
           />
         )}
-        <Text style={[styles.cardHeading, { fontSize: 30 / fontScale }]}>
+        <Text h2 style={[styles.cardHeading, { fontSize: 30 / fontScale }]}>
           The Decider
         </Text>
-        <Text style={[styles.cardHeading, { fontSize: 30 / fontScale }]}>
+        <Text h2 style={[styles.cardHeading, { fontSize: 30 / fontScale }]}>
           Skills
         </Text>
         <View style={{ flexGrow: 1, justifyContent: "center" }}>
@@ -123,7 +122,7 @@ const Homepage = () => {
           </Pressable>
         </View>
       </View>
-    </ImageBackground>
+    </HomeBG>
   ) : (
     <AppLoading />
   );

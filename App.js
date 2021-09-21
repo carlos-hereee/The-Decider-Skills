@@ -1,3 +1,4 @@
+import "react-native-gesture-handler";
 import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -11,6 +12,7 @@ import Handbook from "./src/pages/Handbook";
 import TheFizz from "./src/pages/TheFizz";
 import ClaimBadge from "./src/pages/ClaimBadge";
 import Footer from "./src/components/Footer";
+import Auth from "./src/pages/Auth";
 
 const Stack = createNativeStackNavigator();
 
@@ -24,12 +26,14 @@ export default function App() {
     });
     return Promise.all(cacheImages);
   };
+
   return isReady ? (
     <NavigationContainer ref={navigationRef}>
       <HandbookState>
         <Stack.Navigator
-          initialRouteName="Home"
+          initialRouteName="Auth"
           screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Auth" component={Auth} />
           <Stack.Screen name="Home" component={Homepage} />
           <Stack.Screen name="Handbook" component={Handbook} />
           <Stack.Screen name="TheFizz" component={TheFizz} />

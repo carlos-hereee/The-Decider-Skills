@@ -21,6 +21,7 @@
       "requireFullScreen": true
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "versionCode": 2,
       "adaptiveIcon": {
         "foregroundImage": "./assets/post-it-icon.png",
@@ -28,6 +29,11 @@
       },
       "package": "com.silent2code.handbook"
     },
+    "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/perf",
+      "@react-native-firebase/crashlytics"
+    ],
     "androidStatusBar": {
       "backgroundColor": "#C2185B",
       "translucent": false
