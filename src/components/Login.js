@@ -35,14 +35,15 @@ const Login = () => {
           handleSubmit,
           values,
           errors,
+          touched,
           isValid,
         }) => (
           <View>
             {authError && <Text> {authError}</Text>}
             <Text>Email: </Text>
-            {errors.email && (
-              <Text style={{ fontSize: 10, color: "red" }}>{errors.email}</Text>
-            )}
+            <Text style={{ fontSize: 10, color: "red" }}>
+              {touched.email && errors.email}
+            </Text>
             <TextInput
               name="email"
               placeholder=" Email Address"
@@ -53,11 +54,9 @@ const Login = () => {
               keyboardType="email-address"
             />
             <Text>Password: </Text>
-            {errors.password && (
-              <Text style={{ fontSize: 10, color: "red" }}>
-                {errors.password}
-              </Text>
-            )}
+            <Text style={{ fontSize: 10, color: "red" }}>
+              {touched.password && errors.password}
+            </Text>
             <TextInput
               name="password"
               placeholder=" Password"

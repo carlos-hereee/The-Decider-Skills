@@ -46,14 +46,15 @@ const Register = () => {
           handleSubmit,
           values,
           errors,
+          touched,
           isValid,
         }) => (
           <View>
             {authError && <Text> {authError}</Text>}
             <Text>Email: </Text>
-            {errors.email && (
-              <Text style={{ fontSize: 10, color: "red" }}>{errors.email}</Text>
-            )}
+            <Text style={{ fontSize: 10, color: "red" }}>
+              {touched.email && errors.email}
+            </Text>
             <TextInput
               name="email"
               placeholder=" Email Address"
@@ -64,11 +65,9 @@ const Register = () => {
               keyboardType="email-address"
             />
             <Text>Password: </Text>
-            {errors.password && (
-              <Text style={{ fontSize: 10, color: "red" }}>
-                {errors.password}
-              </Text>
-            )}
+            <Text style={{ fontSize: 10, color: "red" }}>
+              {touched.password && errors.password}
+            </Text>
             <TextInput
               name="password"
               placeholder=" Password"
@@ -78,11 +77,9 @@ const Register = () => {
               value={values.password}
               secureTextEntry
             />
-            {errors.confirmPassword && (
-              <Text style={{ fontSize: 10, color: "red" }}>
-                {errors.confirmPassword}
-              </Text>
-            )}
+            <Text style={{ fontSize: 10, color: "red" }}>
+              {touched.confirmPassword && errors.confirmPassword}
+            </Text>
             <Text>Confirm Password: </Text>
             <TextInput
               name="confirmPassword"
@@ -93,7 +90,7 @@ const Register = () => {
               value={values.confirmPassword}
               secureTextEntry
             />
-            <Button onPress={handleSubmit} title="Submit" />
+            <Button onPress={handleSubmit} title="Submit" disabled={!isValid} />
           </View>
         )}
       </Formik>
