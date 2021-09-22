@@ -1,19 +1,21 @@
 import React, { useState, useRef, useEffect } from "react";
 import {
-  ImageBackground,
   Pressable,
   StyleSheet,
-  Text,
   View,
   FlatList,
   Dimensions,
+  ActivityIndicator,
 } from "react-native";
+import { Text } from "react-native-elements";
 import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
 import AppLoading from "expo-app-loading";
 import { navigate } from "../utils/RootNavigation";
 import { Video } from "expo-av";
 import * as ScreenOrientation from "expo-screen-orientation";
-import videoURI from "../components/videoURI";
+import { videoURI } from "../components/videoURI";
+import HomeBG from "../components/HomeBG";
+import { storage } from "../utils/firebase.config";
 
 const introVideos = [
   {
@@ -36,6 +38,7 @@ const Homepage = () => {
   let [fontsLoaded] = useFonts({ Amaranth_700Bold });
   const videoRef = useRef(null);
   const [video, setVideo] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
   const { fontScale } = Dimensions.get("window");
   const [quality, setQuality] = useState("original");
 
@@ -63,32 +66,36 @@ const Homepage = () => {
   };
   useEffect(() => {
     if (video.key) {
+      const { uri } = videoURI[video.videoName][quality];
+      const getVideoUrl = async () => {
+        const url = await storage.refFromURL(uri).getDownloadURL();
+        setVideo({ ...video, source: { uri: url } });
+      };
       const loadedVideo = async () => {
         await videoRef.current.presentFullscreenPlayer();
+        setIsLoading(false);
       };
+      getVideoUrl();
       loadedVideo();
     }
   }, [video.key]);
 
   return fontsLoaded ? (
-    <ImageBackground
-      source={require("../../assets/post-it.png")}
-      resizeMode="cover"
-      style={styles.backgroungImage}>
+    <HomeBG>
       <View style={styles.container}>
         {video.videoName && (
           <Video
             ref={videoRef}
             resizeMode="contain"
-            source={videoURI[video.videoName][quality]}
+            source={video.source}
             onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
             onFullscreenUpdate={handleFullscreen}
           />
         )}
-        <Text style={[styles.cardHeading, { fontSize: 30 / fontScale }]}>
+        <Text h2 style={[styles.cardHeading, { fontSize: 30 / fontScale }]}>
           The Decider
         </Text>
-        <Text style={[styles.cardHeading, { fontSize: 30 / fontScale }]}>
+        <Text h2 style={[styles.cardHeading, { fontSize: 30 / fontScale }]}>
           Skills
         </Text>
         <View style={{ flexGrow: 1, justifyContent: "center" }}>
@@ -98,17 +105,24 @@ const Homepage = () => {
             Skills reminders.
           </Text>
         </View>
-        <FlatList
-          data={introVideos}
-          contentContainerStyle={{ flexGrow: 1 }}
-          renderItem={({ item }) => (
-            <Pressable
-              style={[styles.button, { paddingVertical: "3%" }]}
-              onPress={() => setVideo(item)}>
-              <Text style={styles.buttonTxt}>{item.name}</Text>
-            </Pressable>
-          )}
-        />
+        {!isLoading ? (
+          <FlatList
+            data={introVideos}
+            contentContainerStyle={{ flexGrow: 1 }}
+            renderItem={({ item }) => (
+              <Pressable
+                style={[styles.button, { paddingVertical: "3%" }]}
+                onPress={() => {
+                  setIsLoading(true);
+                  setVideo(item);
+                }}>
+                <Text style={styles.buttonTxt}>{item.name}</Text>
+              </Pressable>
+            )}
+          />
+        ) : (
+          <ActivityIndicator size={35} color="#600" />
+        )}
         <View style={{ flexGrow: 1, justifyContent: "center" }}>
           <Text style={{ textAlign: "center" }}>
             What brings you here today?
@@ -123,7 +137,7 @@ const Homepage = () => {
           </Pressable>
         </View>
       </View>
-    </ImageBackground>
+    </HomeBG>
   ) : (
     <AppLoading />
   );

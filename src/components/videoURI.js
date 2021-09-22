@@ -1,4 +1,4 @@
-module.exports = {
+export const videoURI = {
   AskorSayNo: {
     original: require("../../assets/skills/AskorSayNo/AskorSayNo-Original.mp4"),
     360: require("../../assets/skills/AskorSayNo/AskorSayNo-360.mp4"),
@@ -162,10 +162,18 @@ module.exports = {
     720: require("../../assets/skills/TalktheTalk/TalktheTalk-720.mp4"),
   },
   TheFIZZ: {
-    original: require("../../assets/skills/TheFIZZ/TheFIZZ-Original.mp4"),
-    360: require("../../assets/skills/TheFIZZ/TheFIZZ-360.mp4"),
-    540: require("../../assets/skills/TheFIZZ/TheFIZZ-540.mp4"),
-    720: require("../../assets/skills/TheFIZZ/TheFIZZ-720.mp4"),
+    original: {
+      uri: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-Original.mp4",
+    },
+    360: {
+      uri: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-360.mp4",
+    },
+    540: {
+      uri: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-540.mp4",
+    },
+    720: {
+      uri: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-720.mp4",
+    },
   },
   Thinking: {
     original: require("../../assets/skills/Thinking/Thinking-Original.mp4"),
@@ -198,15 +206,31 @@ module.exports = {
     720: require("../../assets/skills/WiseMind/WiseMind-720.mp4"),
   },
   TheDeciderIntroduction: {
-    original: require("../../assets/skills/TheDeciderIntroduction/TheDeciderIntroduction-Original.mp4"),
-    360: require("../../assets/skills/TheDeciderIntroduction/TheDeciderIntroduction-360.mp4"),
-    540: require("../../assets/skills/TheDeciderIntroduction/TheDeciderIntroduction-540.mp4"),
-    720: require("../../assets/skills/TheDeciderIntroduction/TheDeciderIntroduction-720.mp4"),
+    original: {
+      uri: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-Original.mp4",
+    },
+    360: {
+      uri: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-360.mp4",
+    },
+    540: {
+      uri: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-540.mp4",
+    },
+    720: {
+      uri: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-720.mp4",
+    },
   },
   CBT: {
-    original: require("../../assets/skills/CBT/CBT-Original.mp4"),
-    360: require("../../assets/skills/CBT/CBT-360.mp4"),
-    540: require("../../assets/skills/CBT/CBT-540.mp4"),
-    720: require("../../assets/skills/CBT/CBT-720.mp4"),
+    original: {
+      uri: "gs://the-decider-skills.appspot.com/skills/CBT/CBT-Original.mp4",
+    },
+    360: {
+      uri: "gs://the-decider-skills.appspot.com/skills/CBT/CBT-360.mp4",
+    },
+    540: {
+      uri: "gs://the-decider-skills.appspot.com/skills/CBT/CBT-540.mp4",
+    },
+    720: {
+      uri: "gs://the-decider-skills.appspot.com/skills/CBT/CBT-720.mp4",
+    },
   },
 };
