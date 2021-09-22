@@ -35,7 +35,7 @@ const Auth = () => {
                 textAlign: "center",
                 color: "blue",
                 textDecorationLine: "underline",
-                marginTop: 20
+                marginTop: 20,
               }}>
               {isLoggedIn
                 ? "Don't have an account? "

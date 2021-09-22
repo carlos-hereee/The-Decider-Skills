@@ -2,7 +2,7 @@
   "expo": {
     "name": "The Decider Skills",
     "slug": "The-Decider-Skills",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/post-it-icon.png",
     "splash": {
@@ -21,8 +21,7 @@
       "requireFullScreen": true
     },
     "android": {
-      "googleServicesFile": "./google-services.json",
-      "versionCode": 2,
+      "versionCode": 3,
       "adaptiveIcon": {
         "foregroundImage": "./assets/post-it-icon.png",
         "backgroundColor": "#FFFFFF"
