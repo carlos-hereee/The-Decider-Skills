@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import { reducer } from "./reducer";
-import { db, auth, usersRef } from "../utils/firebase.config";
+import { auth, usersRef } from "../utils/firebase.config";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export const HandbookContext = createContext();

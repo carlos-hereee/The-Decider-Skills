@@ -4,7 +4,7 @@ import "firebase/auth";
 //import "firebase/database";
 import "firebase/firestore";
 //import "firebase/functions";
-//import "firebase/storage";
+import "firebase/storage";
 
 // Initialize Firebase
 if (!firebase.apps.length) {
@@ -26,3 +26,4 @@ export const auth = firebase.auth();
 export const db = firebase.firestore();
 export const serverTimeStamp = firebase.firestore.FieldValue.serverTimestamp();
 export const usersRef = db.collection("users");
+export const storage = firebase.storage();

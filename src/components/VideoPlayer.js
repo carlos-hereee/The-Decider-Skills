@@ -1,7 +1,7 @@
 import React, { useState, useRef, useContext } from "react";
 import { Video } from "expo-av";
 import * as ScreenOrientation from "expo-screen-orientation";
-import videoURI from "./videoURI";
+import { videoURI } from "./videoURI";
 import { Dimensions, Pressable } from "react-native";
 import { HandbookContext } from "../utils/Context";
 import { navigate } from "../utils/RootNavigation";
