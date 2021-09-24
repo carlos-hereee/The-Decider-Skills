@@ -16,7 +16,7 @@ const ClaimBadge = () => {
       <Text style={{ fontSize: 25 }}>You earned a new Badge</Text>
       <Badge
         data={{
-          src: queuedSkillForBadge.imageUrl,
+          src: queuedSkillForBadge.thumbnail,
           iconSize: 200,
           backgroundSize: 300,
         }}

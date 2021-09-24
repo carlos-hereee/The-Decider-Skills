@@ -13,25 +13,35 @@ import AppLoading from "expo-app-loading";
 import { navigate } from "../utils/RootNavigation";
 import { Video } from "expo-av";
 import * as ScreenOrientation from "expo-screen-orientation";
-import { videoURI } from "../components/videoURI";
 import HomeBG from "../components/HomeBG";
-import { storage } from "../utils/firebase.config";
+import { getVideoUrl } from "../utils/firebase.config";
 
 const introVideos = [
   {
     key: "intro",
     name: "Introduction",
-    videoName: "TheDeciderIntroduction",
+    original:
+      "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-Original.mp4",
+    360: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-360.mp4",
+    540: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-540.mp4",
+    720: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-720.mp4",
   },
   {
     key: "theFizz",
     name: "The Fizz",
-    videoName: "TheFIZZ",
+    original:
+      "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-Original.mp4",
+    360: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-360.mp4",
+    540: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-540.mp4",
+    720: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-720.mp4",
   },
   {
     key: "CBT",
     name: "CBT",
-    videoName: "CBT",
+    original: "gs://the-decider-skills.appspot.com/skills/CBT/CBT-Original.mp4",
+    360: "gs://the-decider-skills.appspot.com/skills/CBT/CBT-360.mp4",
+    540: "gs://the-decider-skills.appspot.com/skills/CBT/CBT-540.mp4",
+    720: "gs://the-decider-skills.appspot.com/skills/CBT/CBT-720.mp4",
   },
 ];
 const Homepage = () => {
@@ -66,28 +76,24 @@ const Homepage = () => {
   };
   useEffect(() => {
     if (video.key) {
-      const { uri } = videoURI[video.videoName][quality];
-      const getVideoUrl = async () => {
-        const url = await storage.refFromURL(uri).getDownloadURL();
-        setVideo({ ...video, source: { uri: url } });
-      };
+      getVideoUrl(video[quality]).then((url) =>
+        setVideo({ ...video, source: { uri: url } })
+      );
       const loadedVideo = async () => {
         await videoRef.current.presentFullscreenPlayer();
         setIsLoading(false);
       };
-      getVideoUrl();
       loadedVideo();
     }
   }, [video.key]);
-
   return fontsLoaded ? (
     <HomeBG>
       <View style={styles.container}>
-        {video.videoName && (
+        {video.key && (
           <Video
             ref={videoRef}
             resizeMode="contain"
-            source={video.source}
+            source={video?.source}
             onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
             onFullscreenUpdate={handleFullscreen}
           />

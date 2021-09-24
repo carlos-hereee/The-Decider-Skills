@@ -27,3 +27,7 @@ export const db = firebase.firestore();
 export const serverTimeStamp = firebase.firestore.FieldValue.serverTimestamp();
 export const usersRef = db.collection("users");
 export const storage = firebase.storage();
+export const getVideoUrl = async (uri) => {
+  const url = await storage.refFromURL(uri).getDownloadURL();
+  return url;
+};
