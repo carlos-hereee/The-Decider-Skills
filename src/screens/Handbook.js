@@ -10,22 +10,23 @@ import {
 } from "react-native";
 import { HandbookContext } from "../utils/Context";
 import lifeSkills from "../utils/data.json";
-import HandbookSkill from "../components/HandbookSkill";
 import Badge from "../components/Badge";
+import { navigate } from "../utils/RootNavigation";
 
 const Handbook = () => {
-  const { makeActive, active, skills, earnedBadges } =
-    useContext(HandbookContext);
+  const { makeActive, earnedBadges } = useContext(HandbookContext);
   const { width, height } = Dimensions.get("window");
 
-  return active ? (
-    <HandbookSkill skills={skills} />
-  ) : (
+  const handlePress = (i) => {
+    makeActive(i);
+    navigate("Skills");
+  };
+  return (
     <View style={styles.handbookMenu}>
       {lifeSkills.map((item) => (
         <Pressable
           key={item.key}
-          onPress={() => makeActive(item)}
+          onPress={() => handlePress(item)}
           style={[
             styles.handbookSkill,
             {

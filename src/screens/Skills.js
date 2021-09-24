@@ -11,20 +11,23 @@ import {
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { HandbookContext } from "../utils/Context";
-import Card from "./Card";
-import Badge from "./Badge";
+import Card from "../components/Card";
+import Badge from "../components/Badge";
+import { navigationRef } from "../utils/RootNavigation";
 
-const HandbookSkill = ({ skills, withFizz }) => {
-  const { resetActive, earnedBadges } = useContext(HandbookContext);
-  const [activeSkill, setActiveSkill] = useState(
-    withFizz?.key ? withFizz : skills[0]
-  );
+const Skills = () => {
+  const { resetActive, earnedBadges, skills } = useContext(HandbookContext);
+  const [activeSkill, setActiveSkill] = useState(skills[0]);
   const { width, height } = Dimensions.get("window");
 
+  const handlePress = () => {
+    resetActive();
+    navigationRef.goBack();
+  };
   return (
     <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
       <Pressable
-        onPress={() => resetActive()}
+        onPress={() => handlePress()}
         style={{ paddingTop: height / 40 }}>
         <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" size={45} />
       </Pressable>
@@ -72,7 +75,7 @@ const HandbookSkill = ({ skills, withFizz }) => {
     </View>
   );
 };
-export default HandbookSkill;
+export default Skills;
 
 const styles = StyleSheet.create({
   listItem: {

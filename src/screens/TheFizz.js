@@ -8,22 +8,19 @@ import {
   Image,
   Dimensions,
 } from "react-native";
-import HandbookSkill from "../components/HandbookSkill";
 import { HandbookContext } from "../utils/Context";
+import { navigate } from "../utils/RootNavigation";
 import data from "../utils/theFizz.json";
 
 const TheFizz = () => {
-  const { active, skills, makeActive } = useContext(HandbookContext);
-  const [withFizz, setWithFizz] = useState({});
+  const { makeActive } = useContext(HandbookContext);
   const { width, height } = Dimensions.get("window");
 
   const handlePress = (item) => {
-    setWithFizz(item);
     makeActive({ title: item.name, skills: data.theFizz });
+    navigate("Skills");
   };
-  return active ? (
-    <HandbookSkill skills={skills} withFizz={withFizz} />
-  ) : (
+  return (
     <View style={styles.menu}>
       <FlatList
         data={data.theFizz}
