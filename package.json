@@ -1,44 +1,56 @@
 {
-  "name": "handbook",
-  "version": "0.1.0",
-  "private": true,
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
+  },
   "dependencies": {
+    "@expo-google-fonts/amaranth": "^0.2.0",
+    "@expo-google-fonts/dev": "^0.2.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.15",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "node-sass": "^6.0.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
-    "shortid": "^2.2.16",
-    "web-vitals": "^1.1.2"
+    "@fortawesome/react-native-fontawesome": "^0.2.7",
+    "@react-native-community/netinfo": "6.0.0",
+    "@react-native-community/slider": "3.0.3",
+    "@react-native-firebase/app": "^12.8.0",
+    "@react-native-firebase/crashlytics": "^12.8.0",
+    "@react-native-firebase/perf": "^12.8.0",
+    "@react-navigation/drawer": "^6.1.4",
+    "@react-navigation/native": "^6.0.2",
+    "@react-navigation/native-stack": "^6.1.0",
+    "expo": "~42.0.1",
+    "expo-app-loading": "^1.1.2",
+    "expo-asset": "^8.3.3",
+    "expo-av": "~9.2.3",
+    "expo-font": "~9.2.1",
+    "expo-screen-orientation": "~3.2.1",
+    "expo-splash-screen": "~0.11.2",
+    "expo-status-bar": "~1.0.4",
+    "expo-updates": "~0.8.1",
+    "firebase": "8.2.3",
+    "formik": "^2.2.9",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-firebase-hooks": "^3.0.4",
+    "react-native": "^0.63.2",
+    "react-native-elements": "^3.4.2",
+    "react-native-firebaseui-auth": "^1.3.0",
+    "react-native-gesture-handler": "~1.10.2",
+    "react-native-media-controls": "^2.3.0",
+    "react-native-reanimated": "~2.2.0",
+    "react-native-safe-area-context": "3.2.0",
+    "react-native-screens": "~3.4.0",
+    "react-native-svg": "^12.1.1",
+    "react-native-unimodules": "~0.14.5",
+    "react-native-web": "^0.17.1",
+    "yup": "^0.32.9"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@babel/core": "^7.9.0"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "private": true,
+  "name": "life-handbook",
+  "version": "1.0.3"
 }

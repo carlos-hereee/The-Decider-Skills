@@ -1,0 +1,136 @@
+{
+  "theFizz": [
+    {
+      "key": "distress-1",
+      "name": "Stopp",
+      "imageUrl": "https://www.thedecider.org.uk/media/mh4fj5uk/icon-stoppdecider.png",
+      "definition": "Stop! - Take a breath - Observe - Pull back - Practice and/or Proceed",
+      "thumbnail": "https://www.thedecider.org.uk/media/mh4fj5uk/icon-stoppdecider.png",
+      "original": "gs://the-decider-skills.appspot.com/skills/STOPP/STOPP-Original.mp4",
+      "360": "gs://the-decider-skills.appspot.com/skills/STOPP/STOPP-360.mp4",
+      "540": "gs://the-decider-skills.appspot.com/skills/STOPP/STOPP-540.mp4",
+      "720": "gs://the-decider-skills.appspot.com/skills/STOPP/STOPP-720.mp4"
+    },
+    {
+      "key": "distress-2",
+      "name": "It will pass",
+      "imageUrl": "https://www.thedecider.org.uk/media/dtcnre0a/icon-it-will-passdecider.png",
+      "definition": "Thoughts and feelings come and go. Situations change. Sometimes all we can do is keep going. It will pass.",
+      "thumbnail": "https://www.thedecider.org.uk/media/dtcnre0a/icon-it-will-passdecider.png",
+      "original": "gs://the-decider-skills.appspot.com/skills/ITWILLPASS/ITWILLPASS-Original.mp4",
+      "360": "gs://the-decider-skills.appspot.com/skills/ITWILLPASS/ITWILLPASS-360.mp4",
+      "540": "gs://the-decider-skills.appspot.com/skills/ITWILLPASS/ITWILLPASS-540.mp4",
+      "720": "gs://the-decider-skills.appspot.com/skills/ITWILLPASS/ITWILLPASS-720.mp4"
+    },
+    {
+      "key": "distress-6",
+      "name": "Right Now",
+      "imageUrl": "https://www.thedecider.org.uk/media/b2rp4r3q/icon-right-nowdecider.png",
+      "definition": "Right Now: 5 things I can see - 4 things I can hear - 3 things I can touch - 2 things I can smell - 1 slow deep breath",
+      "thumbnail": "https://www.thedecider.org.uk/media/b2rp4r3q/icon-right-nowdecider.png",
+      "original": "gs://the-decider-skills.appspot.com/skills/RightNow/RightNow-Original.mp4",
+      "360": "gs://the-decider-skills.appspot.com/skills/RightNow/RightNow-360.mp4",
+      "540": "gs://the-decider-skills.appspot.com/skills/RightNow/RightNow-540.mp4",
+      "720": "gs://the-decider-skills.appspot.com/skills/RightNow/RightNow-720.mp4"
+    },
+    {
+      "key": "emotion-3",
+      "name": "Name The Emotion",
+      "definition": "What emotion am I feeling right now? I can notice the urge to react, and choose a more helpful response.",
+      "imageUrl": "https://pbs.twimg.com/media/EFiMYyOX0AA792O?format=png&name=small",
+      "thumbnail": "https://pbs.twimg.com/media/EFiMYyOX0AA792O?format=png&name=small",
+      "original": "gs://the-decider-skills.appspot.com/skills/NAMEtheEMOTION/NAMEtheEMOTION-Original.mp4",
+      "360": "gs://the-decider-skills.appspot.com/skills/NAMEtheEMOTION/NAMEtheEMOTION-360.mp4",
+      "540": "gs://the-decider-skills.appspot.com/skills/NAMEtheEMOTION/NAMEtheEMOTION-540.mp4",
+      "720": "gs://the-decider-skills.appspot.com/skills/NAMEtheEMOTION/NAMEtheEMOTION-720.mp4"
+    },
+    {
+      "key": "emotion-4",
+      "name": "Opposite Action",
+      "definition": "Notice the emotional action urge - and do the opposite. If anxious, instead of escape/avoid - approach. If angry, instead of attack - kind approach or gently withdraw. If depressed, instead of withdraw/isolate - do something, be with others.",
+      "imageUrl": "https://www.thedecider.org.uk/media/y01dxkln/icon-opposite-actiondecider.png",
+      "thumbnail": "https://www.thedecider.org.uk/media/y01dxkln/icon-opposite-actiondecider.png",
+      "original": "gs://the-decider-skills.appspot.com/skills/OppositeAction/OppositeAction-Original.mp4",
+      "360": "gs://the-decider-skills.appspot.com/skills/OppositeAction/OppositeAction-360.mp4",
+      "540": "gs://the-decider-skills.appspot.com/skills/OppositeAction/OppositeAction-540.mp4",
+      "720": "gs://the-decider-skills.appspot.com/skills/OppositeAction/OppositeAction-720.mp4"
+    },
+    {
+      "key": "mindfullness-6",
+      "name": "Fact or Option",
+      "definition": "Ask yourself: Is this thought fact or opinion? Come back to the FACTS !",
+      "imageUrl": "https://www.thedecider.org.uk/media/ctamqmvo/icon-fact-or-opiniondecider.png",
+      "thumbnail": "https://www.thedecider.org.uk/media/ctamqmvo/icon-fact-or-opiniondecider.png",
+      "original": "gs://the-decider-skills.appspot.com/skills/FACTOPINION/FACTOPINION-Original.mp4",
+      "360": "gs://the-decider-skills.appspot.com/skills/FACTOPINION/FACTOPINION-360.mp4",
+      "540": "gs://the-decider-skills.appspot.com/skills/FACTOPINION/FACTOPINION-540.mp4",
+      "720": "gs://the-decider-skills.appspot.com/skills/FACTOPINION/FACTOPINION-720.mp4"
+    },
+    {
+      "key": "emotion-1",
+      "name": "Self Care",
+      "definition": "Sleep - Eating & Exercise - Look at other factors - Find fun, achievement and enjoyment - every day. Be kind to yourself !",
+      "imageUrl": "https://www.thedecider.org.uk/media/mk4lmw5z/icon-self-caredecider.png",
+      "thumbnail": "https://www.thedecider.org.uk/media/mk4lmw5z/icon-self-caredecider.png",
+      "original": "gs://the-decider-skills.appspot.com/skills/SELFcare/SELFcare-Original.mp4",
+      "360": "gs://the-decider-skills.appspot.com/skills/SELFcare/SELFcare-360.mp4",
+      "540": "gs://the-decider-skills.appspot.com/skills/SELFcare/SELFcare-540.mp4",
+      "720": "gs://the-decider-skills.appspot.com/skills/SELFcare/SELFcare-720.mp4"
+    },
+    {
+      "key": "distress-8",
+      "name": "Values",
+      "definition": "What are my values? What is really important to me? What can I do that will help me take a step towards my chosen life direction?",
+      "imageUrl": "https://www.thedecider.org.uk/media/adxlw43h/icon-valuesdecider.png",
+      "thumbnail": "https://www.thedecider.org.uk/media/adxlw43h/icon-valuesdecider.png",
+      "original": "gs://the-decider-skills.appspot.com/skills/VALUES/VALUES-Original.mp4",
+      "360": "gs://the-decider-skills.appspot.com/skills/VALUES/VALUES-360.mp4",
+      "540": "gs://the-decider-skills.appspot.com/skills/VALUES/VALUES-540.mp4",
+      "720": "gs://the-decider-skills.appspot.com/skills/VALUES/VALUES-720.mp4"
+    },
+    {
+      "key": "interpersonal-1",
+      "name": "Listen",
+      "definition": "I have 2 years and only one mouth! How can I show that I'm really listening?",
+      "imageUrl": "https://www.thedecider.org.uk/media/2a1ghuij/icon-listendecider.png",
+      "thumbnail": "https://www.thedecider.org.uk/media/2a1ghuij/icon-listendecider.png",
+      "original": "gs://the-decider-skills.appspot.com/skills/Listen/Listen-Original.mp4",
+      "360": "gs://the-decider-skills.appspot.com/skills/Listen/Listen-360.mp4",
+      "540": "gs://the-decider-skills.appspot.com/skills/Listen/Listen-540.mp4",
+      "720": "gs://the-decider-skills.appspot.com/skills/Listen/Listen-720.mp4"
+    },
+    {
+      "key": "interpersonal-2",
+      "name": "Respect",
+      "definition": "The more I give - the more I get. Respect myself & others - Treat others as I want to be treated",
+      "imageUrl": "https://www.thedecider.org.uk/media/ak5hu0gv/icon-respectdecider.png",
+      "thumbnail": "https://www.thedecider.org.uk/media/ak5hu0gv/icon-respectdecider.png",
+      "original": "gs://the-decider-skills.appspot.com/skills/RESPECT/RESPECT-Original.mp4",
+      "360": "gs://the-decider-skills.appspot.com/skills/RESPECT/RESPECT-360.mp4",
+      "540": "gs://the-decider-skills.appspot.com/skills/RESPECT/RESPECT-540.mp4",
+      "720": "gs://the-decider-skills.appspot.com/skills/RESPECT/RESPECT-720.mp4"
+    },
+    {
+      "key": "interpersonal-4",
+      "name": "Crystal Clear",
+      "definition": "Concise - Lucid & Logical - Emotion-free expression - Assertive - Realistic.",
+      "imageUrl": "https://www.thedecider.org.uk/media/v1ab0kxp/icon-crystal-cleardecider.png",
+      "thumbnail": "https://www.thedecider.org.uk/media/v1ab0kxp/icon-crystal-cleardecider.png",
+      "original": "gs://the-decider-skills.appspot.com/skills/CrystalCLEAR/CrystalCLEAR-Original.mp4",
+      "360": "gs://the-decider-skills.appspot.com/skills/CrystalCLEAR/CrystalCLEAR-360.mp4",
+      "540": "gs://the-decider-skills.appspot.com/skills/CrystalCLEAR/CrystalCLEAR-540.mp4",
+      "720": "gs://the-decider-skills.appspot.com/skills/CrystalCLEAR/CrystalCLEAR-720.mp4"
+    },
+    {
+      "key": "interpersonal-3",
+      "name": "Reflect",
+      "definition": "What can I learn about what happened? What went well? What didn't go so well? What can I do differently next time?",
+      "imageUrl": "https://www.thedecider.org.uk/media/r1lph5i0/icon-reflectdecider.png",
+      "thumbnail": "https://www.thedecider.org.uk/media/r1lph5i0/icon-reflectdecider.png",
+      "original": "gs://the-decider-skills.appspot.com/skills/Reflect/Reflect-Original.mp4",
+      "360": "gs://the-decider-skills.appspot.com/skills/Reflect/Reflect-360.mp4",
+      "540": "gs://the-decider-skills.appspot.com/skills/Reflect/Reflect-540.mp4",
+      "720": "gs://the-decider-skills.appspot.com/skills/Reflect/Reflect-720.mp4"
+    }
+  ]
+}
