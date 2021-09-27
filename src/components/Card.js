@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     overflow: "scroll",
   },
   definition: {
-    backgroundColor: "#adcbcf",
+    backgroundColor: "#CBE9ED",
     paddingHorizontal: 5,
     borderRadius: 4,
   },
