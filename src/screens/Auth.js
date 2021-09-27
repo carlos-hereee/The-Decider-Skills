@@ -1,11 +1,5 @@
 import React, { useContext, useState } from "react";
-import {
-  View,
-  Dimensions,
-  StyleSheet,
-  Pressable,
-  Platform,
-} from "react-native";
+import { View, StyleSheet, Pressable, Platform } from "react-native";
 import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
 import HomeBG from "../components/HomeBG";
 import Login from "../components/Login";
@@ -22,7 +16,7 @@ const Auth = () => {
     <Homepage />
   ) : (
     <HomeBG>
-      <View style={[styles.container]}>
+      <View style={styles.container}>
         {fontsLoaded && (
           <View>
             <Text h2 style={styles.cardHeading}>

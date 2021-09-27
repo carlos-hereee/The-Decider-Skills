@@ -5,7 +5,6 @@ import {
   Pressable,
   StyleSheet,
   View,
-  Dimensions,
   Platform,
 } from "react-native";
 import { Text } from "react-native-elements";
@@ -17,15 +16,24 @@ import GoBack from "../components/GoBack";
 
 const Handbook = () => {
   const { makeActive, earnedBadges } = useContext(HandbookContext);
-  const { width, height } = Dimensions.get("window");
 
   const handlePress = (i) => {
     makeActive(i);
     navigate("Skills");
   };
+  const badges = {
+    iconSize: Platform.OS === "web" ? 30 : 15,
+    backgroundSize: Platform.OS === "web" ? 40 : 20,
+  };
+  const badge = {
+    width: Platform.OS === "web" ? 40 : 20,
+    height: Platform.OS === "web" ? 40 : 20,
+  };
   return (
     <View style={styles.container}>
-      <GoBack />
+      <View style={{ justifyContent: "flex-start", marginRight: "auto" }}>
+        <GoBack />
+      </View>
       <View style={styles.menu}>
         {lifeSkills.map((item) => (
           <View
@@ -33,8 +41,6 @@ const Handbook = () => {
               styles.handbookSkill,
               {
                 backgroundColor: item.color,
-                width: width / 2.3,
-                height: height / 4,
               },
             ]}>
             <Pressable
@@ -45,7 +51,9 @@ const Handbook = () => {
                 width: "100%",
               }}
               onPress={() => handlePress(item)}>
-              <Text style={{ color: "white" }}>{item.title}</Text>
+              <Text h5 style={{ color: "white" }}>
+                {item.title}
+              </Text>
               <FlatList
                 data={item.skills}
                 numColumns={4}
@@ -54,19 +62,13 @@ const Handbook = () => {
                   return earnedBadges.filter((data) => data.key === item.key)
                     .length ? (
                     <View style={styles.badge}>
-                      <Badge
-                        data={{
-                          src: item.imageUrl,
-                          iconSize: width / 30,
-                          backgroundSize: width / 18,
-                        }}
-                      />
+                      <Badge data={{ ...badges, src: item.imageUrl }} />
                     </View>
                   ) : (
                     <View style={styles.badge}>
                       <Image
                         source={require("../../assets/badge.png")}
-                        style={{ width: width / 18, height: width / 18 }}
+                        style={badge}
                       />
                     </View>
                   );
@@ -84,6 +86,12 @@ export default Handbook;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
+    ...Platform.select({
+      web: {
+        maxWidth: 1000,
+        marginHorizontal: "auto",
+      },
+    }),
   },
   menu: {
     flex: 1,
@@ -93,12 +101,14 @@ const styles = StyleSheet.create({
   },
   handbookSkill: {
     margin: 10,
-    padding: "3%",
+    padding: 10,
     borderRadius: 4,
     justifyContent: "center",
     alignItems: "center",
     ...Platform.select({
       web: {
+        width: 300,
+        height: 200,
         shadowColor: "#000",
         shadowOffset: {
           width: 0,
@@ -106,6 +116,14 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
+      },
+      android: {
+        width: 140,
+        height: 170,
+      },
+      ios: {
+        width: 140,
+        height: 170,
       },
       default: {
         elevation: 5,

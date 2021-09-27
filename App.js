@@ -41,8 +41,8 @@ export default function App() {
           <Stack.Screen name="Skills" component={Skills} />
           <Stack.Screen name="ClaimBadge" component={ClaimBadge} />
         </Stack.Navigator>
-        <StatusBar style="auto" />
         <Footer />
+        <StatusBar style="auto" />
       </HandbookState>
     </NavigationContainer>
   ) : (

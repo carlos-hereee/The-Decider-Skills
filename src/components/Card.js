@@ -1,43 +1,29 @@
 import React from "react";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  Platform,
-} from "react-native";
+import { Image, StyleSheet, Text, View, Platform } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import VideoPlayer from "../components/VideoPlayer";
 
 const Card = ({ data }) => {
-  const { width, height } = Dimensions.get("window");
-
+  const imageStyle = {
+    width: Platform.OS === "web" ? 150 : 100,
+    height: Platform.OS === "web" ? 150 : 100,
+  };
   return (
-    <View
-      style={[
-        styles.card,
-        {
-          marginHorizontal: width / 20,
-          padding: width / 25,
-        },
-      ]}>
+    <View style={styles.card}>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Image
           source={{ uri: data?.imageUrl }}
-          style={{ width: width / 4, height: width / 4 }}
+          style={imageStyle}
           resizeMode="contain"
         />
-        <View style={{ width: "55%" }}>
-          <Text style={{ fontSize: 20, fontWeight: "700" }}>{data.name}</Text>
-        </View>
+        <Text style={{ fontWeight: "700" }}>{data.name}</Text>
       </View>
       <ScrollView style={styles.definition}>
-        <Text style={{ textAlign: "center" }}>{data.definition}</Text>
+        <Text style={{ textAlign: "center", height: "100%" }}>
+          {data.definition}
+        </Text>
       </ScrollView>
-      <View style={{ alignItems: "center", height: height / 4 }}>
-        <VideoPlayer vid={data} />
-      </View>
+      <VideoPlayer vid={data} />
     </View>
   );
 };
@@ -47,6 +33,8 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: 4,
     backgroundColor: "#EFF5FA",
+    marginHorizontal: 20,
+    padding: 5,
     height: "60%",
     ...Platform.select({
       web: {

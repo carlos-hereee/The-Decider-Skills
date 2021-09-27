@@ -1,10 +1,11 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
 import { Video } from "expo-av";
 import * as ScreenOrientation from "expo-screen-orientation";
-import { ActivityIndicator, Dimensions, Pressable, View } from "react-native";
+import { ActivityIndicator, Dimensions, Platform, View } from "react-native";
 import { HandbookContext } from "../utils/Context";
 import { navigate } from "../utils/RootNavigation";
 import { getVideoUrl } from "../utils/firebase.config";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const VideoPlayer = ({ vid }) => {
   const videoRef = useRef(null);
@@ -50,8 +51,14 @@ const VideoPlayer = ({ vid }) => {
       }
     }
   };
+
+  const videoStyle = {
+    maxWidth: 300,
+    height: !isLoading ? 0 : Platform.OS === "web" ? 150 : 200,
+    marginHorizontal: "auto",
+  };
   return (
-    <Pressable
+    <TouchableOpacity
       onPress={() =>
         status.isPlaying
           ? videoRef.current.pauseAsync()
@@ -61,7 +68,7 @@ const VideoPlayer = ({ vid }) => {
         ref={videoRef}
         source={video.source}
         useNativeControls
-        style={{ flex: 1, width: !isLoading ? 0 : width * 0.6 }}
+        style={videoStyle}
         resizeMode="contain"
         onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
         onFullscreenUpdate={handleFullscreen}
@@ -74,7 +81,7 @@ const VideoPlayer = ({ vid }) => {
           <ActivityIndicator size={35} color="#600" />
         </View>
       )}
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 

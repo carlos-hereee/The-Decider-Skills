@@ -5,7 +5,6 @@ import {
   Pressable,
   StyleSheet,
   Text,
-  Dimensions,
   View,
   Platform,
 } from "react-native";
@@ -17,16 +16,22 @@ import GoBack from "../components/GoBack";
 const Skills = () => {
   const { earnedBadges, skills } = useContext(HandbookContext);
   const [activeSkill, setActiveSkill] = useState(skills[0]);
-  const { width } = Dimensions.get("window");
 
+  const imageStyle = {
+    width: Platform.OS === "web" ? 100 : 60,
+    height: Platform.OS === "web" ? 100 : 60,
+  };
   return (
-    <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
+    <View style={styles.container}>
       <GoBack />
       <Card data={activeSkill} />
       <FlatList
         data={skills}
         horizontal
-        contentContainerStyle={{ paddingVertical: 15 }}
+        contentContainerStyle={{
+          paddingVertical: 15,
+          justifyContent: "center",
+        }}
         renderItem={({ item }) => (
           <Pressable
             onPress={() => setActiveSkill(item)}
@@ -54,7 +59,7 @@ const Skills = () => {
             ) : null}
             <Image
               source={{ uri: item.imageUrl }}
-              style={{ width: width / 4, height: width / 4 }}
+              style={imageStyle}
               resizeMode="contain"
             />
             <Text style={{ fontWeight: "700", textAlign: "center" }}>
@@ -69,6 +74,15 @@ const Skills = () => {
 export default Skills;
 
 const styles = StyleSheet.create({
+  container: {
+    ...Platform.select({
+      web: {
+        width: "100%",
+        maxWidth: 1000,
+        marginHorizontal: "auto",
+      },
+    }),
+  },
   listItem: {
     flex: 1,
     position: "relative",
