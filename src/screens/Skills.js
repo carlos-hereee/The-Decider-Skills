@@ -8,29 +8,19 @@ import {
   Dimensions,
   View,
 } from "react-native";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { HandbookContext } from "../utils/Context";
 import Card from "../components/Card";
 import Badge from "../components/Badge";
-import { navigationRef } from "../utils/RootNavigation";
+import GoBack from "../components/GoBack";
 
 const Skills = () => {
-  const { resetActive, earnedBadges, skills } = useContext(HandbookContext);
+  const { earnedBadges, skills } = useContext(HandbookContext);
   const [activeSkill, setActiveSkill] = useState(skills[0]);
-  const { width, height } = Dimensions.get("window");
+  const { width } = Dimensions.get("window");
 
-  const handlePress = () => {
-    resetActive();
-    navigationRef.goBack();
-  };
   return (
     <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
-      <Pressable
-        onPress={() => handlePress()}
-        style={{ paddingTop: height / 40 }}>
-        <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" size={45} />
-      </Pressable>
+      <GoBack />
       <Card data={activeSkill} />
       <FlatList
         data={skills}

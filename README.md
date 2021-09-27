@@ -1,4 +1,4 @@
-# LIFE HANDBOOK
+# The Decider Skills
 
 Styles Using Font AWESOME
 

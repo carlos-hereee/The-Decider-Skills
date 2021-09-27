@@ -75,14 +75,6 @@ const Login = () => {
 };
 export default Login;
 const styles = StyleSheet.create({
-  loginContainer: {
-    width: "80%",
-    alignItems: "center",
-    backgroundColor: "white",
-    padding: 10,
-    elevation: 10,
-    backgroundColor: "#e6e6e6",
-  },
   textInput: {
     height: 40,
     padding: "2%",

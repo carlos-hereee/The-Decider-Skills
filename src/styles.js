@@ -1,10 +1,9 @@
-export const styles = StyleSheet.create({
+export const globalStyles = StyleSheet.create({
   button: {
-    textAlign: "center",
-    fontSize: 20,
     fontFamily: "Amaranth_700Bold",
-    marginTop: 10,
-    padding: 10,
+    marginTop: "auto",
+    padding: 5,
+    margin: 5,
     backgroundColor: "#00A89E",
     borderRadius: 4,
   },

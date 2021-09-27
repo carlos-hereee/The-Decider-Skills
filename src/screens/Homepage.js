@@ -88,7 +88,7 @@ const Homepage = () => {
   }, [video.key]);
   return fontsLoaded ? (
     <HomeBG>
-      <View style={styles.container}>
+      <View style={[styles.container, ,]}>
         {video.key && (
           <Video
             ref={videoRef}
@@ -160,11 +160,12 @@ const styles = StyleSheet.create({
   container: {
     height: "70%",
     width: "80%",
-    padding: "5%",
+    padding: 20,
     justifyContent: "space-around",
     backgroundColor: "#EFF5FA",
     borderRadius: 4,
     elevation: 10,
+    maxWidth: 500,
   },
   cardHeading: {
     textAlign: "center",

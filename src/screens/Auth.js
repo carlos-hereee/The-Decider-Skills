@@ -16,7 +16,7 @@ const Auth = () => {
     <Homepage />
   ) : (
     <HomeBG>
-      <View style={styles.container}>
+      <View style={[styles.container]}>
         {fontsLoaded && (
           <View>
             <Text style={[styles.cardHeading, { fontSize: 30 / fontScale }]}>
@@ -51,6 +51,7 @@ export default Auth;
 const styles = StyleSheet.create({
   container: {
     width: "80%",
+    maxWidth: 500,
     padding: "5%",
     justifyContent: "space-around",
     backgroundColor: "#EFF5FA",
@@ -61,19 +62,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontFamily: "Amaranth_700Bold",
     color: "#00122C",
-  },
-  button: {
-    fontFamily: "Amaranth_700Bold",
-    marginTop: "auto",
-    padding: 5,
-    margin: 5,
-    backgroundColor: "#00A89E",
-    borderRadius: 4,
-    elevation: 5,
-  },
-  buttonTxt: {
-    fontSize: 15,
-    textAlign: "center",
-    color: "#ffffff",
   },
 });

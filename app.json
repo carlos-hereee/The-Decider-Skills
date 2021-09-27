@@ -17,8 +17,10 @@
       "assets/*"
     ],
     "ios": {
+      "buildNumber": "1.0.0",
       "supportsTablet": true,
-      "requireFullScreen": true
+      "requireFullScreen": true,
+      "bundleIdentifier": "com.silent2code.handbook"
     },
     "android": {
       "versionCode": 3,
