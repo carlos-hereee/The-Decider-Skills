@@ -7,6 +7,7 @@ import {
   View,
   Image,
   Dimensions,
+  Platform,
 } from "react-native";
 import { HandbookContext } from "../utils/Context";
 import { navigate } from "../utils/RootNavigation";
@@ -63,6 +64,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#EFF5FA",
     margin: 5,
     borderRadius: 4,
-    elevation: 10,
+    ...Platform.select({
+      web: {
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+      },
+      default: {
+        elevation: 5,
+      },
+    }),
   },
 });

@@ -1,16 +1,22 @@
 import React, { useContext, useState } from "react";
-import { View, Text, Dimensions, StyleSheet, Pressable } from "react-native";
+import {
+  View,
+  Dimensions,
+  StyleSheet,
+  Pressable,
+  Platform,
+} from "react-native";
 import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
 import HomeBG from "../components/HomeBG";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import { HandbookContext } from "../utils/Context";
 import Homepage from "./Homepage";
+import { Text } from "react-native-elements";
 
 const Auth = () => {
   const { client } = useContext(HandbookContext);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { fontScale } = Dimensions.get("window");
   let [fontsLoaded] = useFonts({ Amaranth_700Bold });
   return client.uid ? (
     <Homepage />
@@ -19,10 +25,10 @@ const Auth = () => {
       <View style={[styles.container]}>
         {fontsLoaded && (
           <View>
-            <Text style={[styles.cardHeading, { fontSize: 30 / fontScale }]}>
+            <Text h2 style={styles.cardHeading}>
               The Decider
             </Text>
-            <Text style={[styles.cardHeading, { fontSize: 30 / fontScale }]}>
+            <Text h2 style={styles.cardHeading}>
               Skills
             </Text>
           </View>
@@ -56,7 +62,20 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     backgroundColor: "#EFF5FA",
     borderRadius: 4,
-    elevation: 10,
+    ...Platform.select({
+      web: {
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+      },
+      default: {
+        elevation: 5,
+      },
+    }),
   },
   cardHeading: {
     textAlign: "center",

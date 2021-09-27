@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View, Platform } from "react-native";
 import Badge from "../components/Badge";
 import { HandbookContext } from "../utils/Context";
 import { navigationRef } from "../utils/RootNavigation";
@@ -40,6 +40,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#00A89E",
     padding: 10,
     borderRadius: 4,
-    elevation: 5,
+    ...Platform.select({
+      web: {
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+      },
+      default: {
+        elevation: 5,
+      },
+    }),
   },
 });

@@ -7,6 +7,7 @@ import {
   Text,
   Dimensions,
   View,
+  Platform,
 } from "react-native";
 import { HandbookContext } from "../utils/Context";
 import Card from "../components/Card";
@@ -79,6 +80,19 @@ const styles = StyleSheet.create({
     padding: 5,
     width: 100,
     borderRadius: 4,
-    elevation: 5,
+    ...Platform.select({
+      web: {
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+      },
+      default: {
+        elevation: 5,
+      },
+    }),
   },
 });

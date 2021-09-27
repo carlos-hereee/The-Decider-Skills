@@ -1,5 +1,12 @@
 import React from "react";
-import { Image, StyleSheet, Text, View, Dimensions } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Platform,
+} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import VideoPlayer from "../components/VideoPlayer";
 
@@ -41,8 +48,20 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: "#EFF5FA",
     height: "60%",
-    elevation: 5,
-    overflow: "scroll",
+    ...Platform.select({
+      web: {
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+      },
+      default: {
+        elevation: 5,
+      },
+    }),
   },
   definition: {
     backgroundColor: "#CBE9ED",

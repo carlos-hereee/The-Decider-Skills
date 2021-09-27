@@ -6,6 +6,7 @@ import {
   FlatList,
   Dimensions,
   ActivityIndicator,
+  Platform,
 } from "react-native";
 import { Text } from "react-native-elements";
 import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
@@ -98,10 +99,10 @@ const Homepage = () => {
             onFullscreenUpdate={handleFullscreen}
           />
         )}
-        <Text h2 style={[styles.cardHeading, { fontSize: 30 / fontScale }]}>
+        <Text h2 style={styles.cardHeading}>
           The Decider
         </Text>
-        <Text h2 style={[styles.cardHeading, { fontSize: 30 / fontScale }]}>
+        <Text h2 style={styles.cardHeading}>
           Skills
         </Text>
         <View style={{ flexGrow: 1, justifyContent: "center" }}>
@@ -164,8 +165,21 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     backgroundColor: "#EFF5FA",
     borderRadius: 4,
-    elevation: 10,
     maxWidth: 500,
+    ...Platform.select({
+      web: {
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+      },
+      default: {
+        elevation: 5,
+      },
+    }),
   },
   cardHeading: {
     textAlign: "center",
@@ -179,7 +193,20 @@ const styles = StyleSheet.create({
     margin: 5,
     backgroundColor: "#00A89E",
     borderRadius: 4,
-    elevation: 5,
+    ...Platform.select({
+      web: {
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+      },
+      default: {
+        elevation: 5,
+      },
+    }),
   },
   buttonTxt: {
     fontSize: 15,

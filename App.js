@@ -31,7 +31,7 @@ export default function App() {
   return isReady ? (
     <NavigationContainer ref={navigationRef}>
       <HandbookState>
-        {/* <Stack.Navigator
+        <Stack.Navigator
           initialRouteName="Auth"
           screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Auth" component={Auth} />
@@ -42,8 +42,7 @@ export default function App() {
           <Stack.Screen name="ClaimBadge" component={ClaimBadge} />
         </Stack.Navigator>
         <StatusBar style="auto" />
-        <Footer /> */}
-        <Handbook />
+        <Footer />
       </HandbookState>
     </NavigationContainer>
   ) : (
