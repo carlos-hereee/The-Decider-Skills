@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { StyleSheet, Dimensions, Pressable, View } from "react-native";
+import { Dimensions, Pressable, View } from "react-native";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { navigationRef } from "../utils/RootNavigation";
@@ -7,14 +7,14 @@ import { HandbookContext } from "../utils/Context";
 
 export default function GoBack() {
   const { resetActive } = useContext(HandbookContext);
-  const { width, height } = Dimensions.get("window");
+  const { height } = Dimensions.get("window");
 
   const handlePress = () => {
     resetActive();
     navigationRef.goBack();
   };
   return (
-    <View style={{ marginHorizontal: 10 }}>
+    <View style={{ marginHorizontal: 10, marginTop: 20 }}>
       <Pressable
         onPress={() => handlePress()}
         style={{ paddingTop: height / 40 }}>
@@ -23,5 +23,3 @@ export default function GoBack() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({});

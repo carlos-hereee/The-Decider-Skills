@@ -12,6 +12,7 @@ import { HandbookContext } from "../utils/Context";
 import Card from "../components/Card";
 import Badge from "../components/Badge";
 import GoBack from "../components/GoBack";
+import { globalStyles } from "../styles";
 
 const Skills = () => {
   const { earnedBadges, skills } = useContext(HandbookContext);
@@ -37,8 +38,12 @@ const Skills = () => {
             onPress={() => setActiveSkill(item)}
             style={
               activeSkill === item
-                ? [styles.listItem, { backgroundColor: "#CBE9ED" }]
-                : styles.listItem
+                ? [
+                    styles.listItem,
+                    globalStyles.shadow,
+                    { backgroundColor: "#CBE9ED" },
+                  ]
+                : [styles.listItem, globalStyles.shadow]
             }>
             {earnedBadges.filter((data) => data.key === item.key).length ? (
               <View
@@ -95,19 +100,5 @@ const styles = StyleSheet.create({
     width: 100,
     height: 150,
     borderRadius: 4,
-    ...Platform.select({
-      web: {
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-      },
-      default: {
-        elevation: 5,
-      },
-    }),
   },
 });

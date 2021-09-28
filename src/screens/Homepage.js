@@ -16,6 +16,7 @@ import { Video } from "expo-av";
 import * as ScreenOrientation from "expo-screen-orientation";
 import HomeBG from "../components/HomeBG";
 import { getVideoUrl } from "../utils/firebase.config";
+import { globalStyles } from "../styles";
 
 const introVideos = [
   {
@@ -89,7 +90,7 @@ const Homepage = () => {
   }, [video.key]);
   return fontsLoaded ? (
     <HomeBG>
-      <View style={[styles.container, ,]}>
+      <View style={[styles.container, globalStyles.shadow]}>
         {video.key && (
           <Video
             ref={videoRef}
@@ -118,7 +119,11 @@ const Homepage = () => {
             contentContainerStyle={{ flexGrow: 1 }}
             renderItem={({ item }) => (
               <Pressable
-                style={[styles.button, { paddingVertical: "3%" }]}
+                style={[
+                  styles.button,
+                  globalStyles.shadow,
+                  { paddingVertical: "3%" },
+                ]}
                 onPress={() => {
                   setIsLoading(true);
                   setVideo(item);
@@ -136,10 +141,14 @@ const Homepage = () => {
           </Text>
         </View>
         <View style={{ flexDirection: "row", justifyContent: "center" }}>
-          <Pressable onPress={() => navigate("TheFizz")} style={styles.button}>
+          <Pressable
+            onPress={() => navigate("TheFizz")}
+            style={[styles.button, globalStyles.shadow]}>
             <Text style={[styles.buttonTxt, { padding: 5 }]}>12 Skills</Text>
           </Pressable>
-          <Pressable onPress={() => navigate("Handbook")} style={styles.button}>
+          <Pressable
+            onPress={() => navigate("Handbook")}
+            style={[styles.button, globalStyles.shadow]}>
             <Text style={[styles.buttonTxt, { padding: 5 }]}>32 Skills</Text>
           </Pressable>
         </View>
@@ -166,20 +175,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#EFF5FA",
     borderRadius: 4,
     maxWidth: 500,
-    ...Platform.select({
-      web: {
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-      },
-      default: {
-        elevation: 5,
-      },
-    }),
   },
   cardHeading: {
     textAlign: "center",
@@ -193,20 +188,6 @@ const styles = StyleSheet.create({
     margin: 5,
     backgroundColor: "#00A89E",
     borderRadius: 4,
-    ...Platform.select({
-      web: {
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-      },
-      default: {
-        elevation: 5,
-      },
-    }),
   },
   buttonTxt: {
     fontSize: 15,

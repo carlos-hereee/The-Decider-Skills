@@ -13,6 +13,7 @@ import lifeSkills from "../utils/data.json";
 import Badge from "../components/Badge";
 import { navigate } from "../utils/RootNavigation";
 import GoBack from "../components/GoBack";
+import { globalStyles } from "../styles";
 
 const Handbook = () => {
   const { makeActive, earnedBadges } = useContext(HandbookContext);
@@ -40,6 +41,7 @@ const Handbook = () => {
             key={item.key}
             style={[
               styles.handbookSkill,
+              globalStyles.shadow,
               {
                 backgroundColor: item.color,
               },
@@ -109,13 +111,6 @@ const styles = StyleSheet.create({
       web: {
         width: 300,
         height: 200,
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
       },
       android: {
         width: 140,
@@ -124,9 +119,6 @@ const styles = StyleSheet.create({
       ios: {
         width: 140,
         height: 170,
-      },
-      default: {
-        elevation: 5,
       },
     }),
   },

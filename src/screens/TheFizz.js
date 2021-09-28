@@ -9,6 +9,8 @@ import {
   Dimensions,
   Platform,
 } from "react-native";
+import GoBack from "../components/GoBack";
+import { globalStyles } from "../styles";
 import { HandbookContext } from "../utils/Context";
 import { navigate } from "../utils/RootNavigation";
 import data from "../utils/theFizz.json";
@@ -27,6 +29,9 @@ const TheFizz = () => {
   };
   return (
     <View style={styles.menu}>
+      <View style={{ marginRight: "auto" }}>
+        <GoBack />
+      </View>
       <FlatList
         data={data.theFizz}
         numColumns={3}
@@ -36,18 +41,24 @@ const TheFizz = () => {
             onPress={() => handlePress(item)}
             style={[
               styles.listItem,
+              globalStyles.shadow,
               { width: width / 3.3, height: height / 6 },
             ]}>
-            <View style={{ flex: 1, alignItems: "center" }}>
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "space-around",
+              }}>
               <Image
                 source={{ uri: item.imageUrl }}
                 resizeMode="contain"
                 style={imageStyle}
               />
+              <Text style={{ fontWeight: "700", textAlign: "center" }}>
+                {item.name.toUpperCase()}
+              </Text>
             </View>
-            <Text style={{ fontWeight: "700", textAlign: "center" }}>
-              {item.name.toUpperCase()}
-            </Text>
           </Pressable>
         )}
       />
@@ -61,25 +72,19 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#ffffff",
+    ...Platform.select({
+      web: {
+        width: "100%",
+        maxWidth: 1000,
+        marginHorizontal: "auto",
+      },
+    }),
   },
   listItem: {
     padding: 5,
     backgroundColor: "#EFF5FA",
     margin: 5,
     borderRadius: 4,
-    ...Platform.select({
-      web: {
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-      },
-      default: {
-        elevation: 5,
-      },
-    }),
   },
 });

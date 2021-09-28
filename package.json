@@ -45,7 +45,8 @@
     "react-native-svg": "^12.1.1",
     "react-native-unimodules": "~0.14.5",
     "react-native-web": "^0.17.1",
-    "yup": "^0.32.9"
+    "yup": "^0.32.9",
+    "expo-video-thumbnails": "~5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"

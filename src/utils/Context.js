@@ -50,6 +50,7 @@ export const HandbookState = ({ children }) => {
       getData(user.uid);
     }
   }, [user]);
+
   const signIn = async ({ email, password }) => {
     try {
       await auth.signInWithEmailAndPassword(email, password);

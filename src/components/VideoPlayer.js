@@ -80,7 +80,13 @@ const VideoPlayer = ({ vid }) => {
       />
 
       {!isLoading && (
-        <View style={[styles.video, { marginTop: 30 }]}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 30,
+          }}>
           <ActivityIndicator size={35} color="#600" />
         </View>
       )}
@@ -95,11 +101,6 @@ const styles = StyleSheet.create({
     ...Platform.select({
       web: {
         marginHorizontal: "auto",
-      },
-      default: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
       },
     }),
   },

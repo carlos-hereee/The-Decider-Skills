@@ -24,7 +24,9 @@ const Card = ({ data }) => {
       <View style={styles.definition}>
         <Text style={{ textAlign: "center" }}>{data.definition}</Text>
       </View>
-      <VideoPlayer vid={data} />
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <VideoPlayer vid={data} />
+      </View>
     </View>
   );
 };
