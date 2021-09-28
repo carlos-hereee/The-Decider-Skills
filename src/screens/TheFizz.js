@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import {
   FlatList,
   Pressable,
@@ -21,6 +21,10 @@ const TheFizz = () => {
     makeActive({ title: item.name, skills: data.theFizz });
     navigate("Skills");
   };
+  const imageStyle = {
+    width: Platform.OS === "web" ? 80 : 50,
+    height: Platform.OS === "web" ? 80 : 50,
+  };
   return (
     <View style={styles.menu}>
       <FlatList
@@ -38,7 +42,7 @@ const TheFizz = () => {
               <Image
                 source={{ uri: item.imageUrl }}
                 resizeMode="contain"
-                style={{ width: width / 6, height: width / 6 }}
+                style={imageStyle}
               />
             </View>
             <Text style={{ fontWeight: "700", textAlign: "center" }}>
@@ -57,7 +61,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#d4e2e6",
   },
   listItem: {
     padding: 5,

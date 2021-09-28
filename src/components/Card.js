@@ -1,12 +1,13 @@
 import React from "react";
-import { Image, StyleSheet, Text, View, Platform } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+import { Image, StyleSheet, View, Platform } from "react-native";
 import VideoPlayer from "../components/VideoPlayer";
+import { Text } from "react-native-elements";
 
 const Card = ({ data }) => {
   const imageStyle = {
     width: Platform.OS === "web" ? 150 : 100,
     height: Platform.OS === "web" ? 150 : 100,
+    margin: 5,
   };
   return (
     <View style={styles.card}>
@@ -16,13 +17,13 @@ const Card = ({ data }) => {
           style={imageStyle}
           resizeMode="contain"
         />
-        <Text style={{ fontWeight: "700" }}>{data.name}</Text>
-      </View>
-      <ScrollView style={styles.definition}>
-        <Text style={{ textAlign: "center", height: "100%" }}>
-          {data.definition}
+        <Text h4 style={{ fontWeight: "600", maxWidth: "55%" }}>
+          {data.name}
         </Text>
-      </ScrollView>
+      </View>
+      <View style={styles.definition}>
+        <Text style={{ textAlign: "center" }}>{data.definition}</Text>
+      </View>
       <VideoPlayer vid={data} />
     </View>
   );
@@ -53,7 +54,8 @@ const styles = StyleSheet.create({
   },
   definition: {
     backgroundColor: "#CBE9ED",
-    paddingHorizontal: 5,
+    padding: 5,
+    marginBottom: 5,
     borderRadius: 4,
   },
 });

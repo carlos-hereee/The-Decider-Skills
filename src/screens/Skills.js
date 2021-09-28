@@ -91,8 +91,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#EFF5FA",
     marginHorizontal: 10,
-    padding: 5,
+    paddingHorizontal: 5,
     width: 100,
+    height: 150,
     borderRadius: 4,
     ...Platform.select({
       web: {

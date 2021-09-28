@@ -1,16 +1,20 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
 import { Video } from "expo-av";
 import * as ScreenOrientation from "expo-screen-orientation";
-import { ActivityIndicator, Dimensions, Platform, View } from "react-native";
+import {
+  ActivityIndicator,
+  Platform,
+  Pressable,
+  StyleSheet,
+  View,
+} from "react-native";
 import { HandbookContext } from "../utils/Context";
 import { navigate } from "../utils/RootNavigation";
 import { getVideoUrl } from "../utils/firebase.config";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 const VideoPlayer = ({ vid }) => {
   const videoRef = useRef(null);
   const { badgeToClaim, earnedBadges } = useContext(HandbookContext);
-  const { width } = Dimensions.get("window");
   const [status, setStatus] = useState();
   const [video, setVideo] = useState({ vid });
   const [quality, setQuality] = useState("original");
@@ -53,12 +57,11 @@ const VideoPlayer = ({ vid }) => {
   };
 
   const videoStyle = {
-    maxWidth: 300,
-    height: !isLoading ? 0 : Platform.OS === "web" ? 150 : 200,
-    marginHorizontal: "auto",
+    width: !isLoading ? 0 : Platform.OS === "web" ? "60%" : 200,
+    height: !isLoading ? 0 : 150,
   };
   return (
-    <TouchableOpacity
+    <Pressable
       onPress={() =>
         status.isPlaying
           ? videoRef.current.pauseAsync()
@@ -68,7 +71,7 @@ const VideoPlayer = ({ vid }) => {
         ref={videoRef}
         source={video.source}
         useNativeControls
-        style={videoStyle}
+        style={[videoStyle, styles.video]}
         resizeMode="contain"
         onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
         onFullscreenUpdate={handleFullscreen}
@@ -77,12 +80,27 @@ const VideoPlayer = ({ vid }) => {
       />
 
       {!isLoading && (
-        <View style={{ flex: 1, alignItems: "center", alignItems: "center" }}>
+        <View style={[styles.video, { marginTop: 30 }]}>
           <ActivityIndicator size={35} color="#600" />
         </View>
       )}
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
 export default VideoPlayer;
+
+const styles = StyleSheet.create({
+  video: {
+    ...Platform.select({
+      web: {
+        marginHorizontal: "auto",
+      },
+      default: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      },
+    }),
+  },
+});

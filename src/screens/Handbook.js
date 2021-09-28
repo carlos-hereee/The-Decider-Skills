@@ -37,6 +37,7 @@ const Handbook = () => {
       <View style={styles.menu}>
         {lifeSkills.map((item) => (
           <View
+            key={item.key}
             style={[
               styles.handbookSkill,
               {
@@ -44,7 +45,6 @@ const Handbook = () => {
               },
             ]}>
             <Pressable
-              key={item.key}
               style={{
                 flex: 1,
                 justifyContent: "space-between",
