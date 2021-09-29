@@ -1,15 +1,17 @@
 import React, { useContext } from "react";
 import {
   View,
-  Text,
   TextInput,
   StyleSheet,
   KeyboardAvoidingView,
+  Pressable,
 } from "react-native";
 import { Formik } from "formik";
-import { Button } from "react-native-elements";
+import { Button, Text } from "react-native-elements";
 import { HandbookContext } from "../utils/Context";
 import * as yup from "yup";
+import HomeBG from "./HomeBG";
+import { navigate } from "../utils/RootNavigation";
 
 const signUpValidationSchema = yup.object().shape({
   email: yup
@@ -34,71 +36,116 @@ const signUpValidationSchema = yup.object().shape({
 });
 const Register = () => {
   const { register, authError } = useContext(HandbookContext);
+
   return (
-    <KeyboardAvoidingView>
-      <Formik
-        initialValues={{ email: "", password: "", confirmPassword: "" }}
-        onSubmit={(values) => register(values)}
-        validationSchema={signUpValidationSchema}>
-        {({
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          values,
-          errors,
-          touched,
-          isValid,
-        }) => (
-          <View>
-            {authError && <Text> {authError}</Text>}
-            <Text>Email: </Text>
-            <Text style={{ fontSize: 10, color: "red" }}>
-              {touched.email && errors.email}
-            </Text>
-            <TextInput
-              name="email"
-              placeholder=" Email Address"
-              style={styles.textInput}
-              onChangeText={handleChange("email")}
-              onBlur={handleBlur("email")}
-              value={values.email}
-              keyboardType="email-address"
-            />
-            <Text>Password: </Text>
-            <Text style={{ fontSize: 10, color: "red" }}>
-              {touched.password && errors.password}
-            </Text>
-            <TextInput
-              name="password"
-              placeholder=" Password"
-              style={styles.textInput}
-              onChangeText={handleChange("password")}
-              onBlur={handleBlur("password")}
-              value={values.password}
-              secureTextEntry
-            />
-            <Text style={{ fontSize: 10, color: "red" }}>
-              {touched.confirmPassword && errors.confirmPassword}
-            </Text>
-            <Text>Confirm Password: </Text>
-            <TextInput
-              name="confirmPassword"
-              placeholder=" Confirm Password"
-              style={styles.textInput}
-              onChangeText={handleChange("confirmPassword")}
-              onBlur={handleBlur("confirmPassword")}
-              value={values.confirmPassword}
-              secureTextEntry
-            />
-            <Button onPress={handleSubmit} title="Submit" disabled={!isValid} />
-          </View>
-        )}
-      </Formik>
-    </KeyboardAvoidingView>
+    <HomeBG>
+      <View style={styles.container}>
+        <Text h2 style={{ textAlign: "center" }}>
+          Create Account
+        </Text>
+        <KeyboardAvoidingView>
+          <Formik
+            initialValues={{ email: "", password: "", confirmPassword: "" }}
+            onSubmit={(values) => register(values)}
+            validationSchema={signUpValidationSchema}>
+            {({
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              values,
+              errors,
+              touched,
+              isValid,
+            }) => (
+              <View>
+                <Text style={{ color: "red", textAlign: "center" }}>
+                  {authError}
+                </Text>
+                <Text>Email: </Text>
+                <Text style={{ fontSize: 10, color: "red" }}>
+                  {touched.email && errors.email}
+                </Text>
+                <TextInput
+                  name="email"
+                  placeholder=" Email Address"
+                  style={styles.textInput}
+                  onChangeText={handleChange("email")}
+                  onBlur={handleBlur("email")}
+                  value={values.email}
+                  keyboardType="email-address"
+                />
+                <Text>Password: </Text>
+                <Text style={{ color: "red" }}>
+                  {touched.password && errors.password}
+                </Text>
+                <TextInput
+                  name="password"
+                  placeholder=" Password"
+                  style={styles.textInput}
+                  onChangeText={handleChange("password")}
+                  onBlur={handleBlur("password")}
+                  value={values.password}
+                  secureTextEntry
+                />
+                <Text style={{ color: "red" }}>
+                  {touched.confirmPassword && errors.confirmPassword}
+                </Text>
+                <Text>Confirm Password: </Text>
+                <TextInput
+                  name="confirmPassword"
+                  placeholder=" Confirm Password"
+                  style={styles.textInput}
+                  onChangeText={handleChange("confirmPassword")}
+                  onBlur={handleBlur("confirmPassword")}
+                  value={values.confirmPassword}
+                  secureTextEntry
+                />
+                <Button
+                  onPress={handleSubmit}
+                  style={{ marginTop: 10 }}
+                  title="Submit"
+                  disabled={!isValid}
+                />
+              </View>
+            )}
+          </Formik>
+        </KeyboardAvoidingView>
+        <Pressable onPress={() => navigate("Auth")}>
+          <Text
+            style={{
+              textAlign: "center",
+              color: "blue",
+              textDecorationLine: "underline",
+              marginTop: 10,
+            }}>
+            Sign In
+          </Text>
+        </Pressable>
+        <Pressable onPress={() => navigate("ForgotPassword")}>
+          <Text
+            style={{
+              textAlign: "center",
+              color: "blue",
+              textDecorationLine: "underline",
+              marginTop: 10,
+            }}>
+            Forgot Password?
+          </Text>
+        </Pressable>
+      </View>
+    </HomeBG>
   );
 };
 export default Register;
 const styles = StyleSheet.create({
+  container: {
+    width: "80%",
+    maxWidth: 500,
+    padding: "5%",
+    justifyContent: "space-around",
+    backgroundColor: "#EFF5FA",
+    borderRadius: 4,
+  },
   textInput: {
     height: 40,
     padding: "2%",

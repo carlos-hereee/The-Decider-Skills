@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import { reducer } from "./reducer";
-import { auth, getVideoUrl, usersRef } from "../utils/firebase.config";
+import { auth, usersRef } from "../utils/firebase.config";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export const HandbookContext = createContext();
@@ -13,7 +13,9 @@ export const HandbookState = ({ children }) => {
     earnedBadges: [],
     queuedSkillForBadge: {},
     client: {},
-    authError: "",
+    signInError: "",
+    registerError: "",
+    forgotpasswordMessage: "",
   };
   const [user] = useAuthState(auth);
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -55,7 +57,7 @@ export const HandbookState = ({ children }) => {
     try {
       await auth.signInWithEmailAndPassword(email, password);
     } catch (e) {
-      dispatch({ type: "AUTH_ERROR", dispatch: "Invalid Email or Password" });
+      dispatch({ type: "SIGN_IN_ERROR", payload: "Invalid Email or Password" });
     }
   };
   const register = async ({ email, password }) => {
@@ -64,14 +66,28 @@ export const HandbookState = ({ children }) => {
         email,
         password
       );
-      // if (!user.emailVerified) {
-      //   user.sendEmailVerification();
-      // }
+      if (!user.emailVerified) {
+        user.sendEmailVerification();
+      }
       usersRef.doc(user.uid).set({ uid: user.uid }, { merge: true });
     } catch (e) {
       dispatch({
-        type: "AUTH_ERROR",
-        dispatch: "Could not create account, try again",
+        type: "REGISTER_ERROR",
+        payload: "Could not create account, try again",
+      });
+    }
+  };
+  const forgotpassword = async ({ email }) => {
+    try {
+      await auth.sendPasswordResetEmail(email);
+      dispatch({
+        type: "FORGOT_PASSWORD",
+        payload: "Check your email",
+      });
+    } catch (e) {
+      dispatch({
+        type: "FORGOT_PASSWORD",
+        payload: "The email entered is not in our records",
       });
     }
   };
@@ -115,12 +131,16 @@ export const HandbookState = ({ children }) => {
   return (
     <HandbookContext.Provider
       value={{
-        skills: state.skills,
         isLoading: state.isLoading,
+        signInError: state.signInError,
+        registerError: state.registerError,
+        forgotpasswordMessage: state.forgotpasswordMessage,
+        skills: state.skills,
         active: state.active,
         earnedBadges: state.earnedBadges,
         client: state.client,
         queuedSkillForBadge: state.queuedSkillForBadge,
+        forgotpassword,
         signIn,
         register,
         makeActive,

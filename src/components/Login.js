@@ -21,8 +21,9 @@ const loginValidationSchema = yup.object().shape({
     .min(8, ({ min }) => `Password must be at least ${min} characters`)
     .required("Password is required"),
 });
+
 const Login = () => {
-  const { signIn, authError } = useContext(HandbookContext);
+  const { signIn, signInError } = useContext(HandbookContext);
   return (
     <KeyboardAvoidingView>
       <Formik
@@ -39,9 +40,11 @@ const Login = () => {
           isValid,
         }) => (
           <View>
-            {authError && <Text> {authError}</Text>}
+            <Text style={{ color: "red", textAlign: "center" }}>
+              {signInError}
+            </Text>
             <Text>Email: </Text>
-            <Text style={{ fontSize: 10, color: "red" }}>
+            <Text style={{ color: "red" }}>
               {touched.email && errors.email}
             </Text>
             <TextInput
@@ -54,7 +57,7 @@ const Login = () => {
               keyboardType="email-address"
             />
             <Text>Password: </Text>
-            <Text style={{ fontSize: 10, color: "red" }}>
+            <Text style={{ color: "red" }}>
               {touched.password && errors.password}
             </Text>
             <TextInput
@@ -66,7 +69,12 @@ const Login = () => {
               value={values.password}
               secureTextEntry
             />
-            <Button onPress={handleSubmit} title="Submit" disabled={!isValid} />
+            <Button
+              onPress={handleSubmit}
+              title="Submit"
+              style={{ marginTop: 10 }}
+              disabled={!isValid}
+            />
           </View>
         )}
       </Formik>

@@ -41,10 +41,23 @@ const getBadgesData = (state, action) => {
     earnedBadges: action.payload,
   };
 };
-const authError = (state, action) => {
+const signInError = (state, action) => {
+  console.log("action.payload", action.payload);
   return {
     ...state,
-    authError: action.payload,
+    signInError: action.payload,
+  };
+};
+const registerError = (state, action) => {
+  return {
+    ...state,
+    registerError: action.payload,
+  };
+};
+const forgotpassword = (state, action) => {
+  return {
+    ...state,
+    forgotpasswordMessage: action.payload,
   };
 };
 export const reducer = (state, action) => {
@@ -63,8 +76,12 @@ export const reducer = (state, action) => {
       return initUser(state, action);
     case "GET_BADGES_DATA":
       return getBadgesData(state, action);
-    case "AUTH_ERROR":
-      return authError(state, action);
+    case "SIGN_IN_ERROR":
+      return signInError(state, action);
+    case "REGISTER_ERROR":
+      return registerError(state, action);
+    case "FORGOT_PASSWORD":
+      return forgotpassword(state, action);
     default:
       return state;
   }
