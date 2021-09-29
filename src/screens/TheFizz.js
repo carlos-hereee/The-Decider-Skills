@@ -20,7 +20,7 @@ const TheFizz = () => {
   const { width, height } = Dimensions.get("window");
 
   const handlePress = (item) => {
-    makeActive({ title: item.name, skills: data.theFizz });
+    makeActive(data.theFizz, item);
     navigate("Skills");
   };
   const imageStyle = {

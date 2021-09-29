@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import { reducer } from "./reducer";
-import { auth, usersRef } from "../utils/firebase.config";
+import { auth, getVideoUrl, usersRef } from "../utils/firebase.config";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export const HandbookContext = createContext();
@@ -9,7 +9,7 @@ export const HandbookState = ({ children }) => {
   const initialState = {
     isLoading: false,
     skills: [],
-    active: "",
+    active: {},
     earnedBadges: [],
     queuedSkillForBadge: {},
     client: {},
@@ -64,12 +64,10 @@ export const HandbookState = ({ children }) => {
         email,
         password
       );
-      usersRef.doc(user.uid).set(
-        {
-          uid: user.uid,
-        },
-        { merge: true }
-      );
+      // if (!user.emailVerified) {
+      //   user.sendEmailVerification();
+      // }
+      usersRef.doc(user.uid).set({ uid: user.uid }, { merge: true });
     } catch (e) {
       dispatch({
         type: "AUTH_ERROR",
@@ -77,9 +75,9 @@ export const HandbookState = ({ children }) => {
       });
     }
   };
-  const makeActive = async (data) => {
+  const makeActive = async (skills, active) => {
     try {
-      dispatch({ type: "MAKE_ACTIVE", payload: data });
+      dispatch({ type: "MAKE_ACTIVE", payload: { skills, active } });
     } catch (e) {
       dispatch({ type: "SET_ERROR", payload: "error could not add data" });
     }

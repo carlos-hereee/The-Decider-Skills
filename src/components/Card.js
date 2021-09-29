@@ -1,31 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Image, StyleSheet, View, Platform } from "react-native";
 import VideoPlayer from "../components/VideoPlayer";
 import { Text } from "react-native-elements";
+import { globalStyles } from "../styles";
+import { HandbookContext } from "../utils/Context";
 
-const Card = ({ data }) => {
+const Card = () => {
+  const { active } = useContext(HandbookContext);
   const imageStyle = {
     width: Platform.OS === "web" ? 150 : 100,
     height: Platform.OS === "web" ? 150 : 100,
     margin: 5,
   };
   return (
-    <View style={styles.card}>
+    <View style={[styles.card, globalStyles.shadow]}>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Image
-          source={{ uri: data?.imageUrl }}
+          source={{ uri: active?.imageUrl }}
           style={imageStyle}
           resizeMode="contain"
         />
         <Text h4 style={{ fontWeight: "600", maxWidth: "55%" }}>
-          {data.name}
+          {active?.name}
         </Text>
       </View>
-      <View style={styles.definition}>
-        <Text style={{ textAlign: "center" }}>{data.definition}</Text>
+      <View style={[styles.definition]}>
+        <Text style={{ textAlign: "center" }}>{active?.definition}</Text>
       </View>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <VideoPlayer vid={data} />
+        <VideoPlayer />
       </View>
     </View>
   );
@@ -39,20 +42,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     padding: 5,
     height: "60%",
-    ...Platform.select({
-      web: {
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-      },
-      default: {
-        elevation: 5,
-      },
-    }),
   },
   definition: {
     backgroundColor: "#CBE9ED",

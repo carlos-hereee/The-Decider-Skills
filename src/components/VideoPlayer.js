@@ -6,29 +6,28 @@ import {
   Platform,
   Pressable,
   StyleSheet,
-  View,
 } from "react-native";
 import { HandbookContext } from "../utils/Context";
 import { navigate } from "../utils/RootNavigation";
 import { getVideoUrl } from "../utils/firebase.config";
 
-const VideoPlayer = ({ vid }) => {
+const VideoPlayer = () => {
   const videoRef = useRef(null);
-  const { badgeToClaim, earnedBadges } = useContext(HandbookContext);
+  const { badgeToClaim, earnedBadges, active } = useContext(HandbookContext);
   const [status, setStatus] = useState();
-  const [video, setVideo] = useState({ vid });
-  const [quality, setQuality] = useState("original");
+  const [quality, setQuality] = useState("720");
+  const [videoURI, setVideoURI] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (vid.key !== video.key) {
-      const loadVideo = async () => {
-        const url = await getVideoUrl(vid[quality]);
-        setVideo({ ...vid, source: { uri: url } });
-      };
-      loadVideo();
+    if (active.key) {
+      setVideoURI("");
+      getVideoUrl(active[quality]).then((url) => {
+        setVideoURI(url);
+      });
     }
-  }, [vid.key]);
+  }, [active.key]);
+
   const handleFullscreen = async ({ fullscreenUpdate }) => {
     if (fullscreenUpdate === 0) {
       // enter full screen
@@ -57,8 +56,8 @@ const VideoPlayer = ({ vid }) => {
   };
 
   const videoStyle = {
-    width: !isLoading ? 0 : Platform.OS === "web" ? "60%" : 200,
-    height: !isLoading ? 0 : 150,
+    width: isLoading ? 0 : Platform.OS === "web" ? "40%" : 200,
+    height: isLoading ? 0 : 150,
   };
   return (
     <Pressable
@@ -67,28 +66,24 @@ const VideoPlayer = ({ vid }) => {
           ? videoRef.current.pauseAsync()
           : videoRef.current.playAsync()
       }>
-      <Video
-        ref={videoRef}
-        source={video.source}
-        useNativeControls
-        style={[videoStyle, styles.video]}
-        resizeMode="contain"
-        onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
-        onFullscreenUpdate={handleFullscreen}
-        onLoadStart={() => setIsLoading(false)}
-        onReadyForDisplay={() => setIsLoading(true)}
-      />
-
-      {!isLoading && (
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: 30,
-          }}>
-          <ActivityIndicator size={35} color="#600" />
-        </View>
+      {videoURI ? (
+        <>
+          {isLoading && <ActivityIndicator size="large" color="#600" />}
+          <Video
+            ref={videoRef}
+            source={{ uri: videoURI }}
+            useNativeControls
+            style={[videoStyle, styles.video]}
+            resizeMode="contain"
+            onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
+            onFullscreenUpdate={handleFullscreen}
+            posterSource={Platform.OS === "ios" && { uri: active.thumbnail }}
+            onLoadStart={() => setIsLoading(true)}
+            onLoad={() => setIsLoading(false)}
+          />
+        </>
+      ) : (
+        <ActivityIndicator size="large" color="#600" />
       )}
     </Pressable>
   );

@@ -15,9 +15,13 @@ import GoBack from "../components/GoBack";
 import { globalStyles } from "../styles";
 
 const Skills = () => {
-  const { earnedBadges, skills } = useContext(HandbookContext);
-  const [activeSkill, setActiveSkill] = useState(skills[0]);
+  const { earnedBadges, skills, makeActive, active, resetActive } =
+    useContext(HandbookContext);
 
+  const handlePress = (skills, item) => {
+    resetActive();
+    makeActive(skills, item);
+  };
   const imageStyle = {
     width: Platform.OS === "web" ? 100 : 60,
     height: Platform.OS === "web" ? 100 : 60,
@@ -25,7 +29,7 @@ const Skills = () => {
   return (
     <View style={styles.container}>
       <GoBack />
-      <Card data={activeSkill} />
+      <Card />
       <FlatList
         data={skills}
         horizontal
@@ -33,11 +37,12 @@ const Skills = () => {
           paddingVertical: 15,
           justifyContent: "center",
         }}
+        initialScrollIndex={skills.indexOf(active) || 0}
         renderItem={({ item }) => (
           <Pressable
-            onPress={() => setActiveSkill(item)}
+            onPress={() => handlePress(skills, item)}
             style={
-              activeSkill === item
+              active === item
                 ? [
                     styles.listItem,
                     globalStyles.shadow,

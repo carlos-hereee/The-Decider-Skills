@@ -8,13 +8,13 @@ const makeActive = (state, action) => {
   return {
     ...state,
     skills: action.payload.skills,
-    active: action.payload.title,
+    active: action.payload.active,
   };
 };
 const resetActive = (state, action) => {
   return {
     ...state,
-    active: "",
+    active: {},
   };
 };
 const badgeToClaim = (state, action) => {
