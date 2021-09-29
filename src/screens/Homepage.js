@@ -6,7 +6,6 @@ import {
   FlatList,
   Dimensions,
   ActivityIndicator,
-  Platform,
 } from "react-native";
 import { Text } from "react-native-elements";
 import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
@@ -23,10 +22,10 @@ const introVideos = [
     key: "intro",
     name: "Introduction",
     original:
-      "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-Original.mp4",
-    360: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-360.mp4",
-    540: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-540.mp4",
-    720: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-720.mp4",
+      "gs://the-decider-skills.appspot.com/skills/TheDeciderIntroduction/TheDeciderIntroduction-Original.mp4",
+    360: "gs://the-decider-skills.appspot.com/skills/TheDeciderIntroduction/TheDeciderIntroduction-360.mp4",
+    540: "gs://the-decider-skills.appspot.com/skills/TheDeciderIntroduction/TheDeciderIntroduction-540.mp4",
+    720: "gs://the-decider-skills.appspot.com/skills/TheDeciderIntroduction/TheDeciderIntroduction-720.mp4",
   },
   {
     key: "theFizz",
@@ -96,6 +95,7 @@ const Homepage = () => {
             ref={videoRef}
             resizeMode="contain"
             source={video?.source}
+            style={{ width: 0, height: 0 }}
             onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
             onFullscreenUpdate={handleFullscreen}
           />

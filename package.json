@@ -29,6 +29,7 @@
     "expo-splash-screen": "~0.11.2",
     "expo-status-bar": "~1.0.4",
     "expo-updates": "~0.8.1",
+    "expo-video-thumbnails": "~5.2.1",
     "firebase": "8.2.3",
     "formik": "^2.2.9",
     "react": "16.13.1",
@@ -42,16 +43,17 @@
     "react-native-reanimated": "~2.2.0",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
+    "react-native-slider": "^0.11.0",
     "react-native-svg": "^12.1.1",
     "react-native-unimodules": "~0.14.5",
+    "react-native-video": "^5.1.1",
     "react-native-web": "^0.17.1",
-    "yup": "^0.32.9",
-    "expo-video-thumbnails": "~5.2.1"
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
   },
   "private": true,
   "name": "life-handbook",
-  "version": "1.0.3"
+  "version": "1.0.4"
 }

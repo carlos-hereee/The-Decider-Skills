@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { View, StyleSheet, Pressable, Platform } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
 import HomeBG from "../components/HomeBG";
 import Login from "../components/Login";
@@ -14,12 +14,9 @@ const Auth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   let [fontsLoaded] = useFonts({ Amaranth_700Bold });
   useEffect(() => {
-    const getUser = async () => {
-      if (client.uid) {
-        navigate("Home");
-      }
-    };
-    getUser();
+    if (client.uid) {
+      navigate("Home");
+    }
   }, [client.uid]);
 
   return (

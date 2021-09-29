@@ -18,8 +18,8 @@ import { globalStyles } from "../styles";
 const Handbook = () => {
   const { makeActive, earnedBadges } = useContext(HandbookContext);
 
-  const handlePress = (i) => {
-    makeActive(i);
+  const handlePress = (skills, data) => {
+    makeActive(skills, data);
     navigate("Skills");
   };
   const badges = {
@@ -52,7 +52,7 @@ const Handbook = () => {
                 justifyContent: "space-between",
                 width: "100%",
               }}
-              onPress={() => handlePress(item)}>
+              onPress={() => handlePress(item.skills, item.skills[0])}>
               <Text h5 style={{ color: "white" }}>
                 {item.title}
               </Text>
