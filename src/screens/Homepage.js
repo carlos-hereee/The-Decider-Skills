@@ -108,7 +108,7 @@ const Homepage = () => {
         {!isLoading ? (
           <FlatList
             data={introVideos}
-            contentContainerStyle={{ flexGrow: 1 }}
+            contentContainerStyle={{ flexGrow: 1, marginVertical: 10 }}
             renderItem={({ item }) => (
               <Pressable
                 style={[
@@ -130,7 +130,7 @@ const Homepage = () => {
           <ActivityIndicator size={35} color="#600" />
         )}
         <View style={{ flexGrow: 1, justifyContent: "center" }}>
-          <Text style={{ textAlign: "center" }}>
+          <Text style={{ textAlign: "center", marginVertical: 5 }}>
             What brings you here today?
           </Text>
         </View>
@@ -138,14 +138,14 @@ const Homepage = () => {
           <Pressable
             onPress={() => navigate("TheFizz")}
             style={[styles.button, globalStyles.shadow]}>
-            <Text h4 style={[styles.buttonTxt, { padding: 10 }]}>
+            <Text h4 style={[styles.buttonTxt, { padding: 5 }]}>
               12 Skills
             </Text>
           </Pressable>
           <Pressable
             onPress={() => navigate("Handbook")}
             style={[styles.button, globalStyles.shadow]}>
-            <Text h4 style={[styles.buttonTxt, { padding: 10 }]}>
+            <Text h4 style={[styles.buttonTxt, { padding: 5 }]}>
               32 Skills
             </Text>
           </Pressable>
@@ -166,7 +166,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
   },
   container: {
-    height: "70%",
     width: "80%",
     padding: 10,
     justifyContent: "space-around",
@@ -186,6 +185,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     backgroundColor: "#00A89E",
     borderRadius: 4,
+    marginHorizontal: 5,
   },
   buttonTxt: {
     textAlign: "center",

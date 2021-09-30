@@ -23,8 +23,8 @@ const Skills = () => {
     makeActive(skills, item);
   };
   const imageStyle = {
-    width: Platform.OS === "web" ? 100 : 60,
-    height: Platform.OS === "web" ? 100 : 60,
+    width: Platform.OS === "web" ? 75 : 60,
+    height: Platform.OS === "web" ? 75 : 60,
   };
   return (
     <View style={styles.container}>
@@ -33,10 +33,7 @@ const Skills = () => {
       <FlatList
         data={skills}
         horizontal
-        contentContainerStyle={{
-          paddingVertical: 15,
-          justifyContent: "center",
-        }}
+        contentContainerStyle={{ paddingVertical: 15 }}
         initialScrollIndex={skills.indexOf(active) || 0}
         renderItem={({ item }) => (
           <Pressable
@@ -102,8 +99,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#EFF5FA",
     marginHorizontal: 10,
     padding: 5,
+    paddingVertical: 10,
     width: 100,
-    height: 150,
     borderRadius: 4,
   },
 });

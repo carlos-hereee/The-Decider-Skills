@@ -5,11 +5,13 @@ import {
   Platform,
   Pressable,
   StyleSheet,
+  Dimensions,
 } from "react-native";
 import { HandbookContext } from "../utils/Context";
 import { navigate } from "../utils/RootNavigation";
 import { getVideoUrl } from "../utils/firebase.config";
 
+const { width } = Dimensions.get("window");
 const VideoPlayer = () => {
   const videoRef = useRef(null);
   const { badgeToClaim, earnedBadges, active } = useContext(HandbookContext);
@@ -49,7 +51,7 @@ const VideoPlayer = () => {
     }
   };
   const videoStyle = {
-    width: isLoading ? 0 : Platform.OS === "web" ? "40%" : 200,
+    width: isLoading ? 0 : Platform.OS === "web" ? width / 2 : 200,
     height: isLoading ? 0 : 150,
   };
   return (
