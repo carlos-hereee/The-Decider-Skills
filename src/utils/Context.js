@@ -49,9 +49,7 @@ export const HandbookState = ({ children }) => {
   const signIn = async ({ email, password }, rememberMe) => {
     try {
       const { user } = await auth.signInWithEmailAndPassword(email, password);
-      console.log("rememberMe", rememberMe);
       usersRef.doc(user.uid).set({ rememberMe }, { merge: true });
-      console.log("rememberMe", rememberMe);
       navigate("Home");
     } catch (e) {
       dispatch({ type: "SIGN_IN_ERROR", payload: "Invalid Email or Password" });
@@ -113,7 +111,6 @@ export const HandbookState = ({ children }) => {
     }
   };
   const claimBadge = async (badge, user) => {
-    console.log("badge", badge);
     try {
       const badgesRef = usersRef.doc(user.uid).collection("ownedBadges");
       badgesRef.doc(badge.key).set(
@@ -129,7 +126,6 @@ export const HandbookState = ({ children }) => {
       dispatch({ type: "CLAIM_BADGE", payload: badge });
       navigationRef.goBack();
     } catch (e) {
-      console.log("e", e);
       dispatch({ type: "SET_ERROR", payload: "error could not add data" });
     }
   };

@@ -27,9 +27,8 @@ const VideoPlayer = () => {
     }
   }, [active.key]);
   useEffect(() => {
-    if (status?.positionMillis + 500 >= status?.playableDurationMillis) {
+    if (status?.durationMillis <= status?.positionMillis) {
       // video ends and badge has not been earned
-      videoRef.current.dismissFullscreenPlayer();
       if (!earnedBadges.filter((data) => data.key === active.key).length) {
         badgeToClaim(active);
         navigate("ClaimBadge");

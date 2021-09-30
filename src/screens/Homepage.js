@@ -4,7 +4,6 @@ import {
   StyleSheet,
   View,
   FlatList,
-  Dimensions,
   ActivityIndicator,
 } from "react-native";
 import { Text } from "react-native-elements";
@@ -51,18 +50,17 @@ const Homepage = () => {
   const [videoURI, setVideoURI] = useState("");
   const [status, setStatus] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const { fontScale } = Dimensions.get("window");
   const [quality, setQuality] = useState("720");
 
   useEffect(() => {
     if (status?.isLoaded) {
       setIsLoading(false);
-      videoRef.current.presentFullscreenPlayer();
+      videoURI && videoRef.current.presentFullscreenPlayer();
     }
-    if (status?.didJustFinish) {
+    if (status?.durationMillis <= status?.positionMillis) {
       videoRef.current.dismissFullscreenPlayer();
     }
-  }, [status?.isLoaded, status?.didJustFinish]);
+  }, [status?.isLoaded, status?.positionMillis]);
 
   const handleFullscreen = async ({ fullscreenUpdate }) => {
     if (fullscreenUpdate === 0) {
@@ -136,18 +134,18 @@ const Homepage = () => {
             What brings you here today?
           </Text>
         </View>
-        <View style={{ flexDirection: "row", justifyContent: "center" }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
           <Pressable
             onPress={() => navigate("TheFizz")}
             style={[styles.button, globalStyles.shadow]}>
-            <Text h4 style={[styles.buttonTxt, { padding: 5 }]}>
+            <Text h4 style={[styles.buttonTxt, { padding: 10 }]}>
               12 Skills
             </Text>
           </Pressable>
           <Pressable
             onPress={() => navigate("Handbook")}
             style={[styles.button, globalStyles.shadow]}>
-            <Text h4 style={[styles.buttonTxt, { padding: 5 }]}>
+            <Text h4 style={[styles.buttonTxt, { padding: 10 }]}>
               32 Skills
             </Text>
           </Pressable>
@@ -170,7 +168,7 @@ const styles = StyleSheet.create({
   container: {
     height: "70%",
     width: "80%",
-    padding: 20,
+    padding: 10,
     justifyContent: "space-around",
     backgroundColor: "#EFF5FA",
     borderRadius: 4,
@@ -184,8 +182,8 @@ const styles = StyleSheet.create({
   button: {
     fontFamily: "Amaranth_700Bold",
     marginTop: "auto",
-    padding: 5,
-    margin: 5,
+    padding: 10,
+    marginVertical: 5,
     backgroundColor: "#00A89E",
     borderRadius: 4,
   },

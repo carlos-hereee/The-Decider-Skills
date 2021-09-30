@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     }),
   },
   listItem: {
-    padding: 5,
+    padding: 10,
     backgroundColor: "#EFF5FA",
     margin: 5,
     borderRadius: 4,

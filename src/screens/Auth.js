@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   container: {
     width: "80%",
     maxWidth: 500,
-    padding: "5%",
+    padding: 10,
     justifyContent: "space-around",
     backgroundColor: "#EFF5FA",
     borderRadius: 4,

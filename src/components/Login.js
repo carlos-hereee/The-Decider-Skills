@@ -98,10 +98,10 @@ export default Login;
 const styles = StyleSheet.create({
   textInput: {
     height: 40,
-    padding: "2%",
+    padding: 10,
     backgroundColor: "white",
     borderColor: "gray",
-    marginVertical: "1%",
+    marginVertical: 5,
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 4,
   },

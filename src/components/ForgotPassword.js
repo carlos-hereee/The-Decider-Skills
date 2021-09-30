@@ -25,7 +25,7 @@ export default function ForgotPassword() {
   return (
     <HomeBG>
       <View style={[styles.container, globalStyles.shadow]}>
-        <Text h2 style={{ paddingBottom: 10 }}>
+        <Text h2 style={{ paddingBottom: 10, textAlign: "center" }}>
           Forgot Password
         </Text>
         <Text style={{ textAlign: "center", paddingBottom: 10 }}>
@@ -117,17 +117,17 @@ const styles = StyleSheet.create({
   container: {
     width: "80%",
     maxWidth: 500,
-    padding: "5%",
+    padding: 10,
     justifyContent: "space-around",
     backgroundColor: "#EFF5FA",
     borderRadius: 4,
   },
   textInput: {
     height: 40,
-    padding: "2%",
+    padding: 10,
     backgroundColor: "white",
     borderColor: "gray",
-    marginVertical: "1%",
+    marginVertical: 5,
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 4,
   },

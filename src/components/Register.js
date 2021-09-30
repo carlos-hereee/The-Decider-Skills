@@ -148,14 +148,14 @@ const styles = StyleSheet.create({
   container: {
     width: "80%",
     maxWidth: 500,
-    padding: "5%",
+    padding: 10,
     justifyContent: "space-around",
     backgroundColor: "#EFF5FA",
     borderRadius: 4,
   },
   textInput: {
     height: 40,
-    padding: "2%",
+    padding: 10,
     backgroundColor: "white",
     borderColor: "gray",
     marginVertical: "1%",

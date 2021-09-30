@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import {
   FlatList,
   Image,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#EFF5FA",
     marginHorizontal: 10,
-    paddingHorizontal: 5,
+    padding: 5,
     width: 100,
     height: 150,
     borderRadius: 4,
