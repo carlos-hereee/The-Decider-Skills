@@ -27,7 +27,7 @@ const Skills = () => {
     height: Platform.OS === "web" ? 75 : 60,
   };
   return (
-    <View style={styles.container}>
+    <View>
       <GoBack />
       <Card />
       <FlatList
@@ -81,15 +81,6 @@ const Skills = () => {
 export default Skills;
 
 const styles = StyleSheet.create({
-  container: {
-    ...Platform.select({
-      web: {
-        width: "100%",
-        maxWidth: 1000,
-        marginHorizontal: "auto",
-      },
-    }),
-  },
   listItem: {
     flex: 1,
     position: "relative",

@@ -33,7 +33,7 @@ const Handbook = () => {
     height: Platform.OS === "web" ? 40 : 20,
   };
   return (
-    <View style={styles.container}>
+    <View>
       <View style={{ justifyContent: "flex-start", marginRight: "auto" }}>
         <GoBack />
       </View>
@@ -88,15 +88,6 @@ const Handbook = () => {
 export default Handbook;
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "column",
-    ...Platform.select({
-      web: {
-        maxWidth: 1000,
-        marginHorizontal: "auto",
-      },
-    }),
-  },
   menu: {
     flex: 1,
     flexWrap: "wrap",
