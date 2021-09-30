@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -6,10 +6,11 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
 } from "react-native";
-import { Button } from "react-native-elements";
+import { Button, CheckBox } from "react-native-elements";
 import { Formik } from "formik";
 import { HandbookContext } from "../utils/Context";
 import * as yup from "yup";
+import { navigate } from "../utils/RootNavigation";
 
 const loginValidationSchema = yup.object().shape({
   email: yup
@@ -23,12 +24,19 @@ const loginValidationSchema = yup.object().shape({
 });
 
 const Login = () => {
-  const { signIn, signInError } = useContext(HandbookContext);
+  const { signIn, signInError, client } = useContext(HandbookContext);
+  const [checked, setChecked] = useState(false);
+
+  useEffect(() => {
+    if (client.rememberMe) {
+      setChecked(true);
+    }
+  }, [client.rememberMe]);
   return (
     <KeyboardAvoidingView>
       <Formik
         initialValues={{ email: "", password: "" }}
-        onSubmit={(values) => signIn(values)}
+        onSubmit={(values) => signIn(values, checked)}
         validationSchema={loginValidationSchema}>
         {({
           handleChange,
@@ -68,6 +76,12 @@ const Login = () => {
               onBlur={handleBlur("password")}
               value={values.password}
               secureTextEntry
+            />
+            <CheckBox
+              title="Remember Me"
+              checked={checked}
+              containerStyle={{ backgroundColor: "transparent" }}
+              onPress={() => setChecked(!checked)}
             />
             <Button
               onPress={handleSubmit}

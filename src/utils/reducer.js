@@ -42,7 +42,6 @@ const getBadgesData = (state, action) => {
   };
 };
 const signInError = (state, action) => {
-  console.log("action.payload", action.payload);
   return {
     ...state,
     signInError: action.payload,

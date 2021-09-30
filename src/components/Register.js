@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   View,
   TextInput,
@@ -35,7 +35,8 @@ const signUpValidationSchema = yup.object().shape({
     .required("Confirm password is required"),
 });
 const Register = () => {
-  const { register, authError } = useContext(HandbookContext);
+  const { register, authError, client } = useContext(HandbookContext);
+  const [checked, setChecked] = useState(client.rememberMe);
 
   return (
     <HomeBG>
@@ -46,7 +47,7 @@ const Register = () => {
         <KeyboardAvoidingView>
           <Formik
             initialValues={{ email: "", password: "", confirmPassword: "" }}
-            onSubmit={(values) => register(values)}
+            onSubmit={(values) => register(values, checked)}
             validationSchema={signUpValidationSchema}>
             {({
               handleChange,
@@ -99,6 +100,12 @@ const Register = () => {
                   onBlur={handleBlur("confirmPassword")}
                   value={values.confirmPassword}
                   secureTextEntry
+                />
+                <CheckBox
+                  title="Remember Me"
+                  checked={checked}
+                  containerStyle={{ backgroundColor: "transparent" }}
+                  onPress={() => setChecked(!checked)}
                 />
                 <Button
                   onPress={handleSubmit}

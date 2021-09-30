@@ -1,7 +1,7 @@
-import React, { createContext, useReducer, useEffect } from "react";
+import React, { createContext, useReducer } from "react";
 import { reducer } from "./reducer";
 import { auth, usersRef } from "../utils/firebase.config";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { navigate } from "./RootNavigation";
 
 export const HandbookContext = createContext();
 
@@ -17,7 +17,6 @@ export const HandbookState = ({ children }) => {
     registerError: "",
     forgotpasswordMessage: "",
   };
-  const [user] = useAuthState(auth);
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const liveUser = async (userId) => {
@@ -46,21 +45,19 @@ export const HandbookState = ({ children }) => {
       dispatch({ type: "SET_ERROR", payload: "Couldnt make player instance" });
     }
   };
-  useEffect(() => {
-    if (user?.uid) {
-      liveUser(user.uid);
-      getData(user.uid);
-    }
-  }, [user]);
 
-  const signIn = async ({ email, password }) => {
+  const signIn = async ({ email, password }, rememberMe) => {
     try {
-      await auth.signInWithEmailAndPassword(email, password);
+      const { user } = await auth.signInWithEmailAndPassword(email, password);
+      console.log("rememberMe", rememberMe);
+      usersRef.doc(user.uid).set({ rememberMe }, { merge: true });
+      console.log("rememberMe", rememberMe);
+      navigate("Home");
     } catch (e) {
       dispatch({ type: "SIGN_IN_ERROR", payload: "Invalid Email or Password" });
     }
   };
-  const register = async ({ email, password }) => {
+  const register = async ({ email, password }, rememberMe) => {
     try {
       const { user } = await auth.createUserWithEmailAndPassword(
         email,
@@ -69,7 +66,10 @@ export const HandbookState = ({ children }) => {
       if (!user.emailVerified) {
         user.sendEmailVerification();
       }
-      usersRef.doc(user.uid).set({ uid: user.uid }, { merge: true });
+      usersRef
+        .doc(user.uid)
+        .set({ uid: user.uid, email, rememberMe }, { merge: true });
+      navigate("Home");
     } catch (e) {
       dispatch({
         type: "REGISTER_ERROR",
@@ -147,6 +147,8 @@ export const HandbookState = ({ children }) => {
         resetActive,
         badgeToClaim,
         claimBadge,
+        liveUser,
+        getData,
       }}>
       {children}
     </HandbookContext.Provider>
