@@ -1,6 +1,5 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
 import { Video } from "expo-av";
-import * as ScreenOrientation from "expo-screen-orientation";
 import {
   ActivityIndicator,
   Platform,
@@ -27,34 +26,29 @@ const VideoPlayer = () => {
       });
     }
   }, [active.key]);
+  useEffect(() => {
+    if (status?.positionMillis + 500 >= status?.playableDurationMillis) {
+      // video ends and badge has not been earned
+      videoRef.current.dismissFullscreenPlayer();
+      if (!earnedBadges.filter((data) => data.key === active.key).length) {
+        badgeToClaim(active);
+        navigate("ClaimBadge");
+      }
+    }
+  }, [status?.positionMillis]);
 
   const handleFullscreen = async ({ fullscreenUpdate }) => {
     if (fullscreenUpdate === 0) {
       // enter full screen
+      videoRef.current.presentFullscreenPlayer();
       videoRef.current.playAsync();
-      await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.LANDSCAPE_LEFT
-      );
     }
     if (fullscreenUpdate === 2) {
       // exit full screen
+      videoRef.current.dismissFullscreenPlayer();
       videoRef.current.pauseAsync();
-      await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.PORTRAIT
-      );
     }
   };
-  const handlePlayback = async (e) => {
-    setStatus(e);
-    if (e.playableDurationMillis <= e.positionMillis) {
-      // video ends and badge has not been earned
-      if (!earnedBadges.filter((data) => data.key === vid.key).length) {
-        badgeToClaim(video);
-        navigate("ClaimBadge");
-      }
-    }
-  };
-
   const videoStyle = {
     width: isLoading ? 0 : Platform.OS === "web" ? "40%" : 200,
     height: isLoading ? 0 : 150,
@@ -75,7 +69,7 @@ const VideoPlayer = () => {
             useNativeControls
             style={[videoStyle, styles.video]}
             resizeMode="contain"
-            onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
+            onPlaybackStatusUpdate={(stat) => setStatus(stat)}
             onFullscreenUpdate={handleFullscreen}
             posterSource={Platform.OS === "ios" && { uri: active.thumbnail }}
             onLoadStart={() => setIsLoading(true)}

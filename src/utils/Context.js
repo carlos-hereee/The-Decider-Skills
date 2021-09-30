@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from "react";
 import { reducer } from "./reducer";
 import { auth, usersRef } from "../utils/firebase.config";
-import { navigate } from "./RootNavigation";
+import { navigate, navigationRef } from "./RootNavigation";
 
 export const HandbookContext = createContext();
 
@@ -112,19 +112,24 @@ export const HandbookState = ({ children }) => {
       dispatch({ type: "SET_ERROR", payload: "error could not add data" });
     }
   };
-  const claimBadge = async (video) => {
+  const claimBadge = async (badge, user) => {
+    console.log("badge", badge);
     try {
       const badgesRef = usersRef.doc(user.uid).collection("ownedBadges");
-      badgesRef.doc(video.key).set(
+      badgesRef.doc(badge.key).set(
         {
           owned: true,
-          name: video.name,
-          key: video.key,
+          name: badge.name,
+          key: badge.key,
+          poster: badge.imageUrl,
+          definition: badge.definition,
         },
         { merge: true }
       );
-      dispatch({ type: "CLAIM_BADGE", payload: video });
+      dispatch({ type: "CLAIM_BADGE", payload: badge });
+      navigationRef.goBack();
     } catch (e) {
+      console.log("e", e);
       dispatch({ type: "SET_ERROR", payload: "error could not add data" });
     }
   };

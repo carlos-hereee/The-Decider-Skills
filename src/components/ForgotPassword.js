@@ -62,7 +62,7 @@ export default function ForgotPassword() {
                 ) : (
                   <>
                     <Text>Email: </Text>
-                    <Text style={{ fontSize: 10, color: "red" }}>
+                    <Text style={{ color: "red" }}>
                       {touched.email && errors.email}
                     </Text>
                     <TextInput

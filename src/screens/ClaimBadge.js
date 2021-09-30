@@ -1,19 +1,17 @@
 import React, { useContext } from "react";
-import { Pressable, StyleSheet, Text, View, Platform } from "react-native";
+import { Pressable, StyleSheet, View, Platform } from "react-native";
 import Badge from "../components/Badge";
+import { globalStyles } from "../styles";
 import { HandbookContext } from "../utils/Context";
-import { navigationRef } from "../utils/RootNavigation";
+import { Text } from "react-native-elements";
 
 const ClaimBadge = () => {
-  const { claimBadge, queuedSkillForBadge } = useContext(HandbookContext);
-  const handlePress = () => {
-    claimBadge(queuedSkillForBadge);
-    navigationRef.goBack();
-  };
+  const { claimBadge, queuedSkillForBadge, client } =
+    useContext(HandbookContext);
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 25 }}>Congratulations!</Text>
-      <Text style={{ fontSize: 25 }}>You earned a new Badge</Text>
+      <Text h4>Congratulations!</Text>
+      <Text h4>You earned the {queuedSkillForBadge.name} Badge</Text>
       <Badge
         data={{
           src: queuedSkillForBadge.thumbnail,
@@ -21,7 +19,9 @@ const ClaimBadge = () => {
           backgroundSize: 300,
         }}
       />
-      <Pressable style={styles.button} onPress={() => handlePress()}>
+      <Pressable
+        style={[styles.button, globalStyles.shadow]}
+        onPress={() => claimBadge(queuedSkillForBadge, client)}>
         <Text style={{ color: "#ffffff", paddingHorizontal: 20 }}>CLAIM</Text>
       </Pressable>
     </View>

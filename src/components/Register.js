@@ -7,7 +7,7 @@ import {
   Pressable,
 } from "react-native";
 import { Formik } from "formik";
-import { Button, Text } from "react-native-elements";
+import { Button, Text, CheckBox } from "react-native-elements";
 import { HandbookContext } from "../utils/Context";
 import * as yup from "yup";
 import HomeBG from "./HomeBG";
@@ -63,7 +63,7 @@ const Register = () => {
                   {authError}
                 </Text>
                 <Text>Email: </Text>
-                <Text style={{ fontSize: 10, color: "red" }}>
+                <Text style={{ color: "red" }}>
                   {touched.email && errors.email}
                 </Text>
                 <TextInput

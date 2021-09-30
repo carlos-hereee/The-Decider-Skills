@@ -12,7 +12,6 @@ import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
 import AppLoading from "expo-app-loading";
 import { navigate } from "../utils/RootNavigation";
 import { Video } from "expo-av";
-import * as ScreenOrientation from "expo-screen-orientation";
 import HomeBG from "../components/HomeBG";
 import { getVideoUrl } from "../utils/firebase.config";
 import { globalStyles } from "../styles";
@@ -49,57 +48,52 @@ const Homepage = () => {
   let [fontsLoaded] = useFonts({ Amaranth_700Bold });
   const videoRef = useRef(null);
   const [video, setVideo] = useState({});
+  const [videoURI, setVideoURI] = useState("");
+  const [status, setStatus] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const { fontScale } = Dimensions.get("window");
-  const [quality, setQuality] = useState("original");
+  const [quality, setQuality] = useState("720");
+
+  useEffect(() => {
+    if (status?.isLoaded) {
+      setIsLoading(false);
+      videoRef.current.presentFullscreenPlayer();
+    }
+    if (status?.didJustFinish) {
+      videoRef.current.dismissFullscreenPlayer();
+    }
+  }, [status?.isLoaded, status?.didJustFinish]);
 
   const handleFullscreen = async ({ fullscreenUpdate }) => {
     if (fullscreenUpdate === 0) {
       // enter full screen
+      videoRef.current.presentFullscreenPlayer();
       videoRef.current.playAsync();
-      await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.LANDSCAPE_LEFT
-      );
     }
     if (fullscreenUpdate === 2) {
       // exit full screen
+      videoRef.current.dismissFullscreenPlayer();
       videoRef.current.pauseAsync();
-      await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.PORTRAIT
-      );
       setVideo({});
     }
   };
-  const handlePlayback = async (e) => {
-    if (e.playableDurationMillis <= e.positionMillis) {
-      videoRef.current.dismissFullscreenPlayer();
-    }
-  };
+
   useEffect(() => {
     if (video.key) {
-      getVideoUrl(video[quality]).then((url) =>
-        setVideo({ ...video, source: { uri: url } })
-      );
-      const loadedVideo = async () => {
-        await videoRef.current.presentFullscreenPlayer();
-        setIsLoading(false);
-      };
-      loadedVideo();
+      getVideoUrl(video[quality]).then((url) => setVideoURI(url));
     }
   }, [video.key]);
   return fontsLoaded ? (
     <HomeBG>
       <View style={[styles.container, globalStyles.shadow]}>
-        {video.key && (
-          <Video
-            ref={videoRef}
-            resizeMode="contain"
-            source={video?.source}
-            style={{ width: 0, height: 0 }}
-            onPlaybackStatusUpdate={(stat) => handlePlayback(stat)}
-            onFullscreenUpdate={handleFullscreen}
-          />
-        )}
+        <Video
+          ref={videoRef}
+          resizeMode="contain"
+          source={{ uri: videoURI }}
+          style={{ width: 0, height: 0 }}
+          onPlaybackStatusUpdate={(stat) => setStatus(stat)}
+          onFullscreenUpdate={handleFullscreen}
+        />
         <Text h2 style={styles.cardHeading}>
           The Decider
         </Text>
@@ -107,7 +101,7 @@ const Homepage = () => {
           Skills
         </Text>
         <View style={{ flexGrow: 1, justifyContent: "center" }}>
-          <Text style={{ fontSize: 12 / fontScale, textAlign: "center" }}>
+          <Text style={{ textAlign: "center" }}>
             Welcome to The Decider Skills app. Please watch the videos for an
             overview of The Decider, CBT and The FIZZ, or dive straight into the
             Skills reminders.
@@ -125,10 +119,12 @@ const Homepage = () => {
                   { paddingVertical: "3%" },
                 ]}
                 onPress={() => {
-                  setIsLoading(true);
                   setVideo(item);
+                  setIsLoading(true);
                 }}>
-                <Text style={styles.buttonTxt}>{item.name}</Text>
+                <Text h4 style={styles.buttonTxt}>
+                  {item.name}
+                </Text>
               </Pressable>
             )}
           />
@@ -144,12 +140,16 @@ const Homepage = () => {
           <Pressable
             onPress={() => navigate("TheFizz")}
             style={[styles.button, globalStyles.shadow]}>
-            <Text style={[styles.buttonTxt, { padding: 5 }]}>12 Skills</Text>
+            <Text h4 style={[styles.buttonTxt, { padding: 5 }]}>
+              12 Skills
+            </Text>
           </Pressable>
           <Pressable
             onPress={() => navigate("Handbook")}
             style={[styles.button, globalStyles.shadow]}>
-            <Text style={[styles.buttonTxt, { padding: 5 }]}>32 Skills</Text>
+            <Text h4 style={[styles.buttonTxt, { padding: 5 }]}>
+              32 Skills
+            </Text>
           </Pressable>
         </View>
       </View>
@@ -190,7 +190,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   buttonTxt: {
-    fontSize: 15,
     textAlign: "center",
     color: "#ffffff",
   },
