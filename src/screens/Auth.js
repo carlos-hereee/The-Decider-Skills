@@ -8,28 +8,22 @@ import { navigate } from "../utils/RootNavigation";
 import { globalStyles } from "../styles";
 import { HandbookContext } from "../utils/Context";
 import { auth } from "../utils/firebase.config";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 const Auth = () => {
   let [fontsLoaded] = useFonts({ Amaranth_700Bold });
-  const { client, liveUser, getData } = useContext(HandbookContext);
-  const [loading, setLoading] = useState(true);
-  const [user] = useAuthState(auth);
-
-  useEffect(() => {
-    if (client.rememberMe) {
-      navigate("Home");
-    }
-  }, [client.rememberMe]);
-
+  const { liveUser, getData } = useContext(HandbookContext);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    if (user?.uid) {
-      liveUser(user.uid);
-      getData(user.uid);
-    }
-    setLoading(false);
-  }, [user]);
+    auth.onAuthStateChanged((user) => {
+      if (user?.uid) {
+        liveUser(user.uid);
+        getData(user.uid);
+        navigate("Home");
+      }
+      setLoading(false);
+    });
+  }, []);
 
   if (loading) {
     return (

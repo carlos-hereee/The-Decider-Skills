@@ -10,6 +10,7 @@ import { Button, CheckBox } from "react-native-elements";
 import { Formik } from "formik";
 import { HandbookContext } from "../utils/Context";
 import * as yup from "yup";
+import { navigate } from "../utils/RootNavigation";
 
 const loginValidationSchema = yup.object().shape({
   email: yup
