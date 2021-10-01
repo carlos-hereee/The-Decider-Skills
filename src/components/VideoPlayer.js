@@ -23,9 +23,7 @@ const VideoPlayer = () => {
   useEffect(() => {
     if (active.key) {
       setVideoURI("");
-      getVideoUrl(active[quality]).then((url) => {
-        setVideoURI(url);
-      });
+      getVideoUrl(active[quality]).then((url) => setVideoURI(url));
     }
   }, [active.key]);
   useEffect(() => {
@@ -41,12 +39,10 @@ const VideoPlayer = () => {
   const handleFullscreen = async ({ fullscreenUpdate }) => {
     if (fullscreenUpdate === 0) {
       // enter full screen
-      videoRef.current.presentFullscreenPlayer();
       videoRef.current.playAsync();
     }
     if (fullscreenUpdate === 2) {
       // exit full screen
-      videoRef.current.dismissFullscreenPlayer();
       videoRef.current.pauseAsync();
     }
   };

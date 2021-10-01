@@ -15,9 +15,9 @@ import { HandbookContext } from "../utils/Context";
 import { navigate } from "../utils/RootNavigation";
 import data from "../utils/theFizz.json";
 
+const { width, height } = Dimensions.get("window");
 const TheFizz = () => {
   const { makeActive } = useContext(HandbookContext);
-  const { width, height } = Dimensions.get("window");
 
   const handlePress = (item) => {
     makeActive(data.theFizz, item);
@@ -35,15 +35,11 @@ const TheFizz = () => {
       <FlatList
         data={data.theFizz}
         numColumns={3}
-        contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+        contentContainerStyle={{ flexGrow: 1 }}
         renderItem={({ item }) => (
           <Pressable
             onPress={() => handlePress(item)}
-            style={[
-              styles.listItem,
-              globalStyles.shadow,
-              { width: width / 3.3, height: height / 6 },
-            ]}>
+            style={[styles.listItem, globalStyles.shadow]}>
             <View
               style={{
                 flex: 1,
@@ -73,18 +69,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#ffffff",
-    ...Platform.select({
-      web: {
-        width: "100%",
-        maxWidth: 1000,
-        marginHorizontal: "auto",
-      },
-    }),
   },
   listItem: {
     padding: 10,
     backgroundColor: "#EFF5FA",
     margin: 5,
+    width: width / 3.3,
+    height: height / 6,
     borderRadius: 4,
   },
 });

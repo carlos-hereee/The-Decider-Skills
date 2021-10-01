@@ -33,7 +33,7 @@ const Skills = () => {
       <FlatList
         data={skills}
         horizontal
-        contentContainerStyle={{ paddingVertical: 15 }}
+        contentContainerStyle={{ marginVertical: 15 }}
         initialScrollIndex={skills.indexOf(active) || 0}
         renderItem={({ item }) => (
           <Pressable
@@ -69,7 +69,12 @@ const Skills = () => {
               style={imageStyle}
               resizeMode="contain"
             />
-            <Text style={{ fontWeight: "700", textAlign: "center" }}>
+            <Text
+              style={{
+                fontWeight: "700",
+                textAlign: "center",
+                paddingVertical: 10,
+              }}>
               {item.name.toUpperCase()}
             </Text>
           </Pressable>
@@ -89,9 +94,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#EFF5FA",
     marginHorizontal: 10,
-    padding: 5,
-    paddingVertical: 10,
-    width: 100,
+    paddingHorizontal: 5,
+    padding: 10,
+    width: 120,
+    height: 150,
     borderRadius: 4,
   },
 });
