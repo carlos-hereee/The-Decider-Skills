@@ -61,9 +61,6 @@ export const HandbookState = ({ children }) => {
         email,
         password
       );
-      if (!user.emailVerified) {
-        user.sendEmailVerification();
-      }
       usersRef
         .doc(user.uid)
         .set({ uid: user.uid, email, rememberMe }, { merge: true });

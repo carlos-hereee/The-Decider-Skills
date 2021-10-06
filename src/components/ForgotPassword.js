@@ -15,10 +15,7 @@ import { globalStyles } from "../styles";
 import { navigate } from "../utils/RootNavigation";
 
 const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email("Please enter valid email")
-    .required("Email is required"),
+  email: yup.string().required("Email or username is required"),
 });
 export default function ForgotPassword() {
   const { forgotpassword, forgotpasswordMessage } = useContext(HandbookContext);
@@ -29,7 +26,7 @@ export default function ForgotPassword() {
           Forgot Password
         </Text>
         <Text style={{ textAlign: "center", paddingBottom: 10 }}>
-          Enter the email associated with your accound and well send an email
+          Enter the email associated with your account and we'll send an email
           with intructions to reset your password
         </Text>
         <KeyboardAvoidingView>

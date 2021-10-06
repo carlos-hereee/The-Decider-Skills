@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { navigationRef } from "../utils/RootNavigation";
 import { HandbookContext } from "../utils/Context";
 
+const { height } = Dimensions.get("window");
 export default function GoBack() {
   const { resetActive } = useContext(HandbookContext);
-  const { height } = Dimensions.get("window");
 
   const handlePress = () => {
     resetActive();

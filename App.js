@@ -34,7 +34,7 @@ export default function App() {
     <NavigationContainer ref={navigationRef}>
       <HandbookState>
         <Stack.Navigator
-          initialRouteName="Auth"
+          initialRouteName="Home"
           screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Auth" component={Auth} />
           <Stack.Screen name="Register" component={Register} />

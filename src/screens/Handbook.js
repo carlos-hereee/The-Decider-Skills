@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import {
   FlatList,
-  Image,
   Pressable,
   StyleSheet,
   View,
@@ -38,49 +37,27 @@ const Handbook = () => {
         <GoBack />
       </View>
       <View style={styles.menu}>
-        {lifeSkills.map((item) => (
-          <View
-            key={item.key}
-            style={[
-              styles.handbookSkill,
-              globalStyles.shadow,
-              {
-                backgroundColor: item.color,
-              },
-            ]}>
-            <Pressable
-              style={{
-                flex: 1,
-                justifyContent: "space-between",
-                width: "100%",
-              }}
-              onPress={() => handlePress(item.skills, item.skills[0])}>
+        <FlatList
+          data={lifeSkills}
+          numColumns={4}
+          contentContainerStyle={styles.badgeBackground}
+          renderItem={({ item }) => {
+            <View>
+              {/* <Pressable
+                style={{
+                  flex: 1,
+                  justifyContent: "space-between",
+                  width: "100%",
+                }}
+                // onPress={() => handlePress(item.skills, item.skills[0])}
+              > */}
               <Text h4 style={{ color: "white" }}>
                 {item.title}
               </Text>
-              <FlatList
-                data={item.skills}
-                numColumns={4}
-                contentContainerStyle={styles.badgeBackground}
-                renderItem={({ item }) => {
-                  return earnedBadges.filter((data) => data.key === item.key)
-                    .length ? (
-                    <View style={styles.badge}>
-                      <Badge data={{ ...badges, src: item.imageUrl }} />
-                    </View>
-                  ) : (
-                    <View style={styles.badge}>
-                      <Image
-                        source={require("../../assets/badge.png")}
-                        style={badge}
-                      />
-                    </View>
-                  );
-                }}
-              />
-            </Pressable>
-          </View>
-        ))}
+              {/* </Pressable> */}
+            </View>;
+          }}
+        />
       </View>
     </View>
   );
@@ -89,10 +66,10 @@ export default Handbook;
 
 const styles = StyleSheet.create({
   menu: {
-    flex: 1,
-    flexWrap: "wrap",
-    justifyContent: "center",
-    flexDirection: "row",
+    // flex: 1,
+    // flexWrap: "wrap",
+    // justifyContent: "center",
+    // flexDirection: "row",
   },
   handbookSkill: {
     margin: 5,

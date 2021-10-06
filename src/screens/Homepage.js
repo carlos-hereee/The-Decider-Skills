@@ -3,9 +3,9 @@ import {
   Pressable,
   StyleSheet,
   View,
-  FlatList,
   ActivityIndicator,
-  Platform,
+  FlatList,
+  Dimensions,
 } from "react-native";
 import { Text } from "react-native-elements";
 import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
@@ -17,35 +17,9 @@ import { getVideoUrl } from "../utils/firebase.config";
 import { globalStyles } from "../styles";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import introVideos from "../utils/intro.json";
 
-const introVideos = [
-  {
-    key: "intro",
-    name: "Introduction",
-    original:
-      "gs://the-decider-skills.appspot.com/skills/TheDeciderIntroduction/TheDeciderIntroduction-Original.mp4",
-    360: "gs://the-decider-skills.appspot.com/skills/TheDeciderIntroduction/TheDeciderIntroduction-360.mp4",
-    540: "gs://the-decider-skills.appspot.com/skills/TheDeciderIntroduction/TheDeciderIntroduction-540.mp4",
-    720: "gs://the-decider-skills.appspot.com/skills/TheDeciderIntroduction/TheDeciderIntroduction-720.mp4",
-  },
-  {
-    key: "theFizz",
-    name: "The Fizz",
-    original:
-      "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-Original.mp4",
-    360: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-360.mp4",
-    540: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-540.mp4",
-    720: "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-720.mp4",
-  },
-  {
-    key: "CBT",
-    name: "CBT",
-    original: "gs://the-decider-skills.appspot.com/skills/CBT/CBT-Original.mp4",
-    360: "gs://the-decider-skills.appspot.com/skills/CBT/CBT-360.mp4",
-    540: "gs://the-decider-skills.appspot.com/skills/CBT/CBT-540.mp4",
-    720: "gs://the-decider-skills.appspot.com/skills/CBT/CBT-720.mp4",
-  },
-];
+const { width } = Dimensions.get("window");
 const Homepage = () => {
   let [fontsLoaded] = useFonts({ Amaranth_700Bold });
   const videoRef = useRef(null);
@@ -72,10 +46,37 @@ const Homepage = () => {
     }
   }, [video.key]);
   const videoStyle = {
-    width: isLoading ? 0 : 300,
-    height: isLoading ? 0 : 200,
-    marginHorizontal: "auto",
+    width: isLoading ? 0 : width * 0.7,
+    height: isLoading ? 0 : 150,
   };
+  const Intro = () => (
+    <View>
+      <Text style={{ textAlign: "center" }}>
+        The Decider Skills app helps to remind you of the skills and helps you
+        put them into practice. Choose from the buttons below.
+      </Text>
+      <FlatList
+        data={introVideos}
+        contentContainerStyle={{ flexGrow: 1, marginVertical: 10 }}
+        renderItem={({ item }) => (
+          <View style={{ marginVertical: 5 }}>
+            <Pressable
+              style={[
+                styles.button,
+                globalStyles.shadow,
+                { paddingVertical: "3%" },
+              ]}
+              onPress={() => {
+                setIsLoading(true);
+                setVideo(item);
+              }}>
+              <Text style={styles.buttonTxt}>{item.name}</Text>
+            </Pressable>
+          </View>
+        )}
+      />
+    </View>
+  );
   return fontsLoaded ? (
     <HomeBG>
       <View style={[styles.container, globalStyles.shadow]}>
@@ -85,29 +86,11 @@ const Homepage = () => {
         <Text h2 style={styles.cardHeading}>
           Skills
         </Text>
-        <View style={{ flexGrow: 1, justifyContent: "center" }}>
-          <Text style={{ textAlign: "center" }}>
-            Welcome to The Decider Skills app. Please watch the videos for an
-            overview of The Decider, CBT and The FIZZ, or dive straight into the
-            Skills reminders.
-          </Text>
-        </View>
-        {Platform.OS !== "web" && (
-          <Video
-            ref={videoRef}
-            resizeMode="contain"
-            useNativeControls
-            source={{ uri: videoURI }}
-            style={{ width: 0, height: 0 }}
-            onPlaybackStatusUpdate={(stat) => setStatus(stat)}
-            onFullscreenUpdate={handleFullscreen}
-            onLoadStart={() => videoRef.current.presentFullscreenPlayer()}
-          />
-        )}
-        {Platform.OS === "web" ? (
-          videoURI ? (
-            <>
-              {isLoading && <ActivityIndicator size={35} color="#600" />}
+        {videoURI ? (
+          <View>
+            <Text style={{ textAlign: "center" }}>{video.definition} </Text>
+            {isLoading && <ActivityIndicator size={35} color="#600" />}
+            <View style={{ alignItems: "center" }}>
               <Video
                 ref={videoRef}
                 resizeMode="contain"
@@ -119,68 +102,25 @@ const Homepage = () => {
                 onLoadStart={() => setIsLoading(true)}
                 onLoad={() => setIsLoading(false)}
               />
-              <Pressable
-                onPress={() => {
-                  setVideo({});
-                  setVideoURI("");
-                }}
-                style={{
-                  paddingHorizontal: "auto",
-                  paddingVertical: 10,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "row",
-                }}>
-                <FontAwesomeIcon icon={faArrowLeft} />
-                <Text style={{ paddingHorizontal: 10 }}>Go back </Text>
-              </Pressable>
-            </>
-          ) : (
-            <FlatList
-              data={introVideos}
-              contentContainerStyle={{ flexGrow: 1, marginVertical: 10 }}
-              renderItem={({ item }) => (
-                <Pressable
-                  style={[
-                    styles.button,
-                    globalStyles.shadow,
-                    { paddingVertical: "3%" },
-                  ]}
-                  onPress={() => {
-                    setIsLoading(true);
-                    setVideo(item);
-                  }}>
-                  <Text h4 style={styles.buttonTxt}>
-                    {item.name}
-                  </Text>
-                </Pressable>
-              )}
-            />
-          )
-        ) : isLoading ? (
-          // else the platform is android or ios
-          <ActivityIndicator size={35} color="#600" />
+            </View>
+            <Pressable
+              onPress={() => {
+                setVideo({});
+                setVideoURI("");
+              }}
+              style={{
+                paddingHorizontal: "auto",
+                paddingVertical: 5,
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "row",
+              }}>
+              <FontAwesomeIcon icon={faArrowLeft} />
+              <Text style={{ paddingHorizontal: 10 }}>Go back </Text>
+            </Pressable>
+          </View>
         ) : (
-          <FlatList
-            data={introVideos}
-            contentContainerStyle={{ flexGrow: 1, marginVertical: 10 }}
-            renderItem={({ item }) => (
-              <Pressable
-                style={[
-                  styles.button,
-                  globalStyles.shadow,
-                  { paddingVertical: "3%" },
-                ]}
-                onPress={() => {
-                  setIsLoading(true);
-                  setVideo(item);
-                }}>
-                <Text h4 style={styles.buttonTxt}>
-                  {item.name}
-                </Text>
-              </Pressable>
-            )}
-          />
+          <Intro />
         )}
         <View style={{ flexGrow: 1, justifyContent: "center" }}>
           <Text style={{ textAlign: "center", marginVertical: 5 }}>

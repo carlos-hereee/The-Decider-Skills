@@ -1,0 +1,29 @@
+[
+  {
+    "key": "intro",
+    "name": "Introduction",
+    "definition": "The Decider Skills are Cognitive Behaviour Therapy (CBT) skills that are evidence-based and effective. The Skills help you manage your emotions and make positive changes.  Learn and practise the skills to increase your coping and confidence, and improve your mental health and wellbeing.",
+    "original": "gs://the-decider-skills.appspot.com/skills/TheDeciderIntroduction/TheDeciderIntroduction-Original.mp4",
+    "360": "gs://the-decider-skills.appspot.com/skills/TheDeciderIntroduction/TheDeciderIntroduction-360.mp4",
+    "540": "gs://the-decider-skills.appspot.com/skills/TheDeciderIntroduction/TheDeciderIntroduction-540.mp4",
+    "720": "gs://the-decider-skills.appspot.com/skills/TheDeciderIntroduction/TheDeciderIntroduction-720.mp4"
+  },
+  {
+    "key": "theFizz",
+    "name": "The Fizz",
+    "definition": "The FIZZ represents the physical signs that we feel in our body when we experience emotion.   It is a play on the word physical (FIZZ-ical).  Ask yourself: Where am I on my FIZZ scale",
+    "original": "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-Original.mp4",
+    "360": "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-360.mp4",
+    "540": "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-540.mp4",
+    "720": "gs://the-decider-skills.appspot.com/skills/TheFIZZ/TheFIZZ-720.mp4"
+  },
+  {
+    "key": "CBT",
+    "name": "CBT",
+    "definition": "How we THINK about a situation, affects the way we FEEL, which then affects what we DO.   CBT helps us to break out of the vicious cycle by learning ways to change the way we THINK, and change what we DO.",
+    "original": "gs://the-decider-skills.appspot.com/skills/CBT/CBT-Original.mp4",
+    "360": "gs://the-decider-skills.appspot.com/skills/CBT/CBT-360.mp4",
+    "540": "gs://the-decider-skills.appspot.com/skills/CBT/CBT-540.mp4",
+    "720": "gs://the-decider-skills.appspot.com/skills/CBT/CBT-720.mp4"
+  }
+]
