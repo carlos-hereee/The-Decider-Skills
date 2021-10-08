@@ -18,7 +18,6 @@ import data from "../utils/theFizz.json";
 const { width, height } = Dimensions.get("window");
 const TheFizz = () => {
   const { makeActive } = useContext(HandbookContext);
-
   const handlePress = (item) => {
     makeActive(data.theFizz, item);
     navigate("Skills");
@@ -51,7 +50,7 @@ const TheFizz = () => {
                 resizeMode="contain"
                 style={imageStyle}
               />
-              <Text style={{ fontWeight: "700", textAlign: "center" }}>
+              <Text style={{ textAlign: "center" }}>
                 {item.name.toUpperCase()}
               </Text>
             </View>

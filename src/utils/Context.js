@@ -46,29 +46,24 @@ export const HandbookState = ({ children }) => {
     }
   };
 
-  const signIn = async ({ email, password }, rememberMe) => {
+  const signIn = async ({ email, password }) => {
     try {
       const { user } = await auth.signInWithEmailAndPassword(email, password);
-      usersRef.doc(user.uid).set({ rememberMe }, { merge: true });
-      navigate("Home");
+      liveUser(user.uid);
+      getData(user.uid);
+      navigate("Handbook");
     } catch (e) {
       dispatch({ type: "SIGN_IN_ERROR", payload: "Invalid Email or Password" });
     }
   };
-  const register = async ({ email, password }, rememberMe) => {
+  const register = async ({ email, password }) => {
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-      usersRef
-        .doc(user.uid)
-        .set({ uid: user.uid, email, rememberMe }, { merge: true });
-      navigate("Home");
+      await auth.createUserWithEmailAndPassword(email, password);
+      navigate("Handbook");
     } catch (e) {
       dispatch({
         type: "REGISTER_ERROR",
-        payload: "Could not create account, try again",
+        payload: "Could not create account, try again later",
       });
     }
   };

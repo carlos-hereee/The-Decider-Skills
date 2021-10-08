@@ -6,35 +6,55 @@ import {
   StyleSheet,
   Text,
   View,
-  Platform,
+  Dimensions,
 } from "react-native";
 import { HandbookContext } from "../utils/Context";
-import Card from "../components/Card";
+import VideoPlayer from "../components/VideoPlayer";
 import Badge from "../components/Badge";
 import GoBack from "../components/GoBack";
 import { globalStyles } from "../styles";
 
+const { width, height } = Dimensions.get("window");
 const Skills = () => {
-  const { earnedBadges, skills, makeActive, active, resetActive } =
+  const { skills, makeActive, active, resetActive } =
     useContext(HandbookContext);
-
   const handlePress = (skills, item) => {
     resetActive();
     makeActive(skills, item);
   };
-  const imageStyle = {
-    width: Platform.OS === "web" ? 75 : 60,
-    height: Platform.OS === "web" ? 75 : 60,
-  };
+
   return (
-    <View>
+    <View style={{ backgroundColor: "#ffffff" }}>
       <GoBack />
-      <Card />
+      <View style={[styles.card, globalStyles.shadow]}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            marginVertical: 5,
+          }}>
+          <Image
+            source={{ uri: active?.imageUrl }}
+            style={{ width: width * 0.2, height: height * 0.1 }}
+            resizeMode="contain"
+          />
+          <Text h4 style={{ marginHorizontal: 5 }}>
+            {active?.name.toUpperCase()}
+          </Text>
+        </View>
+        <View style={[styles.definition]}>
+          <Text style={{ textAlign: "center" }}>{active?.definition}</Text>
+        </View>
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+          <VideoPlayer />
+        </View>
+      </View>
       <FlatList
         data={skills}
         horizontal
         contentContainerStyle={{ marginVertical: 15 }}
-        initialScrollIndex={skills.indexOf(active) || 0}
+        initialScrollIndex={skills?.indexOf(active) || 0}
         renderItem={({ item }) => (
           <Pressable
             onPress={() => handlePress(skills, item)}
@@ -47,34 +67,12 @@ const Skills = () => {
                   ]
                 : [styles.listItem, globalStyles.shadow]
             }>
-            {earnedBadges.filter((data) => data.key === item.key).length ? (
-              <View
-                style={{
-                  position: "absolute",
-                  top: "-10%",
-                  right: "-25%",
-                  zIndex: 1,
-                }}>
-                <Badge
-                  data={{
-                    src: item.imageUrl,
-                    iconSize: 40,
-                    backgroundSize: 60,
-                  }}
-                />
-              </View>
-            ) : null}
             <Image
               source={{ uri: item.imageUrl }}
-              style={imageStyle}
+              style={{ width: width * 0.2, height: height * 0.1 }}
               resizeMode="contain"
             />
-            <Text
-              style={{
-                fontWeight: "700",
-                textAlign: "center",
-                paddingVertical: 10,
-              }}>
+            <Text style={{ textAlign: "center" }}>
               {item.name.toUpperCase()}
             </Text>
           </Pressable>
@@ -92,12 +90,26 @@ const styles = StyleSheet.create({
     overflow: "visible",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#EFF5FA",
-    marginHorizontal: 10,
     paddingHorizontal: 5,
+    marginHorizontal: 5,
+    marginBottom: 5,
     padding: 10,
-    width: 120,
-    height: 150,
+    width: width * 0.25,
+    height: height * 0.19,
+    borderRadius: 4,
+    backgroundColor: "#EFF5FA",
+  },
+  card: {
+    borderRadius: 4,
+    marginHorizontal: 20,
+    padding: 10,
+    height: height * 0.58,
+    width: width * 0.9,
+    backgroundColor: "#EFF5FA",
+  },
+  definition: {
+    padding: 10,
+    marginBottom: 5,
     borderRadius: 4,
   },
 });

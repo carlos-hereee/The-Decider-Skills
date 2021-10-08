@@ -15,7 +15,6 @@ import Footer from "./src/components/Footer";
 import Auth from "./src/screens/Auth";
 import Skills from "./src/screens/Skills.js";
 import Register from "./src/components/Register.js";
-import ForgotPassword from "./src/components/ForgotPassword.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -38,7 +37,6 @@ export default function App() {
           screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Auth" component={Auth} />
           <Stack.Screen name="Register" component={Register} />
-          <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
           <Stack.Screen name="Home" component={Homepage} />
           <Stack.Screen name="Handbook" component={Handbook} />
           <Stack.Screen name="TheFizz" component={TheFizz} />

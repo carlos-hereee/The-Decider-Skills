@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import {
   Pressable,
   StyleSheet,
@@ -13,11 +13,12 @@ import AppLoading from "expo-app-loading";
 import { navigate } from "../utils/RootNavigation";
 import { Video } from "expo-av";
 import HomeBG from "../components/HomeBG";
-import { getVideoUrl } from "../utils/firebase.config";
+import { auth, getVideoUrl } from "../utils/firebase.config";
 import { globalStyles } from "../styles";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import introVideos from "../utils/intro.json";
+import { HandbookContext } from "../utils/Context";
 
 const { width } = Dimensions.get("window");
 const Homepage = () => {
@@ -28,6 +29,18 @@ const Homepage = () => {
   const [status, setStatus] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [quality, setQuality] = useState("720");
+  const { liveUser, getData } = useContext(HandbookContext);
+
+  useEffect(() => {
+    const unsub = auth.onAuthStateChanged(async (user) => {
+      if (user?.uid) {
+        liveUser(user.uid);
+        getData(user.uid);
+        navigate("Handbook");
+      }
+    });
+    unsub();
+  }, []);
 
   const handleFullscreen = async ({ fullscreenUpdate }) => {
     if (fullscreenUpdate === 0) {
@@ -131,16 +144,12 @@ const Homepage = () => {
           <Pressable
             onPress={() => navigate("TheFizz")}
             style={[styles.button, globalStyles.shadow]}>
-            <Text h4 style={[styles.buttonTxt, { padding: 5 }]}>
-              12 Skills
-            </Text>
+            <Text style={[styles.buttonTxt, { padding: 5 }]}>12 Skills</Text>
           </Pressable>
           <Pressable
-            onPress={() => navigate("Handbook")}
+            onPress={() => navigate("Auth")}
             style={[styles.button, globalStyles.shadow]}>
-            <Text h4 style={[styles.buttonTxt, { padding: 5 }]}>
-              32 Skills
-            </Text>
+            <Text style={[styles.buttonTxt, { padding: 5 }]}>32 Skills</Text>
           </Pressable>
         </View>
       </View>

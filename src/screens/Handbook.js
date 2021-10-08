@@ -1,12 +1,5 @@
-import React, { useContext } from "react";
-import {
-  FlatList,
-  Pressable,
-  StyleSheet,
-  View,
-  Platform,
-  Dimensions,
-} from "react-native";
+import React, { useContext, useState } from "react";
+import { Image, Pressable, StyleSheet, View, Dimensions } from "react-native";
 import { Text } from "react-native-elements";
 import { HandbookContext } from "../utils/Context";
 import lifeSkills from "../utils/data.json";
@@ -18,47 +11,78 @@ import { globalStyles } from "../styles";
 const { width, height } = Dimensions.get("window");
 const Handbook = () => {
   const { makeActive, earnedBadges } = useContext(HandbookContext);
+  const [accordion, setAccordion] = useState("1");
 
-  const handlePress = (skills, data) => {
-    makeActive(skills, data);
+  const handlePress = (i, data) => {
+    makeActive(i.skills, data);
     navigate("Skills");
   };
-  const badges = {
-    iconSize: Platform.OS === "web" ? 30 : 15,
-    backgroundSize: Platform.OS === "web" ? 40 : 20,
-  };
-  const badge = {
-    width: Platform.OS === "web" ? 40 : 20,
-    height: Platform.OS === "web" ? 40 : 20,
-  };
+
   return (
-    <View>
-      <View style={{ justifyContent: "flex-start", marginRight: "auto" }}>
-        <GoBack />
-      </View>
-      <View style={styles.menu}>
-        <FlatList
-          data={lifeSkills}
-          numColumns={4}
-          contentContainerStyle={styles.badgeBackground}
-          renderItem={({ item }) => {
-            <View>
-              {/* <Pressable
-                style={{
-                  flex: 1,
-                  justifyContent: "space-between",
-                  width: "100%",
-                }}
-                // onPress={() => handlePress(item.skills, item.skills[0])}
-              > */}
-              <Text h4 style={{ color: "white" }}>
-                {item.title}
-              </Text>
-              {/* </Pressable> */}
-            </View>;
-          }}
-        />
-      </View>
+    <View style={styles.menu}>
+      <GoBack />
+      {lifeSkills.map((item) => (
+        <Pressable
+          key={item.key}
+          disabled={item.key === accordion}
+          style={[
+            styles.handbookSkill,
+            globalStyles.shadow,
+            {
+              zIndex: item.key === accordion ? 1 : 0,
+              height: item.key === accordion ? height * 0.58 : null,
+            },
+          ]}
+          onPress={() => setAccordion(item.key)}>
+          <Text style={{ color: "black", alignItems: "center" }}>
+            {item.title.toUpperCase()}
+          </Text>
+          {item.key === accordion && (
+            <View style={{ flexWrap: "wrap" }}>
+              {item.skills.map((i) => (
+                <Pressable
+                  key={i.key}
+                  onPress={() => handlePress(item, i)}
+                  style={[styles.listItem, globalStyles.shadow]}>
+                  {earnedBadges.filter((data) => data.key === i.key).length >
+                  0 ? (
+                    <View
+                      style={{
+                        alignItems: "center",
+                      }}>
+                      <Image
+                        source={{ uri: i.imageUrl }}
+                        resizeMode="contain"
+                        style={{
+                          width: width * 0.11,
+                          height: height * 0.07,
+                        }}
+                      />
+                      <Text style={{ textAlign: "center" }}>
+                        {i.name.toUpperCase()}
+                      </Text>
+                    </View>
+                  ) : (
+                    <View style={{ alignItems: "center" }}>
+                      <Image
+                        source={{ uri: i.imageUrl }}
+                        resizeMode="contain"
+                        style={{
+                          width: width * 0.11,
+                          height: height * 0.07,
+                        }}
+                      />
+                      <Text style={{ textAlign: "center" }}>
+                        {i.name.toUpperCase()}
+                      </Text>
+                    </View>
+                  )}
+                </Pressable>
+              ))}
+            </View>
+          )}
+        </Pressable>
+      ))}
     </View>
   );
 };
@@ -66,19 +90,27 @@ export default Handbook;
 
 const styles = StyleSheet.create({
   menu: {
-    // flex: 1,
-    // flexWrap: "wrap",
-    // justifyContent: "center",
-    // flexDirection: "row",
+    flex: 1,
+    flexWrap: "wrap",
+    justifyContent: "center",
+    flexDirection: "row",
   },
   handbookSkill: {
+    backgroundColor: "#ffffff",
     margin: 5,
-    padding: 10,
+    padding: 5,
     borderRadius: 4,
+    width: width * 0.95,
+    alignItems: "center",
+  },
+  listItem: {
     justifyContent: "center",
     alignItems: "center",
-    width: width / 2.2,
-    height: height / 3,
+    backgroundColor: "#EFF5FA",
+    margin: 5,
+    borderRadius: 4,
+    width: width * 0.27,
+    height: height * 0.16,
   },
   badgeBackground: {
     backgroundColor: "rgba(0,0,0,0.15)",
