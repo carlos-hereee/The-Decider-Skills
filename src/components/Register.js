@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import {
   View,
   TextInput,
@@ -7,21 +7,17 @@ import {
   Pressable,
 } from "react-native";
 import { Formik } from "formik";
-import { Button, Text, CheckBox } from "react-native-elements";
+import { Button, Text } from "react-native-elements";
 import { HandbookContext } from "../utils/Context";
 import * as yup from "yup";
 import HomeBG from "./HomeBG";
 import { navigate } from "../utils/RootNavigation";
+import { globalStyles } from "../styles";
 
 const signUpValidationSchema = yup.object().shape({
-  email: yup.string().required("Email or Username is required"),
+  username: yup.string().required("Username is required"),
   password: yup
     .string()
-    .matches(/\d/, "Password must have a number")
-    .matches(
-      /[!@#$%^&*()\-_"=+{}; :,<.>]/,
-      "Password must have a special character"
-    )
     .min(6, ({ min }) => `Password must be at least ${min} characters`)
     .required("Password is required"),
   confirmPassword: yup
@@ -30,111 +26,90 @@ const signUpValidationSchema = yup.object().shape({
     .required("Confirm password is required"),
 });
 const Register = () => {
-  const { register, authError, client } = useContext(HandbookContext);
-  const [checked, setChecked] = useState(client.rememberMe);
+  const { register, authError } = useContext(HandbookContext);
 
   return (
     <HomeBG>
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={[styles.container, globalStyles.shadow]}>
         <Text h2 style={{ textAlign: "center" }}>
           Create Account
         </Text>
-        <KeyboardAvoidingView>
-          <Formik
-            initialValues={{ email: "", password: "", confirmPassword: "" }}
-            onSubmit={(values) => register(values, checked)}
-            validationSchema={signUpValidationSchema}>
-            {({
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              values,
-              errors,
-              touched,
-              isValid,
-            }) => (
-              <View>
-                <Text style={{ color: "red", textAlign: "center" }}>
-                  {authError}
-                </Text>
-                <Text>Email: </Text>
-                <Text style={{ color: "red" }}>
-                  {touched.email && errors.email}
-                </Text>
-                <TextInput
-                  name="email"
-                  placeholder=" Email Address"
-                  style={styles.textInput}
-                  onChangeText={handleChange("email")}
-                  onBlur={handleBlur("email")}
-                  value={values.email}
-                  keyboardType="email-address"
-                />
-                <Text>Password: </Text>
-                <Text style={{ color: "red" }}>
-                  {touched.password && errors.password}
-                </Text>
-                <TextInput
-                  name="password"
-                  placeholder=" Password"
-                  style={styles.textInput}
-                  onChangeText={handleChange("password")}
-                  onBlur={handleBlur("password")}
-                  value={values.password}
-                  secureTextEntry
-                />
-                <Text style={{ color: "red" }}>
-                  {touched.confirmPassword && errors.confirmPassword}
-                </Text>
-                <Text>Confirm Password: </Text>
-                <TextInput
-                  name="confirmPassword"
-                  placeholder=" Confirm Password"
-                  style={styles.textInput}
-                  onChangeText={handleChange("confirmPassword")}
-                  onBlur={handleBlur("confirmPassword")}
-                  value={values.confirmPassword}
-                  secureTextEntry
-                />
-                <CheckBox
-                  title="Remember Me"
-                  checked={checked}
-                  containerStyle={{ backgroundColor: "transparent" }}
-                  onPress={() => setChecked(!checked)}
-                />
-                <Button
-                  onPress={handleSubmit}
-                  style={{ marginTop: 10 }}
-                  title="Submit"
-                  disabled={!isValid}
-                />
-              </View>
-            )}
-          </Formik>
-        </KeyboardAvoidingView>
+        <Formik
+          initialValues={{ username: "", password: "", confirmPassword: "" }}
+          onSubmit={(values) => register(values)}
+          validationSchema={signUpValidationSchema}>
+          {({
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            values,
+            errors,
+            touched,
+            isValid,
+          }) => (
+            <View>
+              <Text style={{ color: "red", textAlign: "center" }}>
+                {authError}
+              </Text>
+              <Text>Username: </Text>
+              <Text style={{ color: "red" }}>
+                {touched.username && errors.username}
+              </Text>
+              <TextInput
+                name="username"
+                placeholder="Username"
+                style={styles.textInput}
+                onChangeText={handleChange("username")}
+                onBlur={handleBlur("username")}
+                value={values.username}
+                keyboardType="email-address"
+              />
+              <Text>Password: </Text>
+              <Text style={{ color: "red" }}>
+                {touched.password && errors.password}
+              </Text>
+              <TextInput
+                name="password"
+                placeholder=" Password"
+                style={styles.textInput}
+                onChangeText={handleChange("password")}
+                onBlur={handleBlur("password")}
+                value={values.password}
+                secureTextEntry
+              />
+              <Text style={{ color: "red" }}>
+                {touched.confirmPassword && errors.confirmPassword}
+              </Text>
+              <Text>Confirm Password: </Text>
+              <TextInput
+                name="confirmPassword"
+                placeholder=" Confirm Password"
+                style={styles.textInput}
+                onChangeText={handleChange("confirmPassword")}
+                onBlur={handleBlur("confirmPassword")}
+                value={values.confirmPassword}
+                secureTextEntry
+              />
+              <Button
+                onPress={handleSubmit}
+                style={{ marginTop: 10 }}
+                title="Submit"
+                disabled={!isValid}
+              />
+            </View>
+          )}
+        </Formik>
         <Pressable onPress={() => navigate("Auth")}>
           <Text
             style={{
               textAlign: "center",
               color: "blue",
               textDecorationLine: "underline",
-              marginTop: 10,
             }}>
             Sign In
           </Text>
         </Pressable>
-        <Pressable onPress={() => navigate("ForgotPassword")}>
-          <Text
-            style={{
-              textAlign: "center",
-              color: "blue",
-              textDecorationLine: "underline",
-              marginTop: 10,
-            }}>
-            Forgot Password?
-          </Text>
-        </Pressable>
-      </View>
+      </KeyboardAvoidingView>
     </HomeBG>
   );
 };

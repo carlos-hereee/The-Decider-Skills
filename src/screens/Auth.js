@@ -1,29 +1,41 @@
 import React, { useContext, useEffect, useState } from "react";
-import { View, StyleSheet, Pressable, ActivityIndicator } from "react-native";
-import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
+import {
+  View,
+  StyleSheet,
+  Pressable,
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  TextInput,
+} from "react-native";
 import HomeBG from "../components/HomeBG";
-import Login from "../components/Login";
-import { Text } from "react-native-elements";
+import { Text, Button } from "react-native-elements";
 import { navigate } from "../utils/RootNavigation";
 import { globalStyles } from "../styles";
 import { HandbookContext } from "../utils/Context";
 import { auth } from "../utils/firebase.config";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Formik } from "formik";
+import * as yup from "yup";
 
+const schema = yup.object().shape({
+  username: yup.string().required("Username is Required"),
+  password: yup
+    .string()
+    .min(6, ({ min }) => `Password must be at least ${min} characters`)
+    .required("Password is required"),
+});
 const Auth = () => {
-  let [fontsLoaded] = useFonts({ Amaranth_700Bold });
-  const { liveUser, getData } = useContext(HandbookContext);
-  const [loading, setLoading] = useState(false);
+  const { signIn, signInError } = useContext(HandbookContext);
+  const [loading, setLoading] = useState(true);
+  const [user] = useAuthState(auth);
   useEffect(() => {
-    setLoading(true);
-    auth.onAuthStateChanged((user) => {
-      if (user?.uid) {
-        liveUser(user.uid);
-        getData(user.uid);
-        navigate("Home");
-      }
+    if (user?.uid) {
+      navigate("Handbook");
+    }
+    if (user === undefined || null) {
       setLoading(false);
-    });
-  }, []);
+    }
+  }, [user]);
 
   if (loading) {
     return (
@@ -34,43 +46,74 @@ const Auth = () => {
   }
   return (
     <HomeBG>
-      <View style={[styles.container, globalStyles.shadow]}>
-        {fontsLoaded && (
-          <View>
-            <Text h2 style={styles.cardHeading}>
-              The Decider
-            </Text>
-            <Text h2 style={styles.cardHeading}>
-              Skills
-            </Text>
-          </View>
-        )}
-        <View>
-          <Login />
-          <Pressable onPress={() => navigate("Register")}>
-            <Text
-              style={{
-                textAlign: "center",
-                color: "blue",
-                textDecorationLine: "underline",
-                marginTop: 10,
-              }}>
-              Create an account?
-            </Text>
-          </Pressable>
-          <Pressable onPress={() => navigate("ForgotPassword")}>
-            <Text
-              style={{
-                textAlign: "center",
-                color: "blue",
-                textDecorationLine: "underline",
-                marginTop: 10,
-              }}>
-              Forgot Password?
-            </Text>
-          </Pressable>
-        </View>
-      </View>
+      <KeyboardAvoidingView style={[styles.container, globalStyles.shadow]}>
+        <Text h2 style={{ textAlign: "center" }}>
+          Login
+        </Text>
+        <Formik
+          initialValues={{ username: "", password: "" }}
+          onSubmit={(values) => signIn(values)}
+          validationSchema={schema}>
+          {({
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            values,
+            errors,
+            touched,
+            isValid,
+          }) => (
+            <View>
+              <Text style={{ color: "red", textAlign: "center" }}>
+                {signInError}
+              </Text>
+              <Text>Username: </Text>
+              <Text style={{ color: "red" }}>
+                {touched.username && errors.username}
+              </Text>
+              <TextInput
+                name="username"
+                placeholder="Username"
+                style={styles.textInput}
+                onChangeText={handleChange("username")}
+                onBlur={handleBlur("username")}
+                value={values.username}
+                keyboardType="email-address"
+              />
+              <Text>Password: </Text>
+              <Text style={{ color: "red" }}>
+                {touched.password && errors.password}
+              </Text>
+              <TextInput
+                name="password"
+                placeholder=" Password"
+                style={styles.textInput}
+                onChangeText={handleChange("password")}
+                onBlur={handleBlur("password")}
+                value={values.password}
+                secureTextEntry
+              />
+              <Button
+                onPress={handleSubmit}
+                title="Submit"
+                style={{ marginTop: 10 }}
+                disabled={!isValid}
+              />
+            </View>
+          )}
+        </Formik>
+        <Pressable onPress={() => navigate("Register")}>
+          <Text
+            style={{
+              textAlign: "center",
+              color: "blue",
+              textDecorationLine: "underline",
+              marginTop: 10,
+            }}>
+            Create an account?
+          </Text>
+        </Pressable>
+      </KeyboardAvoidingView>
     </HomeBG>
   );
 };
@@ -86,7 +129,15 @@ const styles = StyleSheet.create({
   },
   cardHeading: {
     textAlign: "center",
-    fontFamily: "Amaranth_700Bold",
     color: "#00122C",
+  },
+  textInput: {
+    height: 40,
+    padding: 10,
+    backgroundColor: "white",
+    borderColor: "gray",
+    marginVertical: 5,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: 4,
   },
 });
