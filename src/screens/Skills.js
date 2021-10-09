@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import {
   FlatList,
   Image,
@@ -18,6 +18,8 @@ const { width, height } = Dimensions.get("window");
 const Skills = () => {
   const { skills, makeActive, active, resetActive } =
     useContext(HandbookContext);
+  const index = skills?.indexOf(active);
+  const flatList = useRef(null);
   const handlePress = (skills, item) => {
     resetActive();
     makeActive(skills, item);
@@ -51,10 +53,21 @@ const Skills = () => {
         </View>
       </View>
       <FlatList
+        ref={flatList}
         data={skills}
         horizontal
         contentContainerStyle={{ marginVertical: 15 }}
-        initialScrollIndex={skills?.indexOf(active) || 0}
+        initialScrollIndex={index}
+        initialNumToRender={1}
+        onScrollToIndexFailed={(info) => {
+          const wait = new Promise((resolve) => setTimeout(resolve, 500));
+          wait.then(() => {
+            flatList.current?.scrollToIndex({
+              index: info.index,
+              animated: true,
+            });
+          });
+        }}
         renderItem={({ item }) => (
           <Pressable
             onPress={() => handlePress(skills, item)}

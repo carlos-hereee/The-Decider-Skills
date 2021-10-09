@@ -13,7 +13,6 @@ import { navigate } from "../utils/RootNavigation";
 import { globalStyles } from "../styles";
 import { HandbookContext } from "../utils/Context";
 import { auth } from "../utils/firebase.config";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { Formik } from "formik";
 import * as yup from "yup";
 
@@ -27,7 +26,8 @@ const schema = yup.object().shape({
 const Auth = () => {
   const { signIn, signInError } = useContext(HandbookContext);
   const [loading, setLoading] = useState(true);
-  const [user] = useAuthState(auth);
+  const user = auth.currentUser;
+
   useEffect(() => {
     if (user?.uid) {
       navigate("Handbook");
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderColor: "gray",
     marginVertical: 5,
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: 2,
     borderRadius: 4,
   },
 });

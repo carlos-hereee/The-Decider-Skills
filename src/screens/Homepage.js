@@ -8,8 +8,6 @@ import {
   Dimensions,
 } from "react-native";
 import { Text } from "react-native-elements";
-import { useFonts, Amaranth_700Bold } from "@expo-google-fonts/amaranth";
-import AppLoading from "expo-app-loading";
 import { navigate } from "../utils/RootNavigation";
 import { Video } from "expo-av";
 import HomeBG from "../components/HomeBG";
@@ -22,7 +20,6 @@ import { HandbookContext } from "../utils/Context";
 
 const { width } = Dimensions.get("window");
 const Homepage = () => {
-  let [fontsLoaded] = useFonts({ Amaranth_700Bold });
   const videoRef = useRef(null);
   const [video, setVideo] = useState({});
   const [videoURI, setVideoURI] = useState("");
@@ -36,7 +33,6 @@ const Homepage = () => {
       if (user?.uid) {
         liveUser(user.uid);
         getData(user.uid);
-        navigate("Handbook");
       }
     });
     unsub();
@@ -90,7 +86,7 @@ const Homepage = () => {
       />
     </View>
   );
-  return fontsLoaded ? (
+  return (
     <HomeBG>
       <View style={[styles.container, globalStyles.shadow]}>
         <Text h2 style={styles.cardHeading}>
@@ -154,8 +150,6 @@ const Homepage = () => {
         </View>
       </View>
     </HomeBG>
-  ) : (
-    <AppLoading />
   );
 };
 export default Homepage;
@@ -177,11 +171,9 @@ const styles = StyleSheet.create({
   },
   cardHeading: {
     textAlign: "center",
-    fontFamily: "Amaranth_700Bold",
     color: "#00122C",
   },
   button: {
-    fontFamily: "Amaranth_700Bold",
     marginTop: "auto",
     padding: 10,
     marginVertical: 5,

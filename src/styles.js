@@ -1,14 +1,6 @@
 import { StyleSheet } from "react-native";
 
 export const globalStyles = StyleSheet.create({
-  button: {
-    fontFamily: "Amaranth_700Bold",
-    marginTop: "auto",
-    padding: 10,
-    margin: 5,
-    backgroundColor: "#00A89E",
-    borderRadius: 4,
-  },
   shadow: {
     shadowColor: "#000",
     shadowOffset: {
