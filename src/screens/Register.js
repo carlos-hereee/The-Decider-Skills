@@ -105,6 +105,7 @@ const Register = () => {
               textAlign: "center",
               color: "blue",
               textDecorationLine: "underline",
+              paddingTop: 20,
             }}>
             Log In
           </Text>

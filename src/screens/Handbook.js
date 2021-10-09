@@ -13,8 +13,8 @@ const Handbook = () => {
   const { makeActive, earnedBadges } = useContext(HandbookContext);
   const [accordion, setAccordion] = useState("1");
 
-  const handlePress = (i, data) => {
-    makeActive(i.skills, data);
+  const handlePress = (skills, data) => {
+    makeActive(skills, data);
     navigate("Skills");
   };
 
@@ -53,7 +53,7 @@ const Handbook = () => {
               {item.skills.map((icon) => (
                 <Pressable
                   key={icon.key}
-                  onPress={() => handlePress(item, icon)}
+                  onPress={() => handlePress(item.skills, icon)}
                   style={[styles.listItem, globalStyles.shadow]}>
                   {earnedBadges.filter((data) => data.key === icon.key).length >
                   0 ? (
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 4,
     width: width * 0.95,
+    height: height * 0.6,
     alignItems: "center",
   },
   listItem: {

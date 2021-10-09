@@ -18,7 +18,7 @@ import * as yup from "yup";
 import GoBack from "../components/GoBack";
 
 const schema = yup.object().shape({
-  username: yup.string().required("Username is Required"),
+  username: yup.string().required("Username is required"),
   password: yup
     .string()
     .min(6, ({ min }) => `Password must be at least ${min} characters`)
@@ -109,7 +109,7 @@ const Auth = () => {
               textAlign: "center",
               color: "blue",
               textDecorationLine: "underline",
-              marginTop: 10,
+              paddingTop: 20,
             }}>
             Create an account?
           </Text>

@@ -46,24 +46,36 @@ export const HandbookState = ({ children }) => {
     }
   };
 
-  const signIn = async ({ email, password }) => {
+  const signIn = async ({ username, password }) => {
     try {
-      const { user } = await auth.signInWithEmailAndPassword(email, password);
+      const { user } = await auth.signInWithEmailAndPassword(
+        `${username}@the-decider-skills-app.com`,
+        password
+      );
       liveUser(user.uid);
       getData(user.uid);
       navigate("Handbook");
     } catch (e) {
+      console.log("e", [e]);
       dispatch({ type: "SIGN_IN_ERROR", payload: "Invalid Email or Password" });
     }
   };
-  const register = async ({ email, password }) => {
+  const register = async ({ username, password }) => {
     try {
-      await auth.createUserWithEmailAndPassword(email, password);
+      await auth.createUserWithEmailAndPassword(
+        `${username}@the-decider-skills-app.com`,
+        password
+      );
       navigate("Handbook");
     } catch (e) {
+      console.log("e", e.code);
+      const error = {
+        "auth/email-already-inuse":
+          "The username entered is already being used",
+      };
       dispatch({
         type: "REGISTER_ERROR",
-        payload: "Could not create account, try again later",
+        payload: error[e.code] || "Could not create account, try again later",
       });
     }
   };

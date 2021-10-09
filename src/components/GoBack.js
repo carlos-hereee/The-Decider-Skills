@@ -1,6 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Pressable, StyleSheet, View, Dimensions, Text } from "react-native";
-import { faArrowLeft, faBars } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faBars,
+  faTimesCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { navigate, navigationRef } from "../utils/RootNavigation";
 import { HandbookContext } from "../utils/Context";
@@ -36,14 +40,18 @@ export default function GoBack() {
         <Pressable onPress={() => handlePress()}>
           <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" size={45} />
         </Pressable>
-      </View>
-      {auth.currentUser ? (
-        <View style={styles.hamburgerMenuToggle}>
+        {auth.currentUser ? (
+          // <View style={styles.hamburgerMenuToggle}>
           <Pressable onPress={() => setToggleMenu(!toggleMenu)}>
-            <FontAwesomeIcon icon={faBars} color="#2185d6" size={40} />
+            {toggleMenu ? (
+              <FontAwesomeIcon icon={faTimesCircle} color="#2185d6" size={40} />
+            ) : (
+              <FontAwesomeIcon icon={faBars} color="#2185d6" size={40} />
+            )}
           </Pressable>
-        </View>
-      ) : null}
+        ) : // </View>
+        null}
+      </View>
       {toggleMenu ? (
         <View style={[globalStyles.shadow, styles.hamburgerMenu]}>
           <Pressable onPress={() => signOut()}>
@@ -56,21 +64,22 @@ export default function GoBack() {
 }
 const styles = StyleSheet.create({
   container: {
-    marginTop: height * 0.05,
-    marginBottom: height * 0.01,
     paddingHorizontal: 20,
+    paddingTop: 5,
+    width: width,
+    height: height * 0.1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
   },
   authContainer: {
     padding: 10,
   },
-  hamburgerMenuToggle: {
-    position: "absolute",
-    top: "5%",
-    right: "5%",
-  },
   hamburgerMenu: {
+    borderWidth: 2,
+    borderColor: "#CBE9ED",
     backgroundColor: "#ffffff",
-    width: width * 0.3,
+    width: width * 0.5,
     position: "absolute",
     top: "13%",
     right: "5%",

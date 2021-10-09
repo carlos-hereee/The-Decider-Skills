@@ -93,7 +93,7 @@ const Skills = () => {
             <View style={styles.badge}>
               <Badge
                 data={{
-                  src: i.imageUrl,
+                  src: item.imageUrl,
                   iconSize: width * 0.1,
                   backgroundSize: width * 0.15,
                 }}
