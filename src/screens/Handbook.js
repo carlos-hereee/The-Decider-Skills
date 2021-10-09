@@ -18,6 +18,17 @@ const Handbook = () => {
     navigate("Skills");
   };
 
+  const Icon = ({ data }) => (
+    <View style={{ alignItems: "center" }}>
+      <Image
+        source={{ uri: data.imageUrl }}
+        resizeMode="contain"
+        style={{ width: width * 0.15, height: height * 0.07 }}
+      />
+      <Text style={{ textAlign: "center" }}>{data.name.toUpperCase()}</Text>
+    </View>
+  );
+
   return (
     <View style={styles.menu}>
       <GoBack />
@@ -34,48 +45,32 @@ const Handbook = () => {
             },
           ]}
           onPress={() => setAccordion(item.key)}>
-          <Text style={{ color: "black", alignItems: "center" }}>
+          <Text h5 style={{ color: "black", alignItems: "center" }}>
             {item.title.toUpperCase()}
           </Text>
           {item.key === accordion && (
             <View style={{ flexWrap: "wrap" }}>
-              {item.skills.map((i) => (
+              {item.skills.map((icon) => (
                 <Pressable
-                  key={i.key}
-                  onPress={() => handlePress(item, i)}
+                  key={icon.key}
+                  onPress={() => handlePress(item, icon)}
                   style={[styles.listItem, globalStyles.shadow]}>
-                  {earnedBadges.filter((data) => data.key === i.key).length >
+                  {earnedBadges.filter((data) => data.key === icon.key).length >
                   0 ? (
-                    <View
-                      style={{
-                        alignItems: "center",
-                      }}>
-                      <Image
-                        source={{ uri: i.imageUrl }}
-                        resizeMode="contain"
-                        style={{
-                          width: width * 0.11,
-                          height: height * 0.07,
-                        }}
-                      />
-                      <Text style={{ textAlign: "center" }}>
-                        {i.name.toUpperCase()}
-                      </Text>
-                    </View>
+                    <>
+                      <Icon data={icon} />
+                      <View style={styles.badge}>
+                        <Badge
+                          data={{
+                            src: icon.imageUrl,
+                            iconSize: width * 0.1,
+                            backgroundSize: width * 0.15,
+                          }}
+                        />
+                      </View>
+                    </>
                   ) : (
-                    <View style={{ alignItems: "center" }}>
-                      <Image
-                        source={{ uri: i.imageUrl }}
-                        resizeMode="contain"
-                        style={{
-                          width: width * 0.11,
-                          height: height * 0.07,
-                        }}
-                      />
-                      <Text style={{ textAlign: "center" }}>
-                        {i.name.toUpperCase()}
-                      </Text>
-                    </View>
+                    <Icon data={icon} />
                   )}
                 </Pressable>
               ))}
@@ -106,6 +101,7 @@ const styles = StyleSheet.create({
   listItem: {
     justifyContent: "center",
     alignItems: "center",
+    flexDirection: "row-reverse",
     backgroundColor: "#EFF5FA",
     margin: 5,
     borderRadius: 4,
@@ -118,9 +114,8 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   badge: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 5,
+    position: "absolute",
+    top: "-20%",
+    right: "-20%",
   },
 });

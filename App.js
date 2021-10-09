@@ -14,8 +14,8 @@ import ClaimBadge from "./src/screens/ClaimBadge";
 import Footer from "./src/components/Footer";
 import Auth from "./src/screens/Auth";
 import Skills from "./src/screens/Skills.js";
-import Register from "./src/components/Register.js";
- 
+import Register from "./src/screens/Register.js";
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {

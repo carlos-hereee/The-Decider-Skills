@@ -15,6 +15,7 @@ import { HandbookContext } from "../utils/Context";
 import { auth } from "../utils/firebase.config";
 import { Formik } from "formik";
 import * as yup from "yup";
+import GoBack from "../components/GoBack";
 
 const schema = yup.object().shape({
   username: yup.string().required("Username is Required"),
@@ -31,8 +32,7 @@ const Auth = () => {
   useEffect(() => {
     if (user?.uid) {
       navigate("Handbook");
-    }
-    if (user === undefined || null) {
+    } else {
       setLoading(false);
     }
   }, [user]);
@@ -47,6 +47,7 @@ const Auth = () => {
   return (
     <HomeBG>
       <KeyboardAvoidingView style={[styles.container, globalStyles.shadow]}>
+        <GoBack />
         <Text h2 style={{ textAlign: "center" }}>
           Login
         </Text>

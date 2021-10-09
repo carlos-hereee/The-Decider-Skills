@@ -69,26 +69,37 @@ const Skills = () => {
           });
         }}
         renderItem={({ item }) => (
-          <Pressable
-            onPress={() => handlePress(skills, item)}
-            style={
-              active === item
-                ? [
-                    styles.listItem,
-                    globalStyles.shadow,
-                    { backgroundColor: "#CBE9ED" },
-                  ]
-                : [styles.listItem, globalStyles.shadow]
-            }>
-            <Image
-              source={{ uri: item.imageUrl }}
-              style={{ width: width * 0.2, height: height * 0.1 }}
-              resizeMode="contain"
-            />
-            <Text style={{ textAlign: "center" }}>
-              {item.name.toUpperCase()}
-            </Text>
-          </Pressable>
+          <>
+            <Pressable
+              onPress={() => handlePress(skills, item)}
+              style={
+                active === item
+                  ? [
+                      styles.listItem,
+                      globalStyles.shadow,
+                      { backgroundColor: "#CBE9ED" },
+                    ]
+                  : [styles.listItem, globalStyles.shadow]
+              }>
+              <Image
+                source={{ uri: item.imageUrl }}
+                style={{ width: width * 0.2, height: height * 0.1 }}
+                resizeMode="contain"
+              />
+              <Text style={{ textAlign: "center" }}>
+                {item.name.toUpperCase()}
+              </Text>
+            </Pressable>
+            <View style={styles.badge}>
+              <Badge
+                data={{
+                  src: i.imageUrl,
+                  iconSize: width * 0.1,
+                  backgroundSize: width * 0.15,
+                }}
+              />
+            </View>
+          </>
         )}
       />
     </View>
@@ -124,5 +135,10 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 5,
     borderRadius: 4,
+  },
+  badge: {
+    position: "absolute",
+    top: "-20%",
+    right: "-20%",
   },
 });

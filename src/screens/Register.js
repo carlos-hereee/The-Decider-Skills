@@ -10,7 +10,7 @@ import { Formik } from "formik";
 import { Button, Text } from "react-native-elements";
 import { HandbookContext } from "../utils/Context";
 import * as yup from "yup";
-import HomeBG from "./HomeBG";
+import HomeBG from "../components/HomeBG";
 import { navigate } from "../utils/RootNavigation";
 import { globalStyles } from "../styles";
 
@@ -106,7 +106,7 @@ const Register = () => {
               color: "blue",
               textDecorationLine: "underline",
             }}>
-            Sign In
+            Log In
           </Text>
         </Pressable>
       </KeyboardAvoidingView>
