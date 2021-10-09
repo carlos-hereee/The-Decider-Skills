@@ -4,10 +4,10 @@ import Badge from "../components/Badge";
 import { globalStyles } from "../styles";
 import { HandbookContext } from "../utils/Context";
 import { Text } from "react-native-elements";
+import { auth } from "../utils/firebase.config";
 
 const ClaimBadge = () => {
-  const { claimBadge, queuedSkillForBadge, client } =
-    useContext(HandbookContext);
+  const { claimBadge, queuedSkillForBadge } = useContext(HandbookContext);
   return (
     <View style={styles.container}>
       <Text h4>Congratulations!</Text>
@@ -21,7 +21,7 @@ const ClaimBadge = () => {
       />
       <Pressable
         style={[styles.button, globalStyles.shadow]}
-        onPress={() => claimBadge(queuedSkillForBadge, client)}>
+        onPress={() => claimBadge(queuedSkillForBadge, auth.currentUser)}>
         <Text style={{ color: "#ffffff", paddingHorizontal: 20 }}>CLAIM</Text>
       </Pressable>
     </View>

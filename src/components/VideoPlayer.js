@@ -10,6 +10,7 @@ import {
 import { HandbookContext } from "../utils/Context";
 import { navigate } from "../utils/RootNavigation";
 import { getVideoUrl } from "../utils/firebase.config";
+import { auth } from "../utils/firebase.config";
 
 const { width } = Dimensions.get("window");
 const VideoPlayer = () => {
@@ -29,9 +30,11 @@ const VideoPlayer = () => {
   useEffect(() => {
     if (status?.durationMillis <= status?.positionMillis) {
       // video ends and badge has not been earned
-      if (!earnedBadges.filter((data) => data.key === active.key).length) {
-        badgeToClaim(active);
-        navigate("ClaimBadge");
+      if (auth.currentUser) {
+        if (!earnedBadges.filter((data) => data.key === active.key).length) {
+          badgeToClaim(active);
+          navigate("ClaimBadge");
+        }
       }
     }
   }, [status?.positionMillis]);

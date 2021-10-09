@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Image, Pressable, StyleSheet, View, Dimensions } from "react-native";
+import { Pressable, StyleSheet, View, Dimensions } from "react-native";
 import { Text } from "react-native-elements";
 import { HandbookContext } from "../utils/Context";
 import lifeSkills from "../utils/data.json";
@@ -7,6 +7,7 @@ import Badge from "../components/Badge";
 import { navigate } from "../utils/RootNavigation";
 import GoBack from "../components/GoBack";
 import { globalStyles } from "../styles";
+import Icon from "../components/Icon";
 
 const { width, height } = Dimensions.get("window");
 const Handbook = () => {
@@ -17,18 +18,6 @@ const Handbook = () => {
     makeActive(skills, data);
     navigate("Skills");
   };
-
-  const Icon = ({ data }) => (
-    <View style={{ alignItems: "center" }}>
-      <Image
-        source={{ uri: data.imageUrl }}
-        resizeMode="contain"
-        style={{ width: width * 0.15, height: height * 0.07 }}
-      />
-      <Text style={{ textAlign: "center" }}>{data.name.toUpperCase()}</Text>
-    </View>
-  );
-
   return (
     <View style={styles.menu}>
       <GoBack />

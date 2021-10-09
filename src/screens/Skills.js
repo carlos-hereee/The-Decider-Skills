@@ -13,10 +13,11 @@ import VideoPlayer from "../components/VideoPlayer";
 import Badge from "../components/Badge";
 import GoBack from "../components/GoBack";
 import { globalStyles } from "../styles";
+import Icon from "../components/Icon";
 
 const { width, height } = Dimensions.get("window");
 const Skills = () => {
-  const { skills, makeActive, active, resetActive } =
+  const { skills, makeActive, active, resetActive, earnedBadges } =
     useContext(HandbookContext);
   const index = skills?.indexOf(active);
   const flatList = useRef(null);
@@ -81,24 +82,19 @@ const Skills = () => {
                     ]
                   : [styles.listItem, globalStyles.shadow]
               }>
-              <Image
-                source={{ uri: item.imageUrl }}
-                style={{ width: width * 0.2, height: height * 0.1 }}
-                resizeMode="contain"
-              />
-              <Text style={{ textAlign: "center" }}>
-                {item.name.toUpperCase()}
-              </Text>
+              <Icon data={item} />
             </Pressable>
-            <View style={styles.badge}>
-              <Badge
-                data={{
-                  src: item.imageUrl,
-                  iconSize: width * 0.1,
-                  backgroundSize: width * 0.15,
-                }}
-              />
-            </View>
+            {earnedBadges.filter((data) => data.key === item.key).length > 0 ? (
+              <View style={styles.badge}>
+                <Badge
+                  data={{
+                    src: item.imageUrl,
+                    iconSize: width * 0.1,
+                    backgroundSize: width * 0.15,
+                  }}
+                />
+              </View>
+            ) : null}
           </>
         )}
       />
