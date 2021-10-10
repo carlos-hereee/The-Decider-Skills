@@ -1,5 +1,11 @@
 import React, { useContext, useState } from "react";
-import { Pressable, StyleSheet, View, Dimensions } from "react-native";
+import {
+  Pressable,
+  StyleSheet,
+  View,
+  Dimensions,
+  Platform,
+} from "react-native";
 import { Text } from "react-native-elements";
 import { HandbookContext } from "../utils/Context";
 import lifeSkills from "../utils/data.json";
@@ -8,6 +14,7 @@ import { navigate } from "../utils/RootNavigation";
 import GoBack from "../components/GoBack";
 import { globalStyles } from "../styles";
 import Icon from "../components/Icon";
+import { FlatList } from "react-native-gesture-handler";
 
 const { width, height } = Dimensions.get("window");
 const Handbook = () => {
@@ -19,52 +26,84 @@ const Handbook = () => {
     navigate("Skills");
   };
   return (
-    <View style={styles.menu}>
+    <View>
       <GoBack />
-      {lifeSkills.map((item) => (
+      {lifeSkills.map((menu) => (
         <Pressable
-          key={item.key}
-          disabled={item.key === accordion}
+          key={menu.key}
+          disabled={menu.key === accordion}
           style={[
             styles.handbookSkill,
             globalStyles.shadow,
             {
-              zIndex: item.key === accordion ? 1 : 0,
-              height: item.key === accordion ? height * 0.58 : null,
+              zIndex: menu.key === accordion ? 1 : 0,
+              height: menu.key === accordion ? height * 0.58 : null,
             },
           ]}
-          onPress={() => setAccordion(item.key)}>
-          <Text h5 style={{ color: "black", alignItems: "center" }}>
-            {item.title.toUpperCase()}
+          onPress={() => setAccordion(menu.key)}>
+          <Text h4 style={{ color: "black", textAlign: "center" }}>
+            {menu.title.toUpperCase()}
           </Text>
-          {item.key === accordion && (
-            <View style={{ flexWrap: "wrap" }}>
-              {item.skills.map((icon) => (
-                <Pressable
-                  key={icon.key}
-                  onPress={() => handlePress(item.skills, icon)}
-                  style={[styles.listItem, globalStyles.shadow]}>
-                  {earnedBadges.filter((data) => data.key === icon.key).length >
-                  0 ? (
-                    <>
-                      <Icon data={icon} />
-                      <View style={styles.badge}>
-                        <Badge
-                          data={{
-                            src: icon.imageUrl,
-                            iconSize: width * 0.1,
-                            backgroundSize: width * 0.15,
-                          }}
-                        />
-                      </View>
-                    </>
-                  ) : (
-                    <Icon data={icon} />
+          {menu.key === accordion &&
+            (Platform.OS === "web" ? (
+              <View style={styles.webMenu}>
+                <FlatList
+                  data={menu.skills}
+                  numColumns={3}
+                  renderItem={({ item }) => (
+                    <Pressable
+                      key={item.key}
+                      onPress={() => handlePress(menu.skills, item)}
+                      style={[styles.listItem, globalStyles.shadow]}>
+                      {earnedBadges.filter((data) => data.key === item.key)
+                        .length > 0 ? (
+                        <>
+                          <Icon data={item} />
+                          <View style={styles.badge}>
+                            <Badge
+                              data={{
+                                src: item.imageUrl,
+                                iconSize: width * 0.1,
+                                backgroundSize: width * 0.15,
+                              }}
+                            />
+                          </View>
+                        </>
+                      ) : (
+                        <Icon data={item} />
+                      )}
+                    </Pressable>
                   )}
-                </Pressable>
-              ))}
-            </View>
-          )}
+                />
+              </View>
+            ) : (
+              <View style={{ flexWrap: "wrap" }}>
+                {menu.skills.map((icon) => (
+                  <Pressable
+                    key={icon.key}
+                    onPress={() => handlePress(menu.skills, icon)}
+                    style={[styles.listItem, globalStyles.shadow]}>
+                    {earnedBadges.filter((data) => data.key === icon.key)
+                      .length > 0 ? (
+                      <>
+                        <Icon data={icon} />
+                        <View style={styles.badge}>
+                          <Badge
+                            data={{
+                              src: icon.imageUrl,
+                              iconSize: width * 0.1,
+                              backgroundSize: width * 0.15,
+                            }}
+                          />
+                        </View>
+                      </>
+                    ) : (
+                      <Icon data={icon} />
+                    )}
+                  </Pressable>
+                ))}
+              </View>
+            ))}
         </Pressable>
       ))}
     </View>
@@ -73,12 +112,6 @@ const Handbook = () => {
 export default Handbook;
 
 const styles = StyleSheet.create({
-  menu: {
-    flex: 1,
-    flexWrap: "wrap",
-    justifyContent: "center",
-    flexDirection: "row",
-  },
   handbookSkill: {
     backgroundColor: "#ffffff",
     margin: 5,
@@ -86,6 +119,11 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     width: width * 0.95,
     height: height * 0.6,
+  },
+  webMenu: {
+    flex: 1,
+    flexWrap: "wrap",
+    justifyContent: "center",
     alignItems: "center",
   },
   listItem: {

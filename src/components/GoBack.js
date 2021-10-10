@@ -54,7 +54,11 @@ export default function GoBack() {
       </View>
       {toggleMenu ? (
         <View style={[globalStyles.shadow, styles.hamburgerMenu]}>
-          <Pressable onPress={() => signOut()}>
+          <Pressable style={styles.menuItem} onPress={() => handlePress()}>
+            <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" />
+            <Text style={{ marginLeft: 5 }}>Go Back</Text>
+          </Pressable>
+          <Pressable style={styles.menuItem} onPress={() => signOut()}>
             <Text>Sign Out</Text>
           </Pressable>
         </View>
@@ -65,12 +69,17 @@ export default function GoBack() {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
-    paddingTop: 5,
+    paddingVertical: 5,
     width: width,
     height: height * 0.1,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-end",
+  },
+  menuItem: {
+    flexDirection: "row",
+    paddingVertical: 10,
+    marginBottom: 5,
   },
   authContainer: {
     padding: 10,

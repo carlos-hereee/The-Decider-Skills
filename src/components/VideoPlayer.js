@@ -4,7 +4,6 @@ import {
   ActivityIndicator,
   Platform,
   Pressable,
-  StyleSheet,
   Dimensions,
 } from "react-native";
 import { HandbookContext } from "../utils/Context";
@@ -60,37 +59,21 @@ const VideoPlayer = () => {
           ? videoRef.current.pauseAsync()
           : videoRef.current.playAsync()
       }>
-      {videoURI ? (
-        <>
-          {isLoading && <ActivityIndicator size="large" color="#600" />}
-          <Video
-            ref={videoRef}
-            source={{ uri: videoURI }}
-            useNativeControls
-            style={[videoStyle, styles.video]}
-            resizeMode="contain"
-            onPlaybackStatusUpdate={(stat) => setStatus(stat)}
-            onFullscreenUpdate={handleFullscreen}
-            posterSource={Platform.OS === "ios" && { uri: active.thumbnail }}
-            onLoadStart={() => setIsLoading(true)}
-            onLoad={() => setIsLoading(false)}
-          />
-        </>
-      ) : (
-        <ActivityIndicator size="large" color="#600" />
-      )}
+      {isLoading && <ActivityIndicator size="large" color="#600" />}
+      <Video
+        ref={videoRef}
+        source={{ uri: videoURI }}
+        useNativeControls
+        style={videoStyle}
+        resizeMode="contain"
+        onPlaybackStatusUpdate={(stat) => setStatus(stat)}
+        onFullscreenUpdate={handleFullscreen}
+        posterSource={Platform.OS === "ios" && { uri: active.thumbnail }}
+        onLoadStart={() => setIsLoading(true)}
+        onLoad={() => setIsLoading(false)}
+      />
     </Pressable>
   );
 };
 
 export default VideoPlayer;
-
-const styles = StyleSheet.create({
-  video: {
-    ...Platform.select({
-      web: {
-        marginHorizontal: "auto",
-      },
-    }),
-  },
-});
