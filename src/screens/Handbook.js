@@ -42,7 +42,7 @@ const Handbook = () => {
           ]}
           onPress={() => setAccordion(menu.key)}>
           <Text h4 style={{ color: "black", textAlign: "center" }}>
-            {menu.title.toUpperCase()}
+            {menu.title}
           </Text>
           {menu.key === accordion &&
             (Platform.OS === "web" ? (

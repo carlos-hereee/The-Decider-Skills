@@ -7,12 +7,6 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@expo-google-fonts/amaranth": "^0.2.0",
-    "@expo-google-fonts/dev": "^0.2.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-native-fontawesome": "^0.2.7",
-    "@react-native-async-storage/async-storage": "^1.15.9",
     "@react-native-community/netinfo": "6.0.0",
     "@react-native-community/slider": "3.0.3",
     "@react-native-firebase/app": "^12.8.0",
@@ -25,7 +19,6 @@
     "expo-app-loading": "^1.1.2",
     "expo-asset": "^8.3.3",
     "expo-av": "^9.1.2",
-    "expo-font": "~9.2.1",
     "expo-screen-orientation": "~3.3.0",
     "expo-splash-screen": "~0.11.2",
     "expo-status-bar": "~1.0.4",
@@ -45,7 +38,6 @@
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
     "react-native-slider": "^0.11.0",
-    "react-native-svg": "^12.1.1",
     "react-native-unimodules": "~0.14.6",
     "react-native-video": "^5.1.1",
     "react-native-web": "^0.17.1",
@@ -53,7 +45,9 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0"
+    "@babel/core": "^7.9.0",
+    "@expo/webpack-config": "^0.16.2",
+    "webpack-bundle-analyzer": "^4.4.2"
   },
   "private": true,
   "name": "life-handbook",

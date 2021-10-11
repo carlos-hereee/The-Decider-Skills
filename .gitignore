@@ -84,3 +84,4 @@ web-build/
 # @end expo-cli
 .vercel
 eas.json
+.expo-shared

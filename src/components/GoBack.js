@@ -1,16 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Pressable, StyleSheet, View, Dimensions, Text } from "react-native";
-import {
-  faArrowLeft,
-  faBars,
-  faTimesCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { navigate, navigationRef } from "../utils/RootNavigation";
 import { HandbookContext } from "../utils/Context";
 import { globalStyles } from "../styles";
 import { useRoute } from "@react-navigation/core";
 import { auth } from "../utils/firebase.config";
+import AppIcon from "./AppIcon";
 
 const { width, height } = Dimensions.get("window");
 export default function GoBack() {
@@ -33,29 +28,24 @@ export default function GoBack() {
   return (
     <>
       <View
-        style={[
-          globalStyles.shadow,
-          screenName === "Auth" ? styles.authContainer : styles.container,
-        ]}>
+        style={screenName === "Auth" ? styles.authContainer : styles.container}>
         <Pressable onPress={() => handlePress()}>
-          <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" size={45} />
+          <AppIcon name="backarrow" size={{ width: 40, height: 30 }} />
         </Pressable>
         {auth.currentUser ? (
-          // <View style={styles.hamburgerMenuToggle}>
           <Pressable onPress={() => setToggleMenu(!toggleMenu)}>
             {toggleMenu ? (
-              <FontAwesomeIcon icon={faTimesCircle} color="#2185d6" size={40} />
+              <AppIcon name="close" size={{ width: 50, height: 40 }} />
             ) : (
-              <FontAwesomeIcon icon={faBars} color="#2185d6" size={40} />
+              <AppIcon name="bars" size={{ width: 50, height: 40 }} />
             )}
           </Pressable>
-        ) : // </View>
-        null}
+        ) : null}
       </View>
       {toggleMenu ? (
         <View style={[globalStyles.shadow, styles.hamburgerMenu]}>
           <Pressable style={styles.menuItem} onPress={() => handlePress()}>
-            <FontAwesomeIcon icon={faArrowLeft} color="#2185d6" />
+            <AppIcon name="backarrow" size={{ width: 20, height: 20 }} />
             <Text style={{ marginLeft: 5 }}>Go Back</Text>
           </Pressable>
           <Pressable style={styles.menuItem} onPress={() => signOut()}>

@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   FlatList,
   Dimensions,
+  Platform,
 } from "react-native";
 import { Text } from "react-native-elements";
 import { navigate } from "../utils/RootNavigation";
@@ -13,10 +14,9 @@ import { Video } from "expo-av";
 import HomeBG from "../components/HomeBG";
 import { auth, getVideoUrl } from "../utils/firebase.config";
 import { globalStyles } from "../styles";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import introVideos from "../utils/intro.json";
 import { HandbookContext } from "../utils/Context";
+import AppIcon from "../components/AppIcon";
 
 const { width } = Dimensions.get("window");
 const Homepage = () => {
@@ -55,7 +55,7 @@ const Homepage = () => {
     }
   }, [video.key]);
   const videoStyle = {
-    width: isLoading ? 0 : width * 0.7,
+    width: isLoading ? 0 : Platform.OS === "web" ? width * 0.35 : width * 0.7,
     height: isLoading ? 0 : 150,
   };
   const Intro = () => (
@@ -124,7 +124,7 @@ const Homepage = () => {
                 justifyContent: "center",
                 flexDirection: "row",
               }}>
-              <FontAwesomeIcon icon={faArrowLeft} />
+              <AppIcon name="backarrow" size={{ width: 20, height: 20 }} />
               <Text style={{ paddingHorizontal: 10 }}>Go back </Text>
             </Pressable>
           </View>
