@@ -10,11 +10,8 @@ import { navigationRef } from "./src/utils/RootNavigation.js";
 import Homepage from "./src/screens/Homepage";
 import Handbook from "./src/screens/Handbook";
 import TheFizz from "./src/screens/TheFizz";
-import ClaimBadge from "./src/screens/ClaimBadge";
 import Footer from "./src/components/Footer";
-import Auth from "./src/screens/Auth";
 import Skills from "./src/screens/Skills.js";
-import Register from "./src/screens/Register.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -34,13 +31,10 @@ export default function App() {
         <Stack.Navigator
           initialRouteName="Home"
           screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Auth" component={Auth} />
-          <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="Home" component={Homepage} />
           <Stack.Screen name="Handbook" component={Handbook} />
           <Stack.Screen name="TheFizz" component={TheFizz} />
           <Stack.Screen name="Skills" component={Skills} />
-          <Stack.Screen name="ClaimBadge" component={ClaimBadge} />
         </Stack.Navigator>
         <Footer />
         <StatusBar style="auto" />

@@ -9,7 +9,6 @@ import {
 import { Text } from "react-native-elements";
 import { HandbookContext } from "../utils/Context";
 import lifeSkills from "../utils/data.json";
-import Badge from "../components/Badge";
 import { navigate } from "../utils/RootNavigation";
 import GoBack from "../components/GoBack";
 import { globalStyles } from "../styles";
@@ -18,7 +17,7 @@ import { FlatList } from "react-native-gesture-handler";
 
 const { width, height } = Dimensions.get("window");
 const Handbook = () => {
-  const { makeActive, earnedBadges } = useContext(HandbookContext);
+  const { makeActive } = useContext(HandbookContext);
   const [accordion, setAccordion] = useState("1");
 
   const handlePress = (skills, data) => {
@@ -37,7 +36,7 @@ const Handbook = () => {
             globalStyles.shadow,
             {
               zIndex: menu.key === accordion ? 1 : 0,
-              height: menu.key === accordion ? height * 0.58 : null,
+              height: menu.key === accordion ? height * 0.59 : null,
             },
           ]}
           onPress={() => setAccordion(menu.key)}>
@@ -55,23 +54,7 @@ const Handbook = () => {
                       key={item.key}
                       onPress={() => handlePress(menu.skills, item)}
                       style={[styles.listItem, globalStyles.shadow]}>
-                      {earnedBadges.filter((data) => data.key === item.key)
-                        .length > 0 ? (
-                        <>
-                          <Icon data={item} />
-                          <View style={styles.badge}>
-                            <Badge
-                              data={{
-                                src: item.imageUrl,
-                                iconSize: width * 0.1,
-                                backgroundSize: width * 0.15,
-                              }}
-                            />
-                          </View>
-                        </>
-                      ) : (
-                        <Icon data={item} />
-                      )}
+                      <Icon data={item} />
                     </Pressable>
                   )}
                 />
@@ -83,23 +66,7 @@ const Handbook = () => {
                     key={icon.key}
                     onPress={() => handlePress(menu.skills, icon)}
                     style={[styles.listItem, globalStyles.shadow]}>
-                    {earnedBadges.filter((data) => data.key === icon.key)
-                      .length > 0 ? (
-                      <>
-                        <Icon data={icon} />
-                        <View style={styles.badge}>
-                          <Badge
-                            data={{
-                              src: icon.imageUrl,
-                              iconSize: width * 0.1,
-                              backgroundSize: width * 0.15,
-                            }}
-                          />
-                        </View>
-                      </>
-                    ) : (
-                      <Icon data={icon} />
-                    )}
+                    <Icon data={icon} />
                   </Pressable>
                 ))}
               </View>
@@ -115,7 +82,7 @@ const styles = StyleSheet.create({
   handbookSkill: {
     backgroundColor: "#ffffff",
     margin: 5,
-    padding: 5,
+    padding: 3,
     borderRadius: 4,
     width: width * 0.95,
     height: height * 0.6,
@@ -135,15 +102,5 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     width: width * 0.27,
     height: height * 0.16,
-  },
-  badgeBackground: {
-    backgroundColor: "rgba(0,0,0,0.15)",
-    marginTop: "auto",
-    borderRadius: 4,
-  },
-  badge: {
-    position: "absolute",
-    top: "-20%",
-    right: "-20%",
   },
 });

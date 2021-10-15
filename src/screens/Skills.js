@@ -10,14 +10,13 @@ import {
 } from "react-native";
 import { HandbookContext } from "../utils/Context";
 import VideoPlayer from "../components/VideoPlayer";
-import Badge from "../components/Badge";
 import GoBack from "../components/GoBack";
 import { globalStyles } from "../styles";
 import Icon from "../components/Icon";
 
 const { width, height } = Dimensions.get("window");
 const Skills = () => {
-  const { skills, makeActive, active, resetActive, earnedBadges } =
+  const { skills, makeActive, active, resetActive } =
     useContext(HandbookContext);
   const index = skills?.indexOf(active);
   const flatList = useRef(null);
@@ -70,32 +69,19 @@ const Skills = () => {
           });
         }}
         renderItem={({ item }) => (
-          <>
-            <Pressable
-              onPress={() => handlePress(skills, item)}
-              style={
-                active === item
-                  ? [
-                      styles.listItem,
-                      globalStyles.shadow,
-                      { backgroundColor: "#CBE9ED" },
-                    ]
-                  : [styles.listItem, globalStyles.shadow]
-              }>
-              <Icon data={item} />
-            </Pressable>
-            {earnedBadges.filter((data) => data.key === item.key).length > 0 ? (
-              <View style={styles.badge}>
-                <Badge
-                  data={{
-                    src: item.imageUrl,
-                    iconSize: width * 0.1,
-                    backgroundSize: width * 0.15,
-                  }}
-                />
-              </View>
-            ) : null}
-          </>
+          <Pressable
+            onPress={() => handlePress(skills, item)}
+            style={
+              active === item
+                ? [
+                    styles.listItem,
+                    globalStyles.shadow,
+                    { backgroundColor: "#CBE9ED" },
+                  ]
+                : [styles.listItem, globalStyles.shadow]
+            }>
+            <Icon data={item} />
+          </Pressable>
         )}
       />
     </View>
@@ -132,10 +118,5 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 5,
     borderRadius: 4,
-  },
-  badge: {
-    position: "absolute",
-    top: "-20%",
-    right: "-20%",
   },
 });

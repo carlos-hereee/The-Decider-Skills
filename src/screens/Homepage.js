@@ -12,11 +12,11 @@ import { Text } from "react-native-elements";
 import { navigate } from "../utils/RootNavigation";
 import { Video } from "expo-av";
 import HomeBG from "../components/HomeBG";
-import { auth, getVideoUrl } from "../utils/firebase.config";
+import { getVideoUrl } from "../utils/firebase.config";
 import { globalStyles } from "../styles";
 import introVideos from "../utils/intro.json";
-import { HandbookContext } from "../utils/Context";
-import AppIcon from "../components/AppIcon";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const { width } = Dimensions.get("window");
 const Homepage = () => {
@@ -26,17 +26,6 @@ const Homepage = () => {
   const [status, setStatus] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [quality, setQuality] = useState("720");
-  const { liveUser, getData } = useContext(HandbookContext);
-
-  useEffect(() => {
-    const unsub = auth.onAuthStateChanged(async (user) => {
-      if (user?.uid) {
-        liveUser(user.uid);
-        getData(user.uid);
-      }
-    });
-    unsub();
-  }, []);
 
   const handleFullscreen = async ({ fullscreenUpdate }) => {
     if (fullscreenUpdate === 0) {
@@ -124,7 +113,7 @@ const Homepage = () => {
                 justifyContent: "center",
                 flexDirection: "row",
               }}>
-              <AppIcon name="backarrow" size={{ width: 20, height: 20 }} />
+              <FontAwesomeIcon icon={faArrowLeft} size={30} color="#4583B6" />
               <Text style={{ paddingHorizontal: 10 }}>Go back </Text>
             </Pressable>
           </View>
@@ -143,7 +132,7 @@ const Homepage = () => {
             <Text style={[styles.buttonTxt, { padding: 5 }]}>12 Skills</Text>
           </Pressable>
           <Pressable
-            onPress={() => navigate("Auth")}
+            onPress={() => navigate("Handbook")}
             style={[styles.button, globalStyles.shadow]}>
             <Text style={[styles.buttonTxt, { padding: 5 }]}>32 Skills</Text>
           </Pressable>

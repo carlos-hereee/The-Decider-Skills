@@ -7,14 +7,12 @@ import {
   Dimensions,
 } from "react-native";
 import { HandbookContext } from "../utils/Context";
-import { navigate } from "../utils/RootNavigation";
 import { getVideoUrl } from "../utils/firebase.config";
-import { auth } from "../utils/firebase.config";
 
 const { width } = Dimensions.get("window");
 const VideoPlayer = () => {
   const videoRef = useRef(null);
-  const { badgeToClaim, earnedBadges, active } = useContext(HandbookContext);
+  const { active } = useContext(HandbookContext);
   const [status, setStatus] = useState();
   const [quality, setQuality] = useState("720");
   const [videoURI, setVideoURI] = useState("");
@@ -26,18 +24,6 @@ const VideoPlayer = () => {
       getVideoUrl(active[quality]).then((url) => setVideoURI(url));
     }
   }, [active.key]);
-  useEffect(() => {
-    if (status?.durationMillis <= status?.positionMillis) {
-      // video ends and badge has not been earned
-      if (auth.currentUser) {
-        if (!earnedBadges.filter((data) => data.key === active.key).length) {
-          badgeToClaim(active);
-          navigate("ClaimBadge");
-        }
-      }
-    }
-  }, [status?.positionMillis]);
-
   const handleFullscreen = async ({ fullscreenUpdate }) => {
     if (fullscreenUpdate === 0) {
       // enter full screen
