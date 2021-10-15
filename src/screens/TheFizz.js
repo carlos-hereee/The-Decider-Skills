@@ -10,6 +10,7 @@ import {
   Platform,
 } from "react-native";
 import GoBack from "../components/GoBack";
+import { imageURI } from "../components/ImageUri";
 import { globalStyles } from "../styles";
 import { HandbookContext } from "../utils/Context";
 import { navigate } from "../utils/RootNavigation";
@@ -46,7 +47,7 @@ const TheFizz = () => {
                 justifyContent: "space-around",
               }}>
               <Image
-                source={{ uri: item.imageUrl }}
+                source={imageURI[item.imageUrl]}
                 resizeMode="contain"
                 style={imageStyle}
               />

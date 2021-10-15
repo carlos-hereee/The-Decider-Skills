@@ -1,7 +1,7 @@
 const isLoading = (state, action) => {
   return {
     ...state,
-    is_loading: action.payload,
+    isLoading: action.payload,
   };
 };
 const makeActive = (state, action) => {

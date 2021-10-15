@@ -1,12 +1,13 @@
 import React from "react";
 import { Image, View, Dimensions, Text } from "react-native";
+import { imageURI } from "./ImageUri";
 
 const { width, height } = Dimensions.get("window");
 
 const Icon = ({ data }) => (
   <View style={{ alignItems: "center" }}>
     <Image
-      source={{ uri: data.imageUrl }}
+      source={imageURI[data.imageUrl]}
       resizeMode="contain"
       style={{ width: width * 0.15, height: height * 0.07 }}
     />

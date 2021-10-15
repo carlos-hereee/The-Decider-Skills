@@ -13,6 +13,7 @@ import VideoPlayer from "../components/VideoPlayer";
 import GoBack from "../components/GoBack";
 import { globalStyles } from "../styles";
 import Icon from "../components/Icon";
+import { imageURI } from "../components/ImageUri";
 
 const { width, height } = Dimensions.get("window");
 const Skills = () => {
@@ -24,7 +25,6 @@ const Skills = () => {
     resetActive();
     makeActive(skills, item);
   };
-
   return (
     <View style={{ backgroundColor: "#ffffff" }}>
       <GoBack />
@@ -36,7 +36,7 @@ const Skills = () => {
             marginVertical: 5,
           }}>
           <Image
-            source={{ uri: active?.imageUrl }}
+            source={imageURI[active.imageUrl]}
             style={{ width: width * 0.2, height: height * 0.1 }}
             resizeMode="contain"
           />

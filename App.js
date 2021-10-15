@@ -14,7 +14,6 @@ import Footer from "./src/components/Footer";
 import Skills from "./src/screens/Skills.js";
 
 const Stack = createNativeStackNavigator();
-
 export default function App() {
   const [isReady, setReady] = useState(false);
   const [error, setError] = useState();
