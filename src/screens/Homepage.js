@@ -88,7 +88,12 @@ const Homepage = () => {
           <View>
             <Text style={{ textAlign: "center" }}>{video.definition} </Text>
             {isLoading && <ActivityIndicator size={35} color="#600" />}
-            <View style={{ alignItems: "center" }}>
+            <View
+              style={{
+                width: Platform.OS === "web" ? width * 0.35 : width * 0.7,
+                height: 150,
+                marginHorizontal: Platform.OS === "web" && "auto",
+              }}>
               <Video
                 ref={videoRef}
                 resizeMode="contain"
