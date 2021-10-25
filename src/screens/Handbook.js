@@ -25,7 +25,7 @@ const Handbook = () => {
     navigate("Skills");
   };
   return (
-    <View>
+    <View style={{ justifyContent: "center", alignItems: "center" }}>
       <GoBack />
       {lifeSkills.map((menu) => (
         <Pressable
@@ -82,10 +82,10 @@ const styles = StyleSheet.create({
   handbookSkill: {
     backgroundColor: "#ffffff",
     margin: 5,
-    padding: 3,
     borderRadius: 4,
     width: width * 0.95,
     height: height * 0.6,
+    alignItems: "center",
   },
   webMenu: {
     flex: 1,

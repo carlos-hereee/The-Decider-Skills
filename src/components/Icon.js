@@ -9,9 +9,9 @@ const Icon = ({ data }) => (
     <Image
       source={imageURI[data.imageUrl]}
       resizeMode="contain"
-      style={{ width: width * 0.15, height: height * 0.07 }}
+      style={{ width: width * 0.15, height: height * 0.065 }}
     />
-    <Text style={{ textAlign: "center" }}>{data.name.toUpperCase()}</Text>
+    <Text style={{ textAlign: "center" }}>{data.name}</Text>
   </View>
 );
 export default Icon;

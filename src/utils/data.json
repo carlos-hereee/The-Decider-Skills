@@ -87,93 +87,6 @@
     ]
   },
   {
-    "title": "Emotion Regulation",
-    "key": "3",
-    "color": "#ffc107",
-    "skills": [
-      {
-        "key": "emotion-1",
-        "name": "Self Care",
-        "definition": "Sleep - Eating & Exercise - Look at other factors - Find fun, achievement and enjoyment - every day. Be kind to yourself!",
-        "imageUrl": "self-care",
-        "original": "gs://the-decider-skills.appspot.com/skills/SELFcare/SELFcare-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/SELFcare/SELFcare-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/SELFcare/SELFcare-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/SELFcare/SELFcare-720.mp4"
-      },
-      {
-        "key": "emotion-2",
-        "name": "Thinking",
-        "definition": "Don't believe everything you think! Thoughts are just thoughts.",
-        "imageUrl": "thinking",
-        "original": "gs://the-decider-skills.appspot.com/skills/Thinking/Thinking-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/Thinking/Thinking-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/Thinking/Thinking-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/Thinking/Thinking-720.mp4"
-      },
-      {
-        "key": "emotion-3",
-        "name": "Name The Emotion",
-        "definition": "What emotion am I feeling right now? I can notice the urge to react, and choose a more helpful response.",
-        "imageUrl": "name-the-emotion",
-        "original": "gs://the-decider-skills.appspot.com/skills/NAMEtheEMOTION/NAMEtheEMOTION-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/NAMEtheEMOTION/NAMEtheEMOTION-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/NAMEtheEMOTION/NAMEtheEMOTION-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/NAMEtheEMOTION/NAMEtheEMOTION-720.mp4"
-      },
-      {
-        "key": "emotion-4",
-        "name": "Opposite Action",
-        "definition": "Notice the emotional action urge - and do the opposite. If anxious, instead of escape/avoid - approach. If angry, instead of attack - kind approach or gently withdraw. If depressed, instead of withdraw/isolate - do something, be with others.",
-        "imageUrl": "opposite-action",
-        "original": "gs://the-decider-skills.appspot.com/skills/OppositeAction/OppositeAction-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/OppositeAction/OppositeAction-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/OppositeAction/OppositeAction-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/OppositeAction/OppositeAction-720.mp4"
-      },
-      {
-        "key": "emotion-5",
-        "name": "Sieve or Sponge",
-        "definition": "What thoughts am I sponging? What am I sieving? What can I start to notice instead?",
-        "imageUrl": "sieve-or-sponge",
-        "original": "gs://the-decider-skills.appspot.com/skills/SieveorSponge/SieveorSponge-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/SieveorSponge/SieveorSponge-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/SieveorSponge/SieveorSponge-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/SieveorSponge/SieveorSponge-720.mp4"
-      },
-      {
-        "key": "emotion-6",
-        "name": "Build Positive Experiences",
-        "definition": "What can I do to add more colour into my life? More nourishing and less depleting activities.",
-        "imageUrl": "build-positive-experiences",
-        "original": "gs://the-decider-skills.appspot.com/skills/BuildPositiveExperiences/BuildPositiveExperiences-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/BuildPositiveExperiences/BuildPositiveExperiences-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/BuildPositiveExperiences/BuildPositiveExperiences-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/BuildPositiveExperiences/BuildPositiveExperiences-720.mp4"
-      },
-      {
-        "key": "emotion-7",
-        "name": "Balance",
-        "definition": "Where am I on my personal scale? What can I do to help balance myself?",
-        "imageUrl": "balance",
-        "original": "gs://the-decider-skills.appspot.com/skills/Balance/Balance-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/Balance/Balance-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/Balance/Balance-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/Balance/Balance-720.mp4"
-      },
-      {
-        "key": "emotion-8",
-        "name": "Pace & Plan",
-        "definition": "Play - Achieve - Care - Energise - Prepare - List - Action - Notice",
-        "imageUrl": "pace-and-plan",
-        "original": "gs://the-decider-skills.appspot.com/skills/PACEandPLAN/PACEandPLAN-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/PACEandPLAN/PACEandPLAN-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/PACEandPLAN/PACEandPLAN-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/PACEandPLAN/PACEandPLAN-720.mp4"
-      }
-    ]
-  },
-  {
     "title": "Mindfulness",
     "key": "2",
     "color": "#117a8b",
@@ -257,6 +170,93 @@
         "360": "gs://the-decider-skills.appspot.com/skills/KeepCalmandCarryOn/KeepCalmandCarryOn-360.mp4",
         "540": "gs://the-decider-skills.appspot.com/skills/KeepCalmandCarryOn/KeepCalmandCarryOn-540.mp4",
         "720": "gs://the-decider-skills.appspot.com/skills/KeepCalmandCarryOn/KeepCalmandCarryOn-720.mp4"
+      }
+    ]
+  },
+  {
+    "title": "Emotion Regulation",
+    "key": "3",
+    "color": "#ffc107",
+    "skills": [
+      {
+        "key": "emotion-1",
+        "name": "Self Care",
+        "definition": "Sleep - Eating & Exercise - Look at other factors - Find fun, achievement and enjoyment - every day. Be kind to yourself!",
+        "imageUrl": "self-care",
+        "original": "gs://the-decider-skills.appspot.com/skills/SELFcare/SELFcare-Original.mp4",
+        "360": "gs://the-decider-skills.appspot.com/skills/SELFcare/SELFcare-360.mp4",
+        "540": "gs://the-decider-skills.appspot.com/skills/SELFcare/SELFcare-540.mp4",
+        "720": "gs://the-decider-skills.appspot.com/skills/SELFcare/SELFcare-720.mp4"
+      },
+      {
+        "key": "emotion-2",
+        "name": "Thinking",
+        "definition": "Don't believe everything you think! Thoughts are just thoughts.",
+        "imageUrl": "thinking",
+        "original": "gs://the-decider-skills.appspot.com/skills/Thinking/Thinking-Original.mp4",
+        "360": "gs://the-decider-skills.appspot.com/skills/Thinking/Thinking-360.mp4",
+        "540": "gs://the-decider-skills.appspot.com/skills/Thinking/Thinking-540.mp4",
+        "720": "gs://the-decider-skills.appspot.com/skills/Thinking/Thinking-720.mp4"
+      },
+      {
+        "key": "emotion-3",
+        "name": "Name The Emotion",
+        "definition": "What emotion am I feeling right now? I can notice the urge to react, and choose a more helpful response.",
+        "imageUrl": "name-the-emotion",
+        "original": "gs://the-decider-skills.appspot.com/skills/NAMEtheEMOTION/NAMEtheEMOTION-Original.mp4",
+        "360": "gs://the-decider-skills.appspot.com/skills/NAMEtheEMOTION/NAMEtheEMOTION-360.mp4",
+        "540": "gs://the-decider-skills.appspot.com/skills/NAMEtheEMOTION/NAMEtheEMOTION-540.mp4",
+        "720": "gs://the-decider-skills.appspot.com/skills/NAMEtheEMOTION/NAMEtheEMOTION-720.mp4"
+      },
+      {
+        "key": "emotion-4",
+        "name": "Opposite Action",
+        "definition": "Notice the emotional action urge - and do the opposite. If anxious, instead of escape/avoid - approach. If angry, instead of attack - kind approach or gently withdraw. If depressed, instead of withdraw/isolate - do something, be with others.",
+        "imageUrl": "opposite-action",
+        "original": "gs://the-decider-skills.appspot.com/skills/OppositeAction/OppositeAction-Original.mp4",
+        "360": "gs://the-decider-skills.appspot.com/skills/OppositeAction/OppositeAction-360.mp4",
+        "540": "gs://the-decider-skills.appspot.com/skills/OppositeAction/OppositeAction-540.mp4",
+        "720": "gs://the-decider-skills.appspot.com/skills/OppositeAction/OppositeAction-720.mp4"
+      },
+      {
+        "key": "emotion-5",
+        "name": "Sieve or Sponge",
+        "definition": "What thoughts am I sponging? What am I sieving? What can I start to notice instead?",
+        "imageUrl": "sieve-or-sponge",
+        "original": "gs://the-decider-skills.appspot.com/skills/SieveorSponge/SieveorSponge-Original.mp4",
+        "360": "gs://the-decider-skills.appspot.com/skills/SieveorSponge/SieveorSponge-360.mp4",
+        "540": "gs://the-decider-skills.appspot.com/skills/SieveorSponge/SieveorSponge-540.mp4",
+        "720": "gs://the-decider-skills.appspot.com/skills/SieveorSponge/SieveorSponge-720.mp4"
+      },
+      {
+        "key": "emotion-6",
+        "name": "Build Positive Experiences",
+        "definition": "What can I do to add more colour into my life? More nourishing and less depleting activities.",
+        "imageUrl": "build-positive-experiences",
+        "original": "gs://the-decider-skills.appspot.com/skills/BuildPositiveExperiences/BuildPositiveExperiences-Original.mp4",
+        "360": "gs://the-decider-skills.appspot.com/skills/BuildPositiveExperiences/BuildPositiveExperiences-360.mp4",
+        "540": "gs://the-decider-skills.appspot.com/skills/BuildPositiveExperiences/BuildPositiveExperiences-540.mp4",
+        "720": "gs://the-decider-skills.appspot.com/skills/BuildPositiveExperiences/BuildPositiveExperiences-720.mp4"
+      },
+      {
+        "key": "emotion-7",
+        "name": "Balance",
+        "definition": "Where am I on my personal scale? What can I do to help balance myself?",
+        "imageUrl": "balance",
+        "original": "gs://the-decider-skills.appspot.com/skills/Balance/Balance-Original.mp4",
+        "360": "gs://the-decider-skills.appspot.com/skills/Balance/Balance-360.mp4",
+        "540": "gs://the-decider-skills.appspot.com/skills/Balance/Balance-540.mp4",
+        "720": "gs://the-decider-skills.appspot.com/skills/Balance/Balance-720.mp4"
+      },
+      {
+        "key": "emotion-8",
+        "name": "Pace & Plan",
+        "definition": "Play - Achieve - Care - Energise - Prepare - List - Action - Notice",
+        "imageUrl": "pace-and-plan",
+        "original": "gs://the-decider-skills.appspot.com/skills/PACEandPLAN/PACEandPLAN-Original.mp4",
+        "360": "gs://the-decider-skills.appspot.com/skills/PACEandPLAN/PACEandPLAN-360.mp4",
+        "540": "gs://the-decider-skills.appspot.com/skills/PACEandPLAN/PACEandPLAN-540.mp4",
+        "720": "gs://the-decider-skills.appspot.com/skills/PACEandPLAN/PACEandPLAN-720.mp4"
       }
     ]
   },
