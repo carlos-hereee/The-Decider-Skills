@@ -1,51 +1,26 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import {
   Pressable,
   StyleSheet,
   View,
   ActivityIndicator,
   FlatList,
-  Dimensions,
-  Platform,
 } from "react-native";
 import { Text } from "react-native-elements";
 import { navigate } from "../utils/RootNavigation";
 import { Video } from "expo-av";
 import HomeBG from "../components/HomeBG";
-import { getVideoUrl } from "../utils/firebase.config";
 import { globalStyles } from "../styles";
 import introVideos from "../utils/intro.json";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import VideoPlayer from "../components/VideoPlayer";
+import { HandbookContext } from "../utils/Context";
 
-const { width } = Dimensions.get("window");
 const Homepage = () => {
-  const videoRef = useRef(null);
-  const [video, setVideo] = useState({});
-  const [videoURI, setVideoURI] = useState("");
-  const [status, setStatus] = useState();
-  const [isLoading, setIsLoading] = useState(false);
-  const [quality, setQuality] = useState("720");
-
-  const handleFullscreen = async ({ fullscreenUpdate }) => {
-    if (fullscreenUpdate === 0) {
-      // enter full screen
-      videoRef.current.playAsync();
-      setIsLoading(false);
-    }
-    if (fullscreenUpdate === 2) {
-      // exit full screen
-      videoRef.current.pauseAsync();
-    }
-  };
-  useEffect(() => {
-    if (video.key) {
-      getVideoUrl(video[quality]).then((url) => setVideoURI(url));
-    }
-  }, [video.key]);
-  const videoStyle = {
-    width: isLoading ? 0 : Platform.OS === "web" ? width * 0.35 : width * 0.7,
-    height: isLoading ? 0 : 150,
+  const { makeActive, active, resetActive } = useContext(HandbookContext);
+  const handlePress = (skills, data) => {
+    makeActive(skills, data);
   };
   const Intro = () => (
     <View>
@@ -64,15 +39,29 @@ const Homepage = () => {
                 globalStyles.shadow,
                 { paddingVertical: "3%" },
               ]}
-              onPress={() => {
-                setIsLoading(true);
-                setVideo(item);
-              }}>
+              onPress={() => handlePress(introVideos, item)}>
               <Text style={styles.buttonTxt}>{item.name}</Text>
             </Pressable>
           </View>
         )}
       />
+      <View style={{ flexGrow: 1, justifyContent: "center" }}>
+        <Text style={{ textAlign: "center", marginVertical: 5 }}>
+          What brings you here today?
+        </Text>
+      </View>
+      <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+        <Pressable
+          onPress={() => navigate("TheFizz")}
+          style={[styles.button, globalStyles.shadow]}>
+          <Text style={[styles.buttonTxt, { padding: 5 }]}>12 Skills</Text>
+        </Pressable>
+        <Pressable
+          onPress={() => navigate("Handbook")}
+          style={[styles.button, globalStyles.shadow]}>
+          <Text style={[styles.buttonTxt, { padding: 5 }]}>32 Skills</Text>
+        </Pressable>
+      </View>
     </View>
   );
   return (
@@ -84,33 +73,12 @@ const Homepage = () => {
         <Text h2 style={styles.cardHeading}>
           Skills
         </Text>
-        {videoURI ? (
-          <View>
-            <Text style={{ textAlign: "center" }}>{video.definition} </Text>
-            {isLoading && <ActivityIndicator size={35} color="#600" />}
-            <View
-              style={{
-                width: Platform.OS === "web" ? width * 0.35 : width * 0.7,
-                height: 150,
-                marginHorizontal: Platform.OS === "web" && "auto",
-              }}>
-              <Video
-                ref={videoRef}
-                resizeMode="contain"
-                source={{ uri: videoURI }}
-                style={videoStyle}
-                useNativeControls
-                onPlaybackStatusUpdate={(stat) => setStatus(stat)}
-                onFullscreenUpdate={handleFullscreen}
-                onLoadStart={() => setIsLoading(true)}
-                onLoad={() => setIsLoading(false)}
-              />
-            </View>
+        <Text style={{ textAlign: "center" }}>{active.definition} </Text>
+        {active.key ? (
+          <>
+            <VideoPlayer />
             <Pressable
-              onPress={() => {
-                setVideo({});
-                setVideoURI("");
-              }}
+              onPress={() => resetActive()}
               style={{
                 paddingHorizontal: "auto",
                 paddingVertical: 5,
@@ -121,27 +89,10 @@ const Homepage = () => {
               <FontAwesomeIcon icon={faArrowLeft} size={30} color="#4583B6" />
               <Text style={{ paddingHorizontal: 10 }}>Go back </Text>
             </Pressable>
-          </View>
+          </>
         ) : (
           <Intro />
         )}
-        <View style={{ flexGrow: 1, justifyContent: "center" }}>
-          <Text style={{ textAlign: "center", marginVertical: 5 }}>
-            What brings you here today?
-          </Text>
-        </View>
-        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <Pressable
-            onPress={() => navigate("TheFizz")}
-            style={[styles.button, globalStyles.shadow]}>
-            <Text style={[styles.buttonTxt, { padding: 5 }]}>12 Skills</Text>
-          </Pressable>
-          <Pressable
-            onPress={() => navigate("Handbook")}
-            style={[styles.button, globalStyles.shadow]}>
-            <Text style={[styles.buttonTxt, { padding: 5 }]}>32 Skills</Text>
-          </Pressable>
-        </View>
       </View>
     </HomeBG>
   );
@@ -149,6 +100,11 @@ const Homepage = () => {
 export default Homepage;
 
 const styles = StyleSheet.create({
+  flexCenter: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   backgroungImage: {
     flex: 1,
     justifyContent: "center",

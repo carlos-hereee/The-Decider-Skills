@@ -20,7 +20,7 @@ const { width, height } = Dimensions.get("window");
 const TheFizz = () => {
   const { makeActive } = useContext(HandbookContext);
   const handlePress = (item) => {
-    makeActive(data.theFizz, item);
+    makeActive(data, item);
     navigate("Skills");
   };
   const imageStyle = {
@@ -32,32 +32,33 @@ const TheFizz = () => {
       <View style={{ marginRight: "auto" }}>
         <GoBack />
       </View>
-      <FlatList
-        data={data.theFizz}
-        numColumns={3}
-        contentContainerStyle={{ flexGrow: 1 }}
-        renderItem={({ item }) => (
-          <Pressable
-            onPress={() => handlePress(item)}
-            style={[styles.listItem, globalStyles.shadow]}>
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "space-around",
-              }}>
-              <Image
-                source={imageURI[item.imageUrl]}
-                resizeMode="contain"
-                style={imageStyle}
-              />
-              <Text style={{ textAlign: "center" }}>
-                {item.name.toUpperCase()}
-              </Text>
-            </View>
-          </Pressable>
-        )}
-      />
+      <View style={{ flex: 1, alignItems: "center" }}>
+        <FlatList
+          data={data}
+          numColumns={3}
+          renderItem={({ item }) => (
+            <Pressable
+              onPress={() => handlePress(item)}
+              style={[styles.listItem, globalStyles.shadow]}>
+              <View
+                style={{
+                  flex: 1,
+                  alignItems: "center",
+                  justifyContent: "space-around",
+                }}>
+                <Image
+                  source={imageURI[item.imageUrl]}
+                  resizeMode="contain"
+                  style={imageStyle}
+                />
+                <Text style={{ textAlign: "center" }}>
+                  {item.name.toUpperCase()}
+                </Text>
+              </View>
+            </Pressable>
+          )}
+        />
+      </View>
     </View>
   );
 };
@@ -66,8 +67,6 @@ export default TheFizz;
 const styles = StyleSheet.create({
   menu: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
     backgroundColor: "#ffffff",
   },
   listItem: {

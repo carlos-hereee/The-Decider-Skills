@@ -5,84 +5,52 @@
     "color": "#dc3545",
     "skills": [
       {
-        "key": "distress-1",
+        "key": "STOPP",
         "name": "Stopp",
-        "imageUrl": "stopp",
         "definition": "Stop! - Take a breath - Observe - Pull back - Practice and/or Proceed",
-        "original": "gs://the-decider-skills.appspot.com/skills/STOPP/STOPP-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/STOPP/STOPP-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/STOPP/STOPP-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/STOPP/STOPP-720.mp4"
+        "imageUrl": "stopp"
       },
       {
-        "key": "distress-2",
+        "key": "ITWILLPASS",
         "name": "It will pass",
-        "imageUrl": "it-will-pass",
         "definition": "Thoughts and feelings come and go. Situations change. Sometimes all we can do is keep going. It will pass.",
-        "original": "gs://the-decider-skills.appspot.com/skills/ITWILLPASS/ITWILLPASS-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/ITWILLPASS/ITWILLPASS-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/ITWILLPASS/ITWILLPASS-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/ITWILLPASS/ITWILLPASS-720.mp4"
+        "imageUrl": "it-will-pass"
       },
       {
-        "key": "distress-3",
+        "key": "Distract",
         "name": "Distract",
-        "imageUrl": "distract",
         "definition": "What can I do right now to help me focus on something else, instead of my distress?",
-        "original": "gs://the-decider-skills.appspot.com/skills/Distract/Distract-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/Distract/Distract-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/Distract/Distract-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/Distract/Distract-720.mp4"
+        "imageUrl": "distract"
       },
       {
-        "key": "distress-4",
+        "key": "DoOneThing",
         "name": "Do One Thing",
-        "imageUrl": "do-one-thing",
         "definition": "Do One Thing. Choose something to do. Do it mindfully. How long for? 20 minutes!",
-        "original": "gs://the-decider-skills.appspot.com/skills/DoOneThing/DoOneThing-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/DoOneThing/DoOneThing-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/DoOneThing/DoOneThing-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/DoOneThing/DoOneThing-720.mp4"
+        "imageUrl": "do-one-thing"
       },
       {
-        "key": "distress-5",
+        "key": "TurnTheMind",
         "name": "Turn The Mind",
-        "imageUrl": "turn-the-mind",
         "definition": "Choose to take the new resourceful and helpful way. Use a skill! If you always do what you always did, you'll always get what you always got.",
-        "original": "gs://the-decider-skills.appspot.com/skills/TurnTheMind/TurnTheMind-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/TurnTheMind/TurnTheMind-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/TurnTheMind/TurnTheMind-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/TurnTheMind/TurnTheMind-720.mp4"
+        "imageUrl": "turn-the-mind"
       },
       {
-        "key": "distress-6",
+        "key": "RightNow",
         "name": "Right Now",
-        "imageUrl": "right-now",
         "definition": "Right Now: 5 things I can see - 4 things I can hear - 3 things I can touch - 2 things I can smell - 1 slow deep breath.",
-        "original": "gs://the-decider-skills.appspot.com/skills/RightNow/RightNow-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/RightNow/RightNow-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/RightNow/RightNow-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/RightNow/RightNow-720.mp4"
+        "imageUrl": "right-now"
       },
       {
-        "key": "distress-7",
+        "key": "Soothe",
         "name": "Soothe",
         "definition": "What can I use to soothe myself? Soothe my senses. What is in my sooth bag/box/app that will help me to feel better?",
-        "imageUrl": "soothe",
-        "original": "gs://the-decider-skills.appspot.com/skills/Soothe/Soothe-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/Soothe/Soothe-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/Soothe/Soothe-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/Soothe/Soothe-720.mp4"
+        "imageUrl": "soothe"
       },
       {
-        "key": "distress-8",
+        "key": "VALUES",
         "name": "Values",
         "definition": "What are my values? What is really important to me? What can I do that will help me take a step towards my chosen life direction?",
-        "imageUrl": "values",
-        "original": "gs://the-decider-skills.appspot.com/skills/VALUES/VALUES-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/VALUES/VALUES-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/VALUES/VALUES-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/VALUES/VALUES-720.mp4"
+        "imageUrl": "values"
       }
     ]
   },
@@ -92,84 +60,52 @@
     "color": "#117a8b",
     "skills": [
       {
-        "key": "mindfullness-1",
+        "key": "Breathe",
         "name": "Breathe",
         "definition": "Focus attention on the breath. Imagine a balloon inflating on the in-breath, and deflating on the out-breath.",
-        "imageUrl": "breathe",
-        "original": "gs://the-decider-skills.appspot.com/skills/Breathe/Breathe-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/Breathe/Breathe-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/Breathe/Breathe-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/Breathe/Breathe-720.mp4"
+        "imageUrl": "breathe"
       },
       {
-        "key": "mindfullness-2",
+        "key": "Observe",
         "name": "Observe",
         "definition": "Take the helicopter view! Pull back. What's the bigger picture?",
-        "imageUrl": "observe",
-        "original": "gs://the-decider-skills.appspot.com/skills/Observe/Observe-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/Observe/Observe-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/Observe/Observe-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/Observe/Observe-720.mp4"
+        "imageUrl": "observe"
       },
       {
-        "key": "mindfullness-3",
+        "key": "ThisMoment",
         "name": "This Moment",
         "definition": "Focus on the here and now, in this moment. Say to yourself: 'I am sitting' or 'I am walking'. 'I am looking' or 'I am listening'. 'I am breathing'. Notice the sensations of that activity in this moment.",
-        "imageUrl": "this-moment",
-        "original": "gs://the-decider-skills.appspot.com/skills/ThisMoment/ThisMoment-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/ThisMoment/ThisMoment-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/ThisMoment/ThisMoment-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/ThisMoment/ThisMoment-720.mp4"
+        "imageUrl": "this-moment"
       },
       {
-        "key": "mindfullness-4",
+        "key": "Focus",
         "name": "Focus",
         "definition": "Where is my focus of attention? What am I thinking about? Where do I want to focus?",
-        "imageUrl": "focus",
-        "original": "gs://the-decider-skills.appspot.com/skills/Focus/Focus-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/Focus/Focus-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/Focus/Focus-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/Focus/Focus-720.mp4"
+        "imageUrl": "focus"
       },
       {
-        "key": "mindfullness-5",
+        "key": "DRIFT",
         "name": "Drift",
         "definition": "Am I drifting? Is my attention wandering? Bring attention back to my chosen focus.",
-        "imageUrl": "drift",
-        "original": "gs://the-decider-skills.appspot.com/skills/DRIFT/DRIFT-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/DRIFT/DRIFT-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/DRIFT/DRIFT-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/DRIFT/DRIFT-720.mp4"
+        "imageUrl": "drift"
       },
       {
-        "key": "mindfullness-6",
+        "key": "FACTOPINION",
         "name": "Fact or Option",
         "definition": "Ask yourself: Is this thought fact or opinion? Come back to the FACTS!",
-        "imageUrl": "fact-or-opinion",
-        "original": "gs://the-decider-skills.appspot.com/skills/FACTOPINION/FACTOPINION-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/FACTOPINION/FACTOPINION-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/FACTOPINION/FACTOPINION-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/FACTOPINION/FACTOPINION-720.mp4"
+        "imageUrl": "fact-or-opinion"
       },
       {
-        "key": "mindfullness-7",
+        "key": "WiseMind",
         "name": "Wise Mind",
         "definition": "Taking reasonable mind and emotion mind into consideration.... What would Wise Mind make of this?",
-        "imageUrl": "wise-mind",
-        "original": "gs://the-decider-skills.appspot.com/skills/WiseMind/WiseMind-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/WiseMind/WiseMind-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/WiseMind/WiseMind-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/WiseMind/WiseMind-720.mp4"
+        "imageUrl": "wise-mind"
       },
       {
-        "key": "mindfullness-8",
+        "key": "KeepCalmandCarryOn",
         "name": "Keep Calm And Carry On",
         "definition": "Focus on your chosen slogan or positive self talk statement to help you cope during distressing times.",
-        "imageUrl": "keep-calm",
-        "original": "gs://the-decider-skills.appspot.com/skills/KeepCalmandCarryOn/KeepCalmandCarryOn-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/KeepCalmandCarryOn/KeepCalmandCarryOn-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/KeepCalmandCarryOn/KeepCalmandCarryOn-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/KeepCalmandCarryOn/KeepCalmandCarryOn-720.mp4"
+        "imageUrl": "keep-calm"
       }
     ]
   },
@@ -179,84 +115,52 @@
     "color": "#ffc107",
     "skills": [
       {
-        "key": "emotion-1",
+        "key": "SELFcare",
         "name": "Self Care",
         "definition": "Sleep - Eating & Exercise - Look at other factors - Find fun, achievement and enjoyment - every day. Be kind to yourself!",
-        "imageUrl": "self-care",
-        "original": "gs://the-decider-skills.appspot.com/skills/SELFcare/SELFcare-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/SELFcare/SELFcare-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/SELFcare/SELFcare-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/SELFcare/SELFcare-720.mp4"
+        "imageUrl": "self-care"
       },
       {
-        "key": "emotion-2",
+        "key": "Thinking",
         "name": "Thinking",
         "definition": "Don't believe everything you think! Thoughts are just thoughts.",
-        "imageUrl": "thinking",
-        "original": "gs://the-decider-skills.appspot.com/skills/Thinking/Thinking-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/Thinking/Thinking-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/Thinking/Thinking-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/Thinking/Thinking-720.mp4"
+        "imageUrl": "thinking"
       },
       {
-        "key": "emotion-3",
+        "key": "NAMEtheEMOTION",
         "name": "Name The Emotion",
         "definition": "What emotion am I feeling right now? I can notice the urge to react, and choose a more helpful response.",
-        "imageUrl": "name-the-emotion",
-        "original": "gs://the-decider-skills.appspot.com/skills/NAMEtheEMOTION/NAMEtheEMOTION-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/NAMEtheEMOTION/NAMEtheEMOTION-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/NAMEtheEMOTION/NAMEtheEMOTION-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/NAMEtheEMOTION/NAMEtheEMOTION-720.mp4"
+        "imageUrl": "name-the-emotion"
       },
       {
-        "key": "emotion-4",
+        "key": "OppositeAction",
         "name": "Opposite Action",
         "definition": "Notice the emotional action urge - and do the opposite. If anxious, instead of escape/avoid - approach. If angry, instead of attack - kind approach or gently withdraw. If depressed, instead of withdraw/isolate - do something, be with others.",
-        "imageUrl": "opposite-action",
-        "original": "gs://the-decider-skills.appspot.com/skills/OppositeAction/OppositeAction-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/OppositeAction/OppositeAction-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/OppositeAction/OppositeAction-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/OppositeAction/OppositeAction-720.mp4"
+        "imageUrl": "opposite-action"
       },
       {
-        "key": "emotion-5",
+        "key": "SieveorSponge",
         "name": "Sieve or Sponge",
         "definition": "What thoughts am I sponging? What am I sieving? What can I start to notice instead?",
-        "imageUrl": "sieve-or-sponge",
-        "original": "gs://the-decider-skills.appspot.com/skills/SieveorSponge/SieveorSponge-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/SieveorSponge/SieveorSponge-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/SieveorSponge/SieveorSponge-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/SieveorSponge/SieveorSponge-720.mp4"
+        "imageUrl": "sieve-or-sponge"
       },
       {
-        "key": "emotion-6",
+        "key": "BuildPositiveExperiences",
         "name": "Build Positive Experiences",
         "definition": "What can I do to add more colour into my life? More nourishing and less depleting activities.",
-        "imageUrl": "build-positive-experiences",
-        "original": "gs://the-decider-skills.appspot.com/skills/BuildPositiveExperiences/BuildPositiveExperiences-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/BuildPositiveExperiences/BuildPositiveExperiences-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/BuildPositiveExperiences/BuildPositiveExperiences-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/BuildPositiveExperiences/BuildPositiveExperiences-720.mp4"
+        "imageUrl": "build-positive-experiences"
       },
       {
-        "key": "emotion-7",
+        "key": "Balance",
         "name": "Balance",
         "definition": "Where am I on my personal scale? What can I do to help balance myself?",
-        "imageUrl": "balance",
-        "original": "gs://the-decider-skills.appspot.com/skills/Balance/Balance-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/Balance/Balance-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/Balance/Balance-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/Balance/Balance-720.mp4"
+        "imageUrl": "balance"
       },
       {
-        "key": "emotion-8",
+        "key": "PACEandPLAN",
         "name": "Pace & Plan",
         "definition": "Play - Achieve - Care - Energise - Prepare - List - Action - Notice",
-        "imageUrl": "pace-and-plan",
-        "original": "gs://the-decider-skills.appspot.com/skills/PACEandPLAN/PACEandPLAN-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/PACEandPLAN/PACEandPLAN-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/PACEandPLAN/PACEandPLAN-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/PACEandPLAN/PACEandPLAN-720.mp4"
+        "imageUrl": "pace-and-plan"
       }
     ]
   },
@@ -266,84 +170,52 @@
     "color": "#3DCE22",
     "skills": [
       {
-        "key": "interpersonal-1",
+        "key": "Listen",
         "name": "Listen",
         "definition": "I have 2 ears and only one mouth! How can I show that I'm really listening?",
-        "imageUrl": "listen",
-        "original": "gs://the-decider-skills.appspot.com/skills/Listen/Listen-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/Listen/Listen-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/Listen/Listen-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/Listen/Listen-720.mp4"
+        "imageUrl": "listen"
       },
       {
-        "key": "interpersonal-2",
+        "key": "RESPECT",
         "name": "Respect",
         "definition": "The more I give - the more I get. Respect myself & others - Treat others as I want to be treated",
-        "imageUrl": "respect",
-        "original": "gs://the-decider-skills.appspot.com/skills/RESPECT/RESPECT-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/RESPECT/RESPECT-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/RESPECT/RESPECT-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/RESPECT/RESPECT-720.mp4"
+        "imageUrl": "respect"
       },
       {
-        "key": "interpersonal-3",
+        "key": "Reflect",
         "name": "Reflect",
         "definition": "What can I learn about what happened? What went well? What didn't go so well? What can I do differently next time?",
-        "imageUrl": "reflect",
-        "original": "gs://the-decider-skills.appspot.com/skills/Reflect/Reflect-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/Reflect/Reflect-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/Reflect/Reflect-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/Reflect/Reflect-720.mp4"
+        "imageUrl": "reflect"
       },
       {
-        "key": "interpersonal-4",
+        "key": "CrystalCLEAR",
         "name": "Crystal Clear",
         "definition": "Concise - Lucid & Logical - Emotion-free expression - Assertive - Realistic.",
-        "imageUrl": "crystal-clear",
-        "original": "gs://the-decider-skills.appspot.com/skills/CrystalCLEAR/CrystalCLEAR-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/CrystalCLEAR/CrystalCLEAR-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/CrystalCLEAR/CrystalCLEAR-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/CrystalCLEAR/CrystalCLEAR-720.mp4"
+        "imageUrl": "crystal-clear"
       },
       {
-        "key": "interpersonal-5",
+        "key": "AskorSayNo",
         "name": "Ask or Say No",
         "definition": "How can I ask someone what I really want to ask for? It's OK to say no - I can say it in a way that is OK for me as well as the other person.",
-        "imageUrl": "ask-or-say-no",
-        "original": "gs://the-decider-skills.appspot.com/skills/AskorSayNo/AskorSayNo-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/AskorSayNo/AskorSayNo-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/AskorSayNo/AskorSayNo-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/AskorSayNo/AskorSayNo-720.mp4"
+        "imageUrl": "ask-or-say-no"
       },
       {
-        "key": "interpersonal-6",
+        "key": "MaintainRelationship",
         "name": "Maintain Relationship",
         "definition": "Say in touch with friends, family and important others. When you're feeling low, let someone know.",
-        "imageUrl": "maintain-relationship",
-        "original": "gs://the-decider-skills.appspot.com/skills/MaintainRelationship/MaintainRelationship-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/MaintainRelationship/MaintainRelationship-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/MaintainRelationship/MaintainRelationship-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/MaintainRelationship/MaintainRelationship-720.mp4"
+        "imageUrl": "maintain-relationship"
       },
       {
-        "key": "interpersonal-7",
+        "key": "TalktheTalk",
         "name": "Talk the Talk",
         "definition": "Communicate assertively. Smile - warm & friendly - relaxed - comfortable eye contact.",
-        "imageUrl": "talk-the-talk",
-        "original": "gs://the-decider-skills.appspot.com/skills/TalktheTalk/TalktheTalk-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/TalktheTalk/TalktheTalk-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/TalktheTalk/TalktheTalk-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/TalktheTalk/TalktheTalk-720.mp4"
+        "imageUrl": "talk-the-talk"
       },
       {
-        "key": "interpersonal-8",
+        "key": "EndorMend",
         "name": "End Or Mend",
         "definition": "Is this relationship healthy for me? How can I end or mend this relationship? Can I keep a door open?",
-        "imageUrl": "end-or-mend",
-        "original": "gs://the-decider-skills.appspot.com/skills/EndorMend/EndorMend-Original.mp4",
-        "360": "gs://the-decider-skills.appspot.com/skills/EndorMend/EndorMend-360.mp4",
-        "540": "gs://the-decider-skills.appspot.com/skills/EndorMend/EndorMend-540.mp4",
-        "720": "gs://the-decider-skills.appspot.com/skills/EndorMend/EndorMend-720.mp4"
+        "imageUrl": "end-or-mend"
       }
     ]
   }

@@ -2,7 +2,7 @@
   "expo": {
     "name": "The Decider Skills",
     "slug": "The-Decider-Skills",
-    "version": "1.0.9",
+    "version": "1.0.11",
     "orientation": "portrait",
     "icon": "./assets/post-it-icon.png",
     "splash": {
@@ -17,24 +17,19 @@
       "assets/*"
     ],
     "ios": {
-      "buildNumber": "1.0.3",
+      "buildNumber": "1.0.5",
       "supportsTablet": true,
       "requireFullScreen": true,
       "bundleIdentifier": "com.silent2code.handbook"
     },
     "android": {
-      "versionCode": 8,
+      "versionCode": 10,
       "adaptiveIcon": {
         "foregroundImage": "./assets/post-it-icon.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.silent2code.handbook"
     },
-    "plugins": [
-      "@react-native-firebase/app",
-      "@react-native-firebase/perf",
-      "@react-native-firebase/crashlytics"
-    ],
     "androidStatusBar": {
       "backgroundColor": "#C2185B",
       "translucent": false

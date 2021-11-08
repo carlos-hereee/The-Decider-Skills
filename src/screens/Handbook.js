@@ -40,7 +40,7 @@ const Handbook = () => {
             },
           ]}
           onPress={() => setAccordion(menu.key)}>
-          <Text h4 style={{ color: "black", textAlign: "center" }}>
+          <Text h4 style={{ color: "black", paddingVertical: 1 }}>
             {menu.title}
           </Text>
           {menu.key === accordion &&

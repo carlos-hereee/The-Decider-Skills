@@ -1,15 +1,8 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
 import { Video } from "expo-av";
-import {
-  ActivityIndicator,
-  Platform,
-  Pressable,
-  Dimensions,
-} from "react-native";
+import { ActivityIndicator, Platform, Pressable } from "react-native";
 import { HandbookContext } from "../utils/Context";
-import { getVideoUrl } from "../utils/firebase.config";
 
-const { width } = Dimensions.get("window");
 const VideoPlayer = () => {
   const videoRef = useRef(null);
   const { active } = useContext(HandbookContext);
@@ -20,8 +13,9 @@ const VideoPlayer = () => {
 
   useEffect(() => {
     if (active.key) {
-      setVideoURI("");
-      getVideoUrl(active[quality]).then((url) => setVideoURI(url));
+      setVideoURI(
+        `https://the-decider-skills-db.herokuapp.com/video?name=${active.key}&quality=${quality}`
+      );
     }
   }, [active.key]);
   const handleFullscreen = async ({ fullscreenUpdate }) => {
@@ -33,10 +27,6 @@ const VideoPlayer = () => {
       // exit full screen
       videoRef.current.pauseAsync();
     }
-  };
-  const videoStyle = {
-    width: isLoading ? 0 : Platform.OS === "web" ? width / 2 : 200,
-    height: isLoading ? 0 : 150,
   };
   return (
     <Pressable
@@ -50,7 +40,12 @@ const VideoPlayer = () => {
         ref={videoRef}
         source={{ uri: videoURI }}
         useNativeControls
-        style={videoStyle}
+        style={{
+          minWidth: 250,
+          width: "100%",
+          maxWidth: 600,
+          height: isLoading ? 0 : 150,
+        }}
         resizeMode="contain"
         onPlaybackStatusUpdate={(stat) => setStatus(stat)}
         onFullscreenUpdate={handleFullscreen}
