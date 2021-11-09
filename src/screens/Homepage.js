@@ -74,9 +74,9 @@ const Homepage = () => {
           Skills
         </Text>
         <Text style={{ textAlign: "center" }}>{active.definition} </Text>
+        <VideoPlayer />
         {active.key ? (
           <>
-            <VideoPlayer />
             <Pressable
               onPress={() => resetActive()}
               style={{

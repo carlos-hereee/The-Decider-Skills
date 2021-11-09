@@ -44,7 +44,7 @@ const VideoPlayer = () => {
           minWidth: 250,
           width: "100%",
           maxWidth: 600,
-          height: isLoading ? 0 : 150,
+          height: isLoading ? 0 : active.key ? 150 : 0,
         }}
         resizeMode="contain"
         onPlaybackStatusUpdate={(stat) => setStatus(stat)}
