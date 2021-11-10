@@ -28,7 +28,6 @@ const VideoPlayer = () => {
       videoRef.current.pauseAsync();
     }
   };
-  console.log(status);
   return (
     <Pressable
       onPress={() =>
