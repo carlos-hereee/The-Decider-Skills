@@ -9,7 +9,7 @@ const VideoPlayer = () => {
   const [status, setStatus] = useState();
   const [quality, setQuality] = useState("720");
   const [videoURI, setVideoURI] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (active.key) {
@@ -28,6 +28,7 @@ const VideoPlayer = () => {
       videoRef.current.pauseAsync();
     }
   };
+  console.log(status);
   return (
     <Pressable
       onPress={() =>
@@ -35,7 +36,9 @@ const VideoPlayer = () => {
           ? videoRef.current.pauseAsync()
           : videoRef.current.playAsync()
       }>
-      {isLoading && <ActivityIndicator size="large" color="#600" />}
+      {active.key && isLoading && (
+        <ActivityIndicator size="large" color="#600" />
+      )}
       <Video
         ref={videoRef}
         source={{ uri: videoURI }}
